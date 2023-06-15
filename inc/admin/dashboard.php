@@ -1,6 +1,6 @@
 <?php
 
-class Onepress_Dashboard
+class Ardent_Dashboard
 {
 
 	private static $_instance = null;
@@ -28,7 +28,7 @@ class Onepress_Dashboard
 
 	function reset_recommended_actions()
 	{
-		delete_option('onepress_actions_dismiss');
+		delete_option('ardent_actions_dismiss');
 	}
 
 	/**
@@ -40,20 +40,20 @@ class Onepress_Dashboard
 	 */
 	function maybe_show_switch_theme_notice()
 	{
-		if (get_option('onepress_dismiss_switch_theme_notice')) {
+		if (get_option('ardent_dismiss_switch_theme_notice')) {
 			return false;
 		}
 		$keys = array(
-			'onepress_hcl1_largetext',
-			'onepress_hcl1_smalltext',
-			'onepress_hcl2_content',
-			'onepress_features_boxes',
-			'onepress_services',
-			'onepress_videolightbox_title',
-			'onepress_gallery_source',
-			'onepress_team_members',
-			'onepress_contact_text',
-			'onepress_contact_address',
+			'ardent_hcl1_largetext',
+			'ardent_hcl1_smalltext',
+			'ardent_hcl2_content',
+			'ardent_features_boxes',
+			'ardent_services',
+			'ardent_videolightbox_title',
+			'ardent_gallery_source',
+			'ardent_team_members',
+			'ardent_contact_text',
+			'ardent_contact_address',
 		);
 
 		foreach ($keys as $k) {
@@ -71,8 +71,8 @@ class Onepress_Dashboard
 	 */
 	function admin_scripts($hook)
 	{
-		if ($hook === 'widgets.php' || $hook === 'appearance_page_ft_onepress') {
-			wp_enqueue_style('onepress-admin-css', get_template_directory_uri() . '/assets/css/admin.css');
+		if ($hook === 'widgets.php' || $hook === 'appearance_page_ft_ardent') {
+			wp_enqueue_style('ardent-admin-css', get_template_directory_uri() . '/assets/css/admin.css');
 			// Add recommend plugin css
 			wp_enqueue_style('plugin-install');
 			wp_enqueue_script('plugin-install');
@@ -87,14 +87,14 @@ class Onepress_Dashboard
 		$number_count = $actions['number_notice'];
 
 		if ($number_count > 0) {
-			$update_label = sprintf(_n('%1$s action required', '%1$s actions required', $number_count, 'onepress'), $number_count);
+			$update_label = sprintf(_n('%1$s action required', '%1$s actions required', $number_count, 'ardent'), $number_count);
 			$count = "<span class='update-plugins count-" . esc_attr($number_count) . "' title='" . esc_attr($update_label) . "'><span class='update-count'>" . number_format_i18n($number_count) . "</span></span>";
-			$menu_title = sprintf(esc_html__('OnePress Theme %s', 'onepress'), $count);
+			$menu_title = sprintf(esc_html__('ARDENT Theme %s', 'ardent'), $count);
 		} else {
-			$menu_title = esc_html__('OnePress Theme', 'onepress');
+			$menu_title = esc_html__('ARDENT Theme', 'ardent');
 		}
 
-		add_theme_page(esc_html__('OnePress Dashboard', 'onepress'), $menu_title, 'edit_theme_options', 'ft_onepress', array($this, 'theme_info_page'));
+		add_theme_page(esc_html__('ARDENT Dashboard', 'ardent'), $menu_title, 'edit_theme_options', 'ft_ardent', array($this, 'theme_info_page'));
 	}
 
 	/**
@@ -112,7 +112,7 @@ class Onepress_Dashboard
 			$theme_data = wp_get_theme();
 ?>
 			<div class="updated notice notice-success notice-alt is-dismissible">
-				<p><?php printf(__('Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our <a href="%2$s">Welcome page</a>', 'onepress'),  $theme_data->Name, admin_url('themes.php?page=ft_onepress')); ?></p>
+				<p><?php printf(__('Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our <a href="%2$s">Welcome page</a>', 'ardent'),  $theme_data->Name, admin_url('themes.php?page=ft_ardent')); ?></p>
 			</div>
 		<?php
 		}
@@ -122,7 +122,7 @@ class Onepress_Dashboard
 	{
 		?>
 		<div class="updated notice notice-success notice-alt is-dismissible">
-			<p><?php printf(esc_html__('Save time by import our demo data, your website will be set up and ready to customize in minutes. %s', 'onepress'), '<a class="button button-secondary" href="' . esc_url(add_query_arg(array('page' => 'ft_onepress&tab=demo-data-importer'), admin_url('themes.php'))) . '">' . esc_html__('Import Demo Data', 'onepress') . '</a>'); ?></p>
+			<p><?php printf(esc_html__('Save time by import our demo data, your website will be set up and ready to customize in minutes. %s', 'ardent'), '<a class="button button-secondary" href="' . esc_url(add_query_arg(array('page' => 'ft_ardent&tab=demo-data-importer'), admin_url('themes.php'))) . '">' . esc_html__('Import Demo Data', 'ardent') . '</a>'); ?></p>
 		</div>
 	<?php
 	}
@@ -138,10 +138,10 @@ class Onepress_Dashboard
 
 	function render_section_settings($key, $section, $see_only = false)
 	{
-		$active_value = Onepress_Config::is_section_active($key) ? 1 : false;
+		$active_value = Ardent_Config::is_section_active($key) ? 1 : false;
 	?>
-		<div class="onepress-admin-section <?php echo $see_only ? 'see-only' : ''; ?>">
-			<div class="onepress-admin-section-inner">
+		<div class="ardent-admin-section <?php echo $see_only ? 'see-only' : ''; ?>">
+			<div class="ardent-admin-section-inner">
 				<div class="admin-section-header">
 					<label>
 						<?php if (!$see_only) { ?>
@@ -154,7 +154,7 @@ class Onepress_Dashboard
 						?>
 					</label>
 					<?php if ($see_only) { ?>
-						<span class="note-bubble"><?php _e('Plus Feature', 'onepress'); ?></span>
+						<span class="note-bubble"><?php _e('Plus Feature', 'ardent'); ?></span>
 					<?php } ?>
 				</div>
 			</div>
@@ -169,32 +169,32 @@ class Onepress_Dashboard
 	 */
 	function sections_settings()
 	{
-		$sections = Onepress_Config::get_sections();
+		$sections = Ardent_Config::get_sections();
 
 		if (isset($_POST['submit'])) {
-			Onepress_Config::save_settings($_POST);
+			Ardent_Config::save_settings($_POST);
 		?>
 			<div id="sections-manager-notice" class="updated notice notice-success is-dismissible">
-				<p><?php _e('Settings saved', 'onepress'); ?></p>
+				<p><?php _e('Settings saved', 'ardent'); ?></p>
 			</div>
 		<?php
 		}
 
 
 
-		echo '<form method="post" action="?page=ft_onepress" class="onepress-admin-sections-form">';
-		echo '<div class="onepress-admin-sections-wrapper">';
-		echo '<h3>' . __('Customizer Section Manager', 'onepress') . '</h3>';
-		echo '<p class="description">' . __('Disable (or enable) unused sections to improve Customizer loading speed. Your section settings is still saved.', 'onepress') . '</p>';
+		echo '<form method="post" action="?page=ft_ardent" class="ardent-admin-sections-form">';
+		echo '<div class="ardent-admin-sections-wrapper">';
+		echo '<h3>' . __('Customizer Section Manager', 'ardent') . '</h3>';
+		echo '<p class="description">' . __('Disable (or enable) unused sections to improve Customizer loading speed. Your section settings is still saved.', 'ardent') . '</p>';
 
-		echo '<div class="onepress-admin-sections">';
+		echo '<div class="ardent-admin-sections">';
 
 		foreach ($sections as $key => $section) {
 			$this->render_section_settings($key, $section);
 		}
 
-		if (!class_exists('OnePress_Plus')) {
-			foreach (Onepress_Config::get_plus_sections() as $key => $section) {
+		if (!class_exists('ARDENT_Plus')) {
+			foreach (Ardent_Config::get_plus_sections() as $key => $section) {
 				$this->render_section_settings($key, $section, true);
 			}
 		}
@@ -209,15 +209,15 @@ class Onepress_Dashboard
 	function theme_info_page()
 	{
 
-		$theme_data = wp_get_theme('onepress');
+		$theme_data = wp_get_theme('ardent');
 
-		if (isset($_GET['onepress_action_dismiss'])) {
-			$actions_dismiss =  get_option('onepress_actions_dismiss');
+		if (isset($_GET['ardent_action_dismiss'])) {
+			$actions_dismiss =  get_option('ardent_actions_dismiss');
 			if (!is_array($actions_dismiss)) {
 				$actions_dismiss = array();
 			}
-			$actions_dismiss[sanitize_text_field($_GET['onepress_action_dismiss'])] = 'dismiss';
-			update_option('onepress_actions_dismiss', $actions_dismiss);
+			$actions_dismiss[sanitize_text_field($_GET['ardent_action_dismiss'])] = 'dismiss';
+			update_option('ardent_actions_dismiss', $actions_dismiss);
 		}
 
 		// Check for current viewing tab
@@ -232,7 +232,7 @@ class Onepress_Dashboard
 		$number_action = $actions_r['number_notice'];
 		$actions = $actions_r['actions'];
 
-		$current_action_link =  admin_url('themes.php?page=ft_onepress&tab=recommended_actions');
+		$current_action_link =  admin_url('themes.php?page=ft_ardent&tab=recommended_actions');
 
 		$recommend_plugins = get_theme_support('recommend-plugins');
 		if (is_array($recommend_plugins) && isset($recommend_plugins[0])) {
@@ -242,21 +242,21 @@ class Onepress_Dashboard
 		}
 		?>
 		<div class="wrap about-wrap theme_info_wrapper">
-			<h1><?php printf(esc_html__('Welcome to OnePress - Version %1s', 'onepress'), $theme_data->Version); ?></h1>
-			<div class="about-text"><?php esc_html_e('OnePress is a creative and flexible WordPress ONE PAGE theme well suited for business, portfolio, digital agency, product showcase, freelancers websites.', 'onepress'); ?></div>
-			<a target="_blank" href="<?php echo esc_url('https://www.famethemes.com/?utm_source=theme_dashboard_page&utm_medium=badge_link&utm_campaign=onepress'); ?>" class="famethemes-badge wp-badge"><span>FameThemes</span></a>
+			<h1><?php printf(esc_html__('Welcome to ARDENT - Version %1s', 'ardent'), $theme_data->Version); ?></h1>
+			<div class="about-text"><?php esc_html_e('ARDENT is a creative and flexible WordPress ONE PAGE theme well suited for business, portfolio, digital agency, product showcase, freelancers websites.', 'ardent'); ?></div>
+			<a target="_blank" href="<?php echo esc_url('https://www.famethemes.com/?utm_source=theme_dashboard_page&utm_medium=badge_link&utm_campaign=ardent'); ?>" class="famethemes-badge wp-badge"><span>FameThemes</span></a>
 
 			<hr class="wp-header-end">
 
 			<h2 class="nav-tab-wrapper">
-				<a href="?page=ft_onepress" class="nav-tab<?php echo is_null($tab) ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Overview', 'onepress') ?></a>
-				<a href="?page=ft_onepress&tab=recommended_actions" class="nav-tab<?php echo $tab == 'recommended_actions' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Recommended Actions', 'onepress');
+				<a href="?page=ft_ardent" class="nav-tab<?php echo is_null($tab) ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Overview', 'ardent') ?></a>
+				<a href="?page=ft_ardent&tab=recommended_actions" class="nav-tab<?php echo $tab == 'recommended_actions' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Recommended Actions', 'ardent');
 																																							echo ($number_action > 0) ? "<span class='theme-action-count'>{$number_action}</span>" : ''; ?></a>
-				<?php if (!class_exists('OnePress_Plus')) { ?>
-					<a href="?page=ft_onepress&tab=free_pro" class="nav-tab<?php echo $tab == 'free_pro' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Free vs PLUS', 'onepress'); ?></span></a>
+				<?php if (!class_exists('ARDENT_Plus')) { ?>
+					<a href="?page=ft_ardent&tab=free_pro" class="nav-tab<?php echo $tab == 'free_pro' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Free vs PLUS', 'ardent'); ?></span></a>
 				<?php } ?>
-				<a href="?page=ft_onepress&tab=demo-data-importer" class="nav-tab<?php echo $tab == 'demo-data-importer' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Demo Import', 'onepress'); ?></span></a>
-				<?php do_action('onepress_admin_more_tabs', $tab); ?>
+				<a href="?page=ft_ardent&tab=demo-data-importer" class="nav-tab<?php echo $tab == 'demo-data-importer' ? ' nav-tab-active' : null; ?>"><?php esc_html_e('Demo Import', 'ardent'); ?></span></a>
+				<?php do_action('ardent_admin_more_tabs', $tab); ?>
 			</h2>
 
 			<?php if (is_null($tab)) { ?>
@@ -270,25 +270,25 @@ class Onepress_Dashboard
 
 						<div class="theme_info_right">
 							<div class="theme_link">
-								<h3><?php esc_html_e('Theme Customizer', 'onepress'); ?></h3>
-								<p class="about"><?php printf(esc_html__('%s supports the Theme Customizer for all theme settings. Click "Customize" to start customize your site.', 'onepress'), $theme_data->Name); ?></p>
+								<h3><?php esc_html_e('Theme Customizer', 'ardent'); ?></h3>
+								<p class="about"><?php printf(esc_html__('%s supports the Theme Customizer for all theme settings. Click "Customize" to start customize your site.', 'ardent'), $theme_data->Name); ?></p>
 								<p>
-									<a href="<?php echo admin_url('customize.php'); ?>" class="button button-primary"><?php esc_html_e('Start Customize', 'onepress'); ?></a>
+									<a href="<?php echo admin_url('customize.php'); ?>" class="button button-primary"><?php esc_html_e('Start Customize', 'ardent'); ?></a>
 								</p>
 							</div>
 							<div class="theme_link">
-								<h3><?php esc_html_e('Theme Documentation', 'onepress'); ?></h3>
-								<p class="about"><?php printf(esc_html__('Need any help to setup and configure %s? Please have a look at our documentations instructions.', 'onepress'), $theme_data->Name); ?></p>
+								<h3><?php esc_html_e('Theme Documentation', 'ardent'); ?></h3>
+								<p class="about"><?php printf(esc_html__('Need any help to setup and configure %s? Please have a look at our documentations instructions.', 'ardent'), $theme_data->Name); ?></p>
 								<p>
-									<a href="<?php echo esc_url('http://docs.famethemes.com/category/112-onepress'); ?>" target="_blank" class="button button-secondary"><?php esc_html_e('OnePress Documentation', 'onepress'); ?></a>
+									<a href="<?php echo esc_url('http://docs.famethemes.com/category/112-ardent'); ?>" target="_blank" class="button button-secondary"><?php esc_html_e('ARDENT Documentation', 'ardent'); ?></a>
 								</p>
-								<?php do_action('onepress_dashboard_theme_links'); ?>
+								<?php do_action('ardent_dashboard_theme_links'); ?>
 							</div>
 							<div class="theme_link">
-								<h3><?php esc_html_e('Having Trouble, Need Support?', 'onepress'); ?></h3>
-								<p class="about"><?php printf(esc_html__('Support for %s WordPress theme is conducted through FameThemes support ticket system.', 'onepress'), $theme_data->Name); ?></p>
+								<h3><?php esc_html_e('Having Trouble, Need Support?', 'ardent'); ?></h3>
+								<p class="about"><?php printf(esc_html__('Support for %s WordPress theme is conducted through FameThemes support ticket system.', 'ardent'), $theme_data->Name); ?></p>
 								<p>
-									<a href="<?php echo esc_url('https://www.famethemes.com/dashboard/tickets/'); ?>" target="_blank" class="button button-secondary"><?php echo sprintf(esc_html__('Create a support ticket', 'onepress'), $theme_data->Name); ?></a>
+									<a href="<?php echo esc_url('https://www.famethemes.com/dashboard/tickets/'); ?>" target="_blank" class="button button-secondary"><?php echo sprintf(esc_html__('Create a support ticket', 'ardent'), $theme_data->Name); ?></a>
 								</p>
 							</div>
 						</div>
@@ -306,31 +306,31 @@ class Onepress_Dashboard
 					?>
 						<form method="post" action="<?php echo esc_attr($current_action_link); ?>" class="demo-import-boxed copy-settings-form">
 							<p>
-								<strong> <?php printf(esc_html__('You\'re using %1$s theme, It\'s a child theme of OnePress', 'onepress'),  $child_theme->Name); ?></strong>
+								<strong> <?php printf(esc_html__('You\'re using %1$s theme, It\'s a child theme of ARDENT', 'ardent'),  $child_theme->Name); ?></strong>
 							</p>
-							<p><?php printf(esc_html__("Child theme uses it's own theme setting name, would you like to copy setting data from parent theme to this child theme?", 'onepress')); ?></p>
+							<p><?php printf(esc_html__("Child theme uses it's own theme setting name, would you like to copy setting data from parent theme to this child theme?", 'ardent')); ?></p>
 							<p>
 								<?php
 
 								$select = '<select name="copy_from">';
-								$select .= '<option value="">' . esc_html__('From Theme', 'onepress') . '</option>';
-								$select .= '<option value="onepress">OnePress</option>';
+								$select .= '<option value="">' . esc_html__('From Theme', 'ardent') . '</option>';
+								$select .= '<option value="ardent">ARDENT</option>';
 								$select .= '<option value="' . esc_attr($child_theme->get_stylesheet()) . '">' . ($child_theme->Name) . '</option>';
 								$select .= '</select>';
 
 								$select_2 = '<select name="copy_to">';
-								$select_2 .= '<option value="">' . esc_html__('To Theme', 'onepress') . '</option>';
-								$select_2 .= '<option value="onepress">OnePress</option>';
+								$select_2 .= '<option value="">' . esc_html__('To Theme', 'ardent') . '</option>';
+								$select_2 .= '<option value="ardent">ARDENT</option>';
 								$select_2 .= '<option value="' . esc_attr($child_theme->get_stylesheet()) . '">' . ($child_theme->Name) . '</option>';
 								$select_2 .= '</select>';
 
 								echo $select . ' to ' . $select_2;
 
 								?>
-								<input type="submit" class="button button-secondary" value="<?php esc_attr_e('Copy now', 'onepress'); ?>">
+								<input type="submit" class="button button-secondary" value="<?php esc_attr_e('Copy now', 'ardent'); ?>">
 							</p>
 							<?php if (isset($_GET['copied']) && $_GET['copied'] == 1) { ?>
-								<p><?php esc_html_e('Your settings were copied.', 'onepress'); ?></p>
+								<p><?php esc_html_e('Your settings were copied.', 'ardent'); ?></p>
 							<?php } ?>
 						</form>
 
@@ -340,14 +340,14 @@ class Onepress_Dashboard
 
 						<?php if ($actions['recommend_plugins'] == 'active') {  ?>
 							<div id="plugin-filter" class="recommend-plugins action-required">
-								<a title="" class="dismiss" href="<?php echo add_query_arg(array('onepress_action_notice' => 'recommend_plugins'), $current_action_link); ?>">
+								<a title="" class="dismiss" href="<?php echo add_query_arg(array('ardent_action_notice' => 'recommend_plugins'), $current_action_link); ?>">
 									<?php if ($actions_r['hide_by_click']['recommend_plugins'] == 'hide') { ?>
 										<span class="dashicons dashicons-hidden"></span>
 									<?php } else { ?>
 										<span class="dashicons  dashicons-visibility"></span>
 									<?php } ?>
 								</a>
-								<h3><?php esc_html_e('Recommend Plugins', 'onepress'); ?></h3>
+								<h3><?php esc_html_e('Recommend Plugins', 'ardent'); ?></h3>
 								<?php
 								$this->render_recommend_plugins($recommend_plugins);
 								?>
@@ -357,73 +357,73 @@ class Onepress_Dashboard
 
 						<?php if ($actions['page_on_front'] == 'active') {  ?>
 							<div class="theme_link  action-required">
-								<a title="<?php esc_attr_e('Dismiss', 'onepress'); ?>" class="dismiss" href="<?php echo add_query_arg(array('onepress_action_notice' => 'page_on_front'), $current_action_link); ?>">
+								<a title="<?php esc_attr_e('Dismiss', 'ardent'); ?>" class="dismiss" href="<?php echo add_query_arg(array('ardent_action_notice' => 'page_on_front'), $current_action_link); ?>">
 									<?php if ($actions_r['hide_by_click']['page_on_front'] == 'hide') { ?>
 										<span class="dashicons dashicons-hidden"></span>
 									<?php } else { ?>
 										<span class="dashicons  dashicons-visibility"></span>
 									<?php } ?>
 								</a>
-								<h3><?php esc_html_e('Switch "Front page displays" to "A static page"', 'onepress'); ?></h3>
+								<h3><?php esc_html_e('Switch "Front page displays" to "A static page"', 'ardent'); ?></h3>
 								<div class="about">
-									<p><?php _e('In order to have the one page look for your website, please go to Customize -&gt; Static Front Page and switch "Front page displays" to "A static page".', 'onepress'); ?></p>
+									<p><?php _e('In order to have the one page look for your website, please go to Customize -&gt; Static Front Page and switch "Front page displays" to "A static page".', 'ardent'); ?></p>
 								</div>
 								<p>
-									<a href="<?php echo admin_url('options-reading.php'); ?>" class="button"><?php esc_html_e('Setup front page displays', 'onepress'); ?></a>
+									<a href="<?php echo admin_url('options-reading.php'); ?>" class="button"><?php esc_html_e('Setup front page displays', 'ardent'); ?></a>
 								</p>
 							</div>
 						<?php } ?>
 
 						<?php if ($actions['page_template'] == 'active') {  ?>
 							<div class="theme_link  action-required">
-								<a title="<?php esc_attr_e('Dismiss', 'onepress'); ?>" class="dismiss" href="<?php echo add_query_arg(array('onepress_action_notice' => 'page_template'), $current_action_link); ?>">
+								<a title="<?php esc_attr_e('Dismiss', 'ardent'); ?>" class="dismiss" href="<?php echo add_query_arg(array('ardent_action_notice' => 'page_template'), $current_action_link); ?>">
 									<?php if ($actions_r['hide_by_click']['page_template'] == 'hide') { ?>
 										<span class="dashicons dashicons-hidden"></span>
 									<?php } else { ?>
 										<span class="dashicons  dashicons-visibility"></span>
 									<?php } ?>
 								</a>
-								<h3><?php esc_html_e('Set your homepage page template to "Frontpage".', 'onepress'); ?></h3>
+								<h3><?php esc_html_e('Set your homepage page template to "Frontpage".', 'ardent'); ?></h3>
 
 								<div class="about">
-									<p><?php esc_html_e('In order to change homepage section contents, you will need to set template "Frontpage" for your homepage.', 'onepress'); ?></p>
+									<p><?php esc_html_e('In order to change homepage section contents, you will need to set template "Frontpage" for your homepage.', 'ardent'); ?></p>
 								</div>
 								<p>
 									<?php
 									$front_page = get_option('page_on_front');
 									if ($front_page <= 0) {
 									?>
-										<a href="<?php echo admin_url('options-reading.php'); ?>" class="button"><?php esc_html_e('Setup front page displays', 'onepress'); ?></a>
+										<a href="<?php echo admin_url('options-reading.php'); ?>" class="button"><?php esc_html_e('Setup front page displays', 'ardent'); ?></a>
 									<?php
 
 									}
 
 									if ($front_page > 0 && get_post_meta($front_page, '_wp_page_template', true) != 'template-frontpage.php') {
 									?>
-										<a href="<?php echo get_edit_post_link($front_page); ?>" class="button"><?php esc_html_e('Change homepage page template', 'onepress'); ?></a>
+										<a href="<?php echo get_edit_post_link($front_page); ?>" class="button"><?php esc_html_e('Change homepage page template', 'ardent'); ?></a>
 									<?php
 									}
 									?>
 								</p>
 							</div>
 						<?php } ?>
-						<?php do_action('onepress_more_required_details', $actions); ?>
+						<?php do_action('ardent_more_required_details', $actions); ?>
 					<?php  } else { ?>
-						<h3><?php printf(__('Keep %s updated', 'onepress'), $theme_data->Name); ?></h3>
-						<p><?php _e('Hooray! There are no required actions for you right now.', 'onepress'); ?></p>
+						<h3><?php printf(__('Keep %s updated', 'ardent'), $theme_data->Name); ?></h3>
+						<p><?php _e('Hooray! There are no required actions for you right now.', 'ardent'); ?></p>
 					<?php } ?>
 				</div>
 			<?php } ?>
 
-			<?php if (!class_exists('OnePress_Plus')) { ?>
+			<?php if (!class_exists('ARDENT_Plus')) { ?>
 				<?php if ($tab == 'free_pro') { ?>
 					<div id="free_pro" class="freepro-tab-content info-tab-content">
 						<table class="free-pro-table">
 							<thead>
 								<tr>
 									<th></th>
-									<th>OnePress</th>
-									<th>OnePress Plus</th>
+									<th>ARDENT</th>
+									<th>ARDENT Plus</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -618,7 +618,7 @@ class Onepress_Dashboard
 
 								<tr class="ti-about-page-text-center">
 									<td></td>
-									<td colspan="2"><a href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_dashboard&utm_medium=compare_table&utm_campaign=onepress" target="_blank" class="button button-primary button-hero"><?php esc_html_e('Get OnePress Plus now!', 'onepress') ?></a></td>
+									<td colspan="2"><a href="https://www.famethemes.com/plugins/ardent-plus/?utm_source=theme_dashboard&utm_medium=compare_table&utm_campaign=ardent" target="_blank" class="button button-primary button-hero"><?php esc_html_e('Get ARDENT Plus now!', 'ardent') ?></a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -628,15 +628,15 @@ class Onepress_Dashboard
 
 			<?php if ($tab == 'demo-data-importer') { ?>
 				<div class="demo-import-tab-content info-tab-content">
-					<?php if (has_action('onepress_demo_import_content_tab')) {
-						do_action('onepress_demo_import_content_tab');
+					<?php if (has_action('ardent_demo_import_content_tab')) {
+						do_action('ardent_demo_import_content_tab');
 					} else { ?>
 						<div id="plugin-filter" class="demo-import-boxed">
 							<?php
 							$plugin_name = 'famethemes-demo-importer';
 							$status = is_dir(WP_PLUGIN_DIR . '/' . $plugin_name);
 							$button_class = 'install-now button';
-							$button_txt = esc_html__('Install Now', 'onepress');
+							$button_txt = esc_html__('Install Now', 'ardent');
 							if (!$status) {
 								$install_url = wp_nonce_url(
 									add_query_arg(
@@ -657,7 +657,7 @@ class Onepress_Dashboard
 									'_wpnonce' => wp_create_nonce('activate-plugin_' . $plugin_name . '/' . $plugin_name . '.php'),
 								), network_admin_url('plugins.php'));
 								$button_class = 'activate-now button-primary';
-								$button_txt = esc_html__('Active Now', 'onepress');
+								$button_txt = esc_html__('Active Now', 'ardent');
 							}
 
 							$detail_link = add_query_arg(
@@ -676,10 +676,10 @@ class Onepress_Dashboard
 							printf(
 								esc_html__(
 									'%1$s you will need to install and activate the %2$s plugin first.',
-									'onepress'
+									'ardent'
 								),
-								'<b>' . esc_html__('Hey.', 'onepress') . '</b>',
-								'<a class="thickbox open-plugin-details-modal" href="' . esc_url($detail_link) . '">' . esc_html__('FameThemes Demo Importer', 'onepress') . '</a>'
+								'<b>' . esc_html__('Hey.', 'ardent') . '</b>',
+								'<a class="thickbox open-plugin-details-modal" href="' . esc_url($detail_link) . '">' . esc_html__('FameThemes Demo Importer', 'ardent') . '</a>'
 							);
 							echo '</p>';
 
@@ -691,7 +691,7 @@ class Onepress_Dashboard
 				</div>
 			<?php } ?>
 
-			<?php do_action('onepress_more_tabs_details', $actions); ?>
+			<?php do_action('ardent_more_tabs_details', $actions); ?>
 
 		</div>
 		<script type="text/javascript">
@@ -699,7 +699,7 @@ class Onepress_Dashboard
 				$('body').addClass('about-php');
 
 				$('.copy-settings-form').on('submit', function() {
-					var c = confirm('<?php echo esc_attr_e('Are you sure want to copy ?', 'onepress'); ?>');
+					var c = confirm('<?php echo esc_attr_e('Are you sure want to copy ?', 'ardent'); ?>');
 					if (!c) {
 						return false;
 					}
@@ -726,7 +726,7 @@ class Onepress_Dashboard
 			}
 
 			if (!is_plugin_active($active_file_name)) {
-				$button_txt = esc_html__('Install Now', 'onepress');
+				$button_txt = esc_html__('Install Now', 'ardent');
 				if (!$status) {
 					$install_url = wp_nonce_url(
 						add_query_arg(
@@ -747,7 +747,7 @@ class Onepress_Dashboard
 						'_wpnonce' => wp_create_nonce('activate-plugin_' . $active_file_name),
 					), network_admin_url('plugins.php'));
 					$button_class = 'activate-now button-primary';
-					$button_txt = esc_html__('Active Now', 'onepress');
+					$button_txt = esc_html__('Active Now', 'ardent');
 				}
 
 				$detail_link = add_query_arg(
@@ -767,7 +767,7 @@ class Onepress_Dashboard
 				echo esc_html($plugin_name);
 				echo '</h4>';
 				echo '<p class="action-btn plugin-card-' . esc_attr($plugin_slug) . '"><a href="' . esc_url($install_url) . '" data-slug="' . esc_attr($plugin_slug) . '" class="' . esc_attr($button_class) . '">' . $button_txt . '</a></p>';
-				echo '<a class="plugin-detail thickbox open-plugin-details-modal" href="' . esc_url($detail_link) . '">' . esc_html__('Details', 'onepress') . '</a>';
+				echo '<a class="plugin-detail thickbox open-plugin-details-modal" href="' . esc_url($detail_link) . '">' . esc_html__('Details', 'ardent') . '</a>';
 				echo '</div>';
 			}
 		}
@@ -776,20 +776,20 @@ class Onepress_Dashboard
 	function admin_dismiss_actions()
 	{
 		// Action for dismiss
-		if (isset($_GET['onepress_action_notice'])) {
-			$actions_dismiss =  get_option('onepress_actions_dismiss');
+		if (isset($_GET['ardent_action_notice'])) {
+			$actions_dismiss =  get_option('ardent_actions_dismiss');
 			if (!is_array($actions_dismiss)) {
 				$actions_dismiss = array();
 			}
-			$action_key = sanitize_text_field($_GET['onepress_action_notice']);
+			$action_key = sanitize_text_field($_GET['ardent_action_notice']);
 			if (isset($actions_dismiss[$action_key]) &&  $actions_dismiss[$action_key] == 'hide') {
 				$actions_dismiss[$action_key] = 'show';
 			} else {
 				$actions_dismiss[$action_key] = 'hide';
 			}
-			update_option('onepress_actions_dismiss', $actions_dismiss);
+			update_option('ardent_actions_dismiss', $actions_dismiss);
 			$url = wp_unslash($_SERVER['REQUEST_URI']);
-			$url = remove_query_arg('onepress_action_notice', $url);
+			$url = remove_query_arg('ardent_action_notice', $url);
 			wp_redirect($url);
 			die();
 		}
@@ -862,9 +862,9 @@ class Onepress_Dashboard
 			}
 		}
 
-		$actions = apply_filters('onepress_get_recommended_actions', $actions);
+		$actions = apply_filters('ardent_get_recommended_actions', $actions);
 
-		$hide_by_click = get_option('onepress_actions_dismiss');
+		$hide_by_click = get_option('ardent_actions_dismiss');
 		if (!is_array($hide_by_click)) {
 			$hide_by_click = array();
 		}
@@ -905,4 +905,4 @@ class Onepress_Dashboard
 	}
 }
 
-Onepress_Dashboard::get_instance()->init();
+Ardent_Dashboard::get_instance()->init();

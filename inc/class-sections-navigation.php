@@ -2,19 +2,19 @@
 
 /**
  * Dots Navigation class
- * Class Onepress_Dots_Navigation
+ * Class Ardent_Dots_Navigation
  *
  * @since 2.1.0
  */
-class Onepress_Dots_Navigation
+class Ardent_Dots_Navigation
 {
 	static $_instance = null;
-	private $key = 'onepress_sections_nav_';
+	private $key = 'ardent_sections_nav_';
 
 	/**
 	 * Get instance
 	 *
-	 * @return null|Onepress_Dots_Navigation
+	 * @return null|Ardent_Dots_Navigation
 	 */
 	static function get_instance()
 	{
@@ -35,10 +35,10 @@ class Onepress_Dots_Navigation
 		/**
 		 * @since 2.1.1
 		 */
-		$new = Onepress_Config::get_sections();
+		$new = Ardent_Config::get_sections();
 
 		// Filter to add more custom sections here
-		return apply_filters('onepress_sections_navigation_get_sections', $new);
+		return apply_filters('ardent_sections_navigation_get_sections', $new);
 	}
 
 	/**
@@ -65,14 +65,14 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_setting(
 			$this->get_name('__enable'),
 			array(
-				'sanitize_callback' => 'onepress_sanitize_text',
+				'sanitize_callback' => 'ardent_sanitize_text',
 				'default'           => false,
 			)
 		);
 		$wp_customize->add_control(
 			$this->get_name('__enable'),
 			array(
-				'label'       => __('Enable in section navigation', 'onepress'),
+				'label'       => __('Enable in section navigation', 'ardent'),
 				'section'     => $section_id,
 				'type'        => 'checkbox',
 			)
@@ -81,7 +81,7 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_setting(
 			$this->get_name('__disable_mobile'),
 			array(
-				'sanitize_callback' => 'onepress_sanitize_text',
+				'sanitize_callback' => 'ardent_sanitize_text',
 				'default'           => false,
 			)
 		);
@@ -89,7 +89,7 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_control(
 			$this->get_name('__disable_mobile'),
 			array(
-				'label'       => __('Disable the section navigation on mobile', 'onepress'),
+				'label'       => __('Disable the section navigation on mobile', 'ardent'),
 				'section'     => $section_id,
 				'type'        => 'checkbox',
 			)
@@ -98,7 +98,7 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_setting(
 			$this->get_name('__enable_label'),
 			array(
-				'sanitize_callback' => 'onepress_sanitize_text',
+				'sanitize_callback' => 'ardent_sanitize_text',
 				'default'           => 1,
 			)
 		);
@@ -106,8 +106,8 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_control(
 			$this->get_name('__enable_label'),
 			array(
-				'label'       => __('Enable navigation labels', 'onepress'),
-				'description'       => __('By default navigation label is section title.', 'onepress'),
+				'label'       => __('Enable navigation labels', 'ardent'),
+				'description'       => __('By default navigation label is section title.', 'ardent'),
 				'section'     => $section_id,
 				'type'        => 'checkbox',
 			)
@@ -127,7 +127,7 @@ class Onepress_Dots_Navigation
 				$wp_customize,
 				$this->get_name('__color'),
 				array(
-					'label'       => esc_html__('Dots color', 'onepress'),
+					'label'       => esc_html__('Dots color', 'ardent'),
 					'section'     => $section_id,
 					'description' => '',
 				)
@@ -148,7 +148,7 @@ class Onepress_Dots_Navigation
 				$wp_customize,
 				$this->get_name('__color2'),
 				array(
-					'label'       => esc_html__('Dots inverse color', 'onepress'),
+					'label'       => esc_html__('Dots inverse color', 'ardent'),
 					'section'     => $section_id,
 					'description' => '',
 				)
@@ -159,16 +159,16 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_setting(
 			$this->get_name('__label_bg'),
 			array(
-				'sanitize_callback'    => 'onepress_sanitize_color_alpha',
+				'sanitize_callback'    => 'ardent_sanitize_color_alpha',
 				'default'              => '',
 			)
 		);
 		$wp_customize->add_control(
-			new OnePress_Alpha_Color_Control(
+			new ARDENT_Alpha_Color_Control(
 				$wp_customize,
 				$this->get_name('__label_bg'),
 				array(
-					'label'       => esc_html__('Label Background', 'onepress'),
+					'label'       => esc_html__('Label Background', 'ardent'),
 					'section'     => $section_id,
 					'description' => '',
 				)
@@ -179,16 +179,16 @@ class Onepress_Dots_Navigation
 		$wp_customize->add_setting(
 			$this->get_name('__label_color'),
 			array(
-				'sanitize_callback'    => 'onepress_sanitize_color_alpha',
+				'sanitize_callback'    => 'ardent_sanitize_color_alpha',
 				'default'              => '',
 			)
 		);
 		$wp_customize->add_control(
-			new OnePress_Alpha_Color_Control(
+			new ARDENT_Alpha_Color_Control(
 				$wp_customize,
 				$this->get_name('__label_color'),
 				array(
-					'label'       => esc_html__('Label Color', 'onepress'),
+					'label'       => esc_html__('Label Color', 'ardent'),
 					'section'     => $section_id,
 					'description' => '',
 				)
@@ -201,24 +201,24 @@ class Onepress_Dots_Navigation
 			/**
 			 * @since 2.1.1
 			 */
-			if (Onepress_Config::is_section_active($id)) {
+			if (Ardent_Config::is_section_active($id)) {
 
 				$name = $this->get_name($id);
 
 				$wp_customize->add_setting(
 					$id . '_em',
 					array(
-						'sanitize_callback' => 'onepress_sanitize_text',
+						'sanitize_callback' => 'ardent_sanitize_text',
 					)
 				);
 				$wp_customize->add_control(
-					new OnePress_Misc_Control(
+					new ARDENT_Misc_Control(
 						$wp_customize,
 						$id . '_em',
 						array(
 							'type'        => 'custom_message',
 							'section'     => $section_id,
-							'description' => '<div class="onepress-c-heading">' . esc_html($args['label']) . '</div>',
+							'description' => '<div class="ardent-c-heading">' . esc_html($args['label']) . '</div>',
 						)
 					)
 				);
@@ -226,7 +226,7 @@ class Onepress_Dots_Navigation
 				$wp_customize->add_setting(
 					$name,
 					array(
-						'sanitize_callback' => 'onepress_sanitize_checkbox',
+						'sanitize_callback' => 'ardent_sanitize_checkbox',
 						'default'           => $args['default'],
 						// 'transport'         => 'postMessage'
 					)
@@ -234,7 +234,7 @@ class Onepress_Dots_Navigation
 				$wp_customize->add_control(
 					$name,
 					array(
-						'label'   => __('Enable in section navigation', 'onepress'),
+						'label'   => __('Enable in section navigation', 'ardent'),
 						'section' => $section_id,
 						'type'    => 'checkbox',
 					)
@@ -243,7 +243,7 @@ class Onepress_Dots_Navigation
 				$wp_customize->add_setting(
 					$name . '_inverse',
 					array(
-						'sanitize_callback' => 'onepress_sanitize_checkbox',
+						'sanitize_callback' => 'ardent_sanitize_checkbox',
 						'default'           => isset($args['inverse']) ? $args['inverse'] : false,
 						// 'transport'         => 'postMessage'
 					)
@@ -251,7 +251,7 @@ class Onepress_Dots_Navigation
 				$wp_customize->add_control(
 					$name . '_inverse',
 					array(
-						'label'   => __('Inverse dots color', 'onepress'),
+						'label'   => __('Inverse dots color', 'ardent'),
 						'section' => $section_id,
 						'type'    => 'checkbox',
 					)
@@ -268,7 +268,7 @@ class Onepress_Dots_Navigation
 				$wp_customize->add_control(
 					$name . '_label',
 					array(
-						'label'   => __('Custom navigation label', 'onepress'),
+						'label'   => __('Custom navigation label', 'ardent'),
 						'section' => $section_id,
 					)
 				);
@@ -286,7 +286,7 @@ class Onepress_Dots_Navigation
 	function get_settings()
 	{
 
-		$data = apply_filters('onepress_dots_navigation_get_settings', false);
+		$data = apply_filters('ardent_dots_navigation_get_settings', false);
 		if ($data) {
 			return $data;
 		}
@@ -299,10 +299,10 @@ class Onepress_Dots_Navigation
 			 *
 			 * @since 2.1.1
 			 */
-			if (Onepress_Config::is_section_active($id)) {
+			if (Ardent_Config::is_section_active($id)) {
 				$name   = $this->get_name($id);
 				$translated_id = (isset($args['id']) && $args['id']) ? $args['id'] : $id;
-				$el_id = sanitize_title(get_theme_mod('onepress_' . $id . '_id', $translated_id, false));
+				$el_id = sanitize_title(get_theme_mod('ardent_' . $id . '_id', $translated_id, false));
 				if (!$el_id) {
 					$el_id = $id;
 				}
@@ -311,7 +311,7 @@ class Onepress_Dots_Navigation
 					'_id'     => $id,
 					'inverse' => get_theme_mod($this->get_name($id . '_inverse'), isset($args['inverse']) ? $args['inverse'] : false),
 					'enable'  => get_theme_mod($name, $args['default']) ? true : false,
-					'title'   => get_theme_mod('onepress_' . $id . '_title', $args['title']),
+					'title'   => get_theme_mod('ardent_' . $id . '_title', $args['title']),
 				);
 				$custom_title   = get_theme_mod($this->get_name($id . '_label'), false);
 				if ($custom_title) {
@@ -334,7 +334,7 @@ class Onepress_Dots_Navigation
 				wp_enqueue_script('jquery.bully', get_template_directory_uri() . '/assets/js/jquery.bully.js', array('jquery'), false, true);
 				wp_localize_script(
 					'jquery.bully',
-					'Onepress_Bully',
+					'Ardent_Bully',
 					array(
 						'enable_label' => get_theme_mod($this->get_name('__enable_label'), true) ? true : false,
 						'disable_mobile' => get_theme_mod($this->get_name('__disable_mobile'), false) ? true : false,
@@ -367,14 +367,14 @@ class Onepress_Dots_Navigation
 			}
 
 			$bg = get_theme_mod($this->get_name('__label_bg'));
-			$bg_color = onepress_sanitize_color_alpha($bg);
+			$bg_color = ardent_sanitize_color_alpha($bg);
 
 			if ($bg_color) {
 				$code .= " body .c-bully .c-bully__title { background-color: {$bg_color}; } ";
 			}
 
 			$color = get_theme_mod($this->get_name('__label_color'));
-			$color = onepress_sanitize_color_alpha($color);
+			$color = ardent_sanitize_color_alpha($color);
 
 			if ($color) {
 				$code .= " body .c-bully .c-bully__title { color: {$color}; } ";
@@ -390,8 +390,8 @@ class Onepress_Dots_Navigation
 	function init()
 	{
 		add_action('wp_enqueue_scripts', array($this, 'scripts'));
-		add_filter('onepress_custom_css', array($this, 'custom_style'));
+		add_filter('ardent_custom_css', array($this, 'custom_style'));
 	}
 }
 
-Onepress_Dots_Navigation::get_instance()->init();
+Ardent_Dots_Navigation::get_instance()->init();

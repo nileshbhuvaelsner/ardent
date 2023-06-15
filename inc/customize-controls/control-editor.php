@@ -1,6 +1,6 @@
 <?php
 
-class OnePress_Editor_Custom_Control extends WP_Customize_Control
+class ARDENT_Editor_Custom_Control extends WP_Customize_Control
 {
 	/**
 	 * The type of customize control being rendered.

@@ -13,7 +13,7 @@ require_once get_template_directory() . '/inc/customize-controls/control-categor
 require_once get_template_directory() . '/inc/customize-controls/control-pages.php';
 
 
-class OnePress_Editor_Scripts {
+class ARDENT_Editor_Scripts {
 
 	/**
 	 * Enqueue scripts/styles.
@@ -46,22 +46,22 @@ class OnePress_Editor_Scripts {
 }
 
 
-function onepres_customizer_control_scripts() {
+function arden_customizer_control_scripts() {
 	wp_enqueue_media();
 	wp_enqueue_script( 'jquery-ui-sortable' );
 	wp_enqueue_script( 'wp-color-picker' );
 	wp_enqueue_style( 'wp-color-picker' );
 
 	$customizer_data = array(
-		'multiple_map_notice' => esc_html__( 'Please setup your main Latitude & Longitude first', 'onepress' ),
+		'multiple_map_notice' => esc_html__( 'Please setup your main Latitude & Longitude first', 'ardent' ),
 	);
 
-	wp_enqueue_script( 'onepress-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-controls', 'wp-color-picker' ), time() );
-	wp_enqueue_style( 'onepress-customizer', get_template_directory_uri() . '/assets/css/customizer.css' );
+	wp_enqueue_script( 'ardent-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-controls', 'wp-color-picker' ), time() );
+	wp_enqueue_style( 'ardent-customizer', get_template_directory_uri() . '/assets/css/customizer.css' );
 
-	wp_localize_script( 'onepress-customizer', 'ONEPRESS_CUSTOMIZER_DATA', $customizer_data );
+	wp_localize_script( 'ardent-customizer', 'ONEPRESS_CUSTOMIZER_DATA', $customizer_data );
 
 }
 
-add_action( 'customize_controls_enqueue_scripts', 'onepres_customizer_control_scripts', 99 );
-add_action( 'customize_controls_enqueue_scripts', array( 'OnePress_Editor_Scripts', 'enqueue' ), 95 );
+add_action( 'customize_controls_enqueue_scripts', 'arden_customizer_control_scripts', 99 );
+add_action( 'customize_controls_enqueue_scripts', array( 'ARDENT_Editor_Scripts', 'enqueue' ), 95 );

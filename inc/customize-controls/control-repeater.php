@@ -5,7 +5,7 @@
  * @since  1.0.0
  * @access public
  */
-class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
+class Ardent_Customize_Repeatable_Control extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.
@@ -67,13 +67,13 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 		}
 
 		if ( ! isset( $args['allow_unlimited'] ) || $args['allow_unlimited'] != false ) {
-			$this->max_item =  apply_filters( 'onepress_reepeatable_max_item', absint( $args['max_item'] ) );
+			$this->max_item =  apply_filters( 'ardent_reepeatable_max_item', absint( $args['max_item'] ) );
 		}  else {
 			$this->max_item = absint( $args['max_item'] );
 		}
 
 		$this->changeable =  isset(  $args['changeable'] ) && $args['changeable'] == 'no' ? 'no' : 'yes';
-		$this->default_empty_title =  isset(  $args['default_empty_title'] ) && $args['default_empty_title'] != '' ? $args['default_empty_title'] : esc_html__( 'Item', 'onepress' );
+		$this->default_empty_title =  isset(  $args['default_empty_title'] ) && $args['default_empty_title'] != '' ? $args['default_empty_title'] : esc_html__( 'Item', 'ardent' );
 
 	}
 
@@ -133,7 +133,7 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 		if ( $this->id_key == 'section_id' ) {
 		    foreach ( ( array ) $value as $k => $v ) {
 
-		        if ( ! Onepress_Config::is_section_active( $v['section_id'] ) ) {
+		        if ( ! Ardent_Config::is_section_active( $v['section_id'] ) ) {
 			        $value[ $k ]['__visibility'] = 'hidden';
                 } else {
 			        $value[ $k ]['__visibility'] = '';
@@ -187,7 +187,7 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 			<ul class="list-repeatable"></ul>
 		</div>
 		<div class="repeatable-actions">
-			<span class="button-secondary add-new-repeat-item"><?php echo ( $this->add_text ) ? esc_html( $this->add_text ) : __( 'Add an item', 'onepress' ); ?></span>
+			<span class="button-secondary add-new-repeat-item"><?php echo ( $this->add_text ) ? esc_html( $this->add_text ) : __( 'Add an item', 'ardent' ); ?></span>
 		</div>
 		<?php
 	}
@@ -202,7 +202,7 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 						<a class="widget-action" href="#"></a>
 					</div>
 					<div class="widget-title">
-						<h4 class="live-title"><?php _e( 'Item', 'onepress' ); ?></h4>
+						<h4 class="live-title"><?php _e( 'Item', 'ardent' ); ?></h4>
 					</div>
 				</div>
 
@@ -318,8 +318,8 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 										<# } #>
 
 										<div class="actions">
-											<button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php _e( 'Remove', 'onepress' ) ?></button>
-											<button class="button upload-button" data-media="{{field.media}}" data-add-txt="<?php esc_attr_e( 'Add', 'onepress' ); ?>" data-change-txt="<?php esc_attr_e( 'Change', 'onepress' ); ?>" type="button"><# if ( ! field.value.url  ){ #> <?php _e( 'Add', 'onepress' ); ?> <# } else { #> <?php _e( 'Change', 'onepress' ); ?> <# } #> </button>
+											<button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php _e( 'Remove', 'ardent' ) ?></button>
+											<button class="button upload-button" data-media="{{field.media}}" data-add-txt="<?php esc_attr_e( 'Add', 'ardent' ); ?>" data-change-txt="<?php esc_attr_e( 'Change', 'ardent' ); ?>" type="button"><# if ( ! field.value.url  ){ #> <?php _e( 'Add', 'ardent' ); ?> <# } else { #> <?php _e( 'Change', 'ardent' ); ?> <# } #> </button>
 											<div style="clear:both"></div>
 										</div>
 
@@ -340,7 +340,7 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 											<i class="fa {{ icon_class }}"></i>
 											<input data-live-id="{{ field.id }}" type="hidden" value="{{ field.value }}" data-repeat-name="_items[__i__][{{ field.id }}]" class="">
 										</div>
-										<a href="#" class="remove-icon"><?php esc_html_e( 'Remove', 'onepress' ); ?></a>
+										<a href="#" class="remove-icon"><?php esc_html_e( 'Remove', 'ardent' ); ?></a>
 										<# }  #>
 
 								</div>
@@ -352,9 +352,9 @@ class Onepress_Customize_Repeatable_Control extends WP_Customize_Control {
 								<div class="widget-control-actions">
 									<div class="alignleft">
                                     <span class="remove-btn-wrapper">
-                                        <a href="#" class="repeat-control-remove" title=""><?php _e( 'Remove', 'onepress' ); ?></a> |
+                                        <a href="#" class="repeat-control-remove" title=""><?php _e( 'Remove', 'ardent' ); ?></a> |
                                     </span>
-										<a href="#" class="repeat-control-close"><?php _e( 'Close', 'onepress' ); ?></a>
+										<a href="#" class="repeat-control-close"><?php _e( 'Close', 'ardent' ); ?></a>
 									</div>
 									<br class="clear">
 								</div>

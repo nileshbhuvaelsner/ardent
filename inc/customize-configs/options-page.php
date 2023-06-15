@@ -2,39 +2,39 @@
 /**
  * Page Settings
  *
- * @package onepress
+ * @package ardent
  */
 
 $wp_customize->add_section(
-	'onepress_page',
+	'ardent_page',
 	array(
 		'priority'    => null,
-		'title'       => esc_html__( 'Page Title Area', 'onepress' ),
+		'title'       => esc_html__( 'Page Title Area', 'ardent' ),
 		'description' => '',
-		'panel'       => 'onepress_options',
+		'panel'       => 'ardent_options',
 	)
 );
 
 // Disable the page title bar.
 $wp_customize->add_setting(
-	'onepress_page_title_bar_disable',
+	'ardent_page_title_bar_disable',
 	array(
-		'sanitize_callback' => 'onepress_sanitize_checkbox',
+		'sanitize_callback' => 'ardent_sanitize_checkbox',
 		'default'           => '',
 	)
 );
 $wp_customize->add_control(
-	'onepress_page_title_bar_disable',
+	'ardent_page_title_bar_disable',
 	array(
 		'type'        => 'checkbox',
-		'label'       => esc_html__( 'Disable Page Title bar?', 'onepress' ),
-		'section'     => 'onepress_page',
-		'description' => esc_html__( 'Check this box to disable the page title bar on all pages.', 'onepress' ),
+		'label'       => esc_html__( 'Disable Page Title bar?', 'ardent' ),
+		'section'     => 'ardent_page',
+		'description' => esc_html__( 'Check this box to disable the page title bar on all pages.', 'ardent' ),
 	)
 );
 
 $wp_customize->add_setting(
-	'onepress_page_cover_pd_top',
+	'ardent_page_cover_pd_top',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => '',
@@ -42,16 +42,16 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	'onepress_page_cover_pd_top',
+	'ardent_page_cover_pd_top',
 	array(
-		'label'       => esc_html__( 'Padding Top', 'onepress' ),
-		'description' => esc_html__( 'The page cover padding top in percent (%).', 'onepress' ),
-		'section'     => 'onepress_page',
+		'label'       => esc_html__( 'Padding Top', 'ardent' ),
+		'description' => esc_html__( 'The page cover padding top in percent (%).', 'ardent' ),
+		'section'     => 'ardent_page',
 	)
 );
 
 $wp_customize->add_setting(
-	'onepress_page_cover_pd_bottom',
+	'ardent_page_cover_pd_bottom',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => '',
@@ -59,18 +59,18 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	'onepress_page_cover_pd_bottom',
+	'ardent_page_cover_pd_bottom',
 	array(
-		'label'       => esc_html__( 'Padding Bottom', 'onepress' ),
-		'description' => esc_html__( 'The page cover padding bottom in percent (%).', 'onepress' ),
-		'section'     => 'onepress_page',
+		'label'       => esc_html__( 'Padding Bottom', 'ardent' ),
+		'description' => esc_html__( 'The page cover padding bottom in percent (%).', 'ardent' ),
+		'section'     => 'ardent_page',
 	)
 );
 
 $wp_customize->add_setting(
-	'onepress_page_cover_color',
+	'ardent_page_cover_color',
 	array(
-		'sanitize_callback' => 'onepress_sanitize_color_alpha',
+		'sanitize_callback' => 'ardent_sanitize_color_alpha',
 		'default'           => null,
 		'transport'         => 'postMessage',
 	)
@@ -78,29 +78,29 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	new WP_Customize_Color_Control(
 		$wp_customize,
-		'onepress_page_cover_color',
+		'ardent_page_cover_color',
 		array(
-			'label'   => esc_html__( 'Color', 'onepress' ),
-			'section' => 'onepress_page',
+			'label'   => esc_html__( 'Color', 'ardent' ),
+			'section' => 'ardent_page',
 		)
 	)
 );
 
 // Overlay color.
 $wp_customize->add_setting(
-	'onepress_page_cover_overlay',
+	'ardent_page_cover_overlay',
 	array(
-		'sanitize_callback' => 'onepress_sanitize_color_alpha',
+		'sanitize_callback' => 'ardent_sanitize_color_alpha',
 		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
-	new OnePress_Alpha_Color_Control(
+	new ARDENT_Alpha_Color_Control(
 		$wp_customize,
-		'onepress_page_cover_overlay',
+		'ardent_page_cover_overlay',
 		array(
-			'label'   => esc_html__( 'Background Overlay Color', 'onepress' ),
-			'section' => 'onepress_page',
+			'label'   => esc_html__( 'Background Overlay Color', 'ardent' ),
+			'section' => 'ardent_page',
 		)
 	)
 );
@@ -111,7 +111,7 @@ $wp_customize->add_control(
  * @since 2.2.1
 */
 $wp_customize->add_setting(
-	'onepress_page_normal_align',
+	'ardent_page_normal_align',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => 'left',
@@ -119,22 +119,22 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	'onepress_page_normal_align',
+	'ardent_page_normal_align',
 	array(
-		'label'   => esc_html__( 'Page Title Alignment', 'onepress' ),
-		'section' => 'onepress_page',
+		'label'   => esc_html__( 'Page Title Alignment', 'ardent' ),
+		'section' => 'ardent_page',
 		'type'    => 'select',
 		'choices' => array(
-			'left'   => esc_html__( 'Left', 'onepress' ),
-			'right'  => esc_html__( 'Right', 'onepress' ),
-			'center' => esc_html__( 'Center', 'onepress' ),
+			'left'   => esc_html__( 'Left', 'ardent' ),
+			'right'  => esc_html__( 'Right', 'ardent' ),
+			'center' => esc_html__( 'Center', 'ardent' ),
 		),
 	)
 );
 
 
 $wp_customize->add_setting(
-	'onepress_page_cover_align',
+	'ardent_page_cover_align',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => 'center',
@@ -142,16 +142,16 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	'onepress_page_cover_align',
+	'ardent_page_cover_align',
 	array(
-		'label'   => esc_html__( 'Page Title Cover Alignment', 'onepress' ),
-		'description'   => esc_html__( 'Apply when the page display featured image as header cover.', 'onepress' ),
-		'section' => 'onepress_page',
+		'label'   => esc_html__( 'Page Title Cover Alignment', 'ardent' ),
+		'description'   => esc_html__( 'Apply when the page display featured image as header cover.', 'ardent' ),
+		'section' => 'ardent_page',
 		'type'    => 'select',
 		'choices' => array(
-			'center' => esc_html__( 'Center', 'onepress' ),
-			'left'   => esc_html__( 'Left', 'onepress' ),
-			'right'  => esc_html__( 'Right', 'onepress' ),
+			'center' => esc_html__( 'Center', 'ardent' ),
+			'left'   => esc_html__( 'Left', 'ardent' ),
+			'right'  => esc_html__( 'Right', 'ardent' ),
 		),
 	)
 );

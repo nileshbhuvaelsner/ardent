@@ -1,8 +1,8 @@
 <?php
 /**
- * OnePress Theme Customizer.
+ * ARDENT Theme Customizer.
  *
- * @package OnePress
+ * @package ARDENT
  */
 
 /**
@@ -10,20 +10,20 @@
  *
  * @return string
  */
-function onepress_add_upsell_for_section( $wp_customize, $section_id ){
-	if ( apply_filters( 'onepress_add_upsell_for_section', true, $section_id ) ) {
+function ardent_add_upsell_for_section( $wp_customize, $section_id ){
+	if ( apply_filters( 'ardent_add_upsell_for_section', true, $section_id ) ) {
 
 		$name =  $section_id.'__upsell';
 		$wp_customize->add_setting( $name,
 			array(
-				'sanitize_callback' => 'onepress_sanitize_text',
+				'sanitize_callback' => 'ardent_sanitize_text',
 			)
 		);
-		$wp_customize->add_control( new OnePress_Misc_Control( $wp_customize, $name,
+		$wp_customize->add_control( new ARDENT_Misc_Control( $wp_customize, $name,
 			array(
 				'type'        => 'custom_message',
 				'section'     => $section_id,
-				'description' => __('<h4 class="customizer-group-heading-message">Advanced Section Styling</h4><p class="customizer-group-heading-message">Check out the <a target="_blank" href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#get-started">OnePress Plus</a> version for full control over the section styling which includes background color, image, video, parallax effect, custom style and more ...</p>', 'onepress' )
+				'description' => __('<h4 class="customizer-group-heading-message">Advanced Section Styling</h4><p class="customizer-group-heading-message">Check out the <a target="_blank" href="https://www.famethemes.com/plugins/ardent-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=ardent_customizer#get-started">ARDENT Plus</a> version for full control over the section styling which includes background color, image, video, parallax effect, custom style and more ...</p>', 'ardent' )
 			)
 		));
 	}
@@ -35,7 +35,7 @@ function onepress_add_upsell_for_section( $wp_customize, $section_id ){
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function onepress_customize_register( $wp_customize ) {
+function ardent_customize_register( $wp_customize ) {
 
 
 	// Load custom controls.
@@ -52,12 +52,12 @@ function onepress_customize_register( $wp_customize ) {
 	/**
 	 * Hook to add other customize
 	 */
-	do_action( 'onepress_customize_before_register', $wp_customize );
+	do_action( 'ardent_customize_before_register', $wp_customize );
 
 
 	$pages  =  get_pages();
 	$option_pages = array();
-	$option_pages[0] = esc_html__( 'Select page', 'onepress' );
+	$option_pages[0] = esc_html__( 'Select page', 'ardent' );
 	foreach( $pages as $p ){
 		$option_pages[ $p->ID ] = $p->post_title;
 	}
@@ -68,7 +68,7 @@ function onepress_customize_register( $wp_customize ) {
 		'number'       => '',
 	) );
 
-	$option_users[0] = esc_html__( 'Select member', 'onepress' );
+	$option_users[0] = esc_html__( 'Select member', 'ardent' );
 	foreach( $users as $user ){
 		$option_users[ $user->ID ] = $user->display_name;
 	}
@@ -96,12 +96,12 @@ function onepress_customize_register( $wp_customize ) {
 	 * @since 2.1.1
 	 * Load sections if enabled
 	 */
-	$sections = Onepress_Config::get_sections();
+	$sections = Ardent_Config::get_sections();
 
 
 	foreach( $sections as $key => $section ) {
 
-		if ( Onepress_Config::is_section_active( $key ) ) {
+		if ( Ardent_Config::is_section_active( $key ) ) {
 			$file = $path. '/inc/customize-configs/section-'.$key.'.php';
 			if ( file_exists( $file ) ) {
 				require_once $file;
@@ -139,18 +139,18 @@ function onepress_customize_register( $wp_customize ) {
 	/**
 	 * Hook to add other customize
 	 */
-	do_action( 'onepress_customize_after_register', $wp_customize );
+	do_action( 'ardent_customize_after_register', $wp_customize );
 
 	/**
 	 * Move WC Panel to bottom
 	 * @since 2.1.1
 	 */
-	if ( onepress_is_wc_active() ) {
+	if ( ardent_is_wc_active() ) {
 		$wp_customize->get_panel( 'woocommerce' )->priority = 300;
 	}
 
 }
-add_action( 'customize_register', 'onepress_customize_register' );
+add_action( 'customize_register', 'ardent_customize_register' );
 /**
  * Selective refresh
  */
@@ -160,41 +160,41 @@ require get_template_directory() . '/inc/customizer-selective-refresh.php';
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function onepress_customize_preview_js() {
-    wp_enqueue_script( 'onepress_customizer_liveview', get_template_directory_uri() . '/assets/js/customizer-liveview.js', array( 'customize-preview', 'customize-selective-refresh' ), false, true );
+function ardent_customize_preview_js() {
+    wp_enqueue_script( 'ardent_customizer_liveview', get_template_directory_uri() . '/assets/js/customizer-liveview.js', array( 'customize-preview', 'customize-selective-refresh' ), false, true );
 }
-add_action( 'customize_preview_init', 'onepress_customize_preview_js', 65 );
+add_action( 'customize_preview_init', 'ardent_customize_preview_js', 65 );
 
 
 
 add_action( 'customize_controls_enqueue_scripts', 'opneress_customize_js_settings' );
 function opneress_customize_js_settings(){
-    if ( ! class_exists( 'Onepress_Dashboard' ) ) {
+    if ( ! class_exists( 'Ardent_Dashboard' ) ) {
         return;
     }
 
-    $actions = Onepress_Dashboard::get_instance()->get_recommended_actions();
+    $actions = Ardent_Dashboard::get_instance()->get_recommended_actions();
     $number_action = $actions['number_notice'];
 
-    wp_localize_script( 'customize-controls', 'onepress_customizer_settings', array(
+    wp_localize_script( 'customize-controls', 'ardent_customizer_settings', array(
         'number_action' => $number_action,
-        'is_plus_activated' => class_exists( 'OnePress_Plus' ) ? 'y' : 'n',
-        'action_url' => admin_url( 'themes.php?page=ft_onepress&tab=recommended_actions' ),
+        'is_plus_activated' => class_exists( 'ARDENT_Plus' ) ? 'y' : 'n',
+        'action_url' => admin_url( 'themes.php?page=ft_ardent&tab=recommended_actions' ),
     ) );
 }
 
 /**
  * Customizer Icon picker
  */
-function onepress_customize_controls_enqueue_scripts(){
+function ardent_customize_controls_enqueue_scripts(){
     wp_localize_script( 'customize-controls', 'C_Icon_Picker',
         apply_filters( 'c_icon_picker_js_setup',
             array(
-                'search'    => esc_html__( 'Search', 'onepress' ),
+                'search'    => esc_html__( 'Search', 'ardent' ),
                 'fonts' => array(
                     'font-awesome' => array(
                         // Name of icon
-                        'name' => esc_html__( 'Font Awesome', 'onepress' ),
+                        'name' => esc_html__( 'Font Awesome', 'ardent' ),
                         // prefix class example for font-awesome fa-fa-{name}
                         'prefix' => 'fa',
                         // font url
@@ -210,4 +210,4 @@ function onepress_customize_controls_enqueue_scripts(){
     );
 }
 
-add_action( 'customize_controls_enqueue_scripts', 'onepress_customize_controls_enqueue_scripts' );
+add_action( 'customize_controls_enqueue_scripts', 'ardent_customize_controls_enqueue_scripts' );

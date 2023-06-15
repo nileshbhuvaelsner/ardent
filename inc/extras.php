@@ -4,18 +4,18 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package OnePress
+ * @package ARDENT
  */
 
 /**
  * Add a pingback url auto-discovery header for single posts of any post type.
  */
-function onepress_pingback_header() {
+function ardent_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="' . esc_url( get_bloginfo( 'pingback_url' ) ) . '">';
 	}
 }
-add_action( 'wp_head', 'onepress_pingback_header' );
+add_action( 'wp_head', 'ardent_pingback_header' );
 
 /**
  * Adds custom classes to the array of body classes.
@@ -24,7 +24,7 @@ add_action( 'wp_head', 'onepress_pingback_header' );
  *
  * @return array
  */
-function onepress_body_classes( $classes ) {
+function ardent_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -46,34 +46,34 @@ function onepress_body_classes( $classes ) {
 		}
 	}
 
-	if ( get_theme_mod( 'onepress_animation_disable' ) ) {
+	if ( get_theme_mod( 'ardent_animation_disable' ) ) {
 		$classes[] = 'animation-disable';
 	}
 
 	return $classes;
 }
-add_filter( 'body_class', 'onepress_body_classes' );
+add_filter( 'body_class', 'ardent_body_classes' );
 
 
-if ( ! function_exists( 'onepress_custom_excerpt_length' ) ) :
+if ( ! function_exists( 'ardent_custom_excerpt_length' ) ) :
 	/**
 	 * Custom excerpt length for the theme
 	 */
-	function onepress_custom_excerpt_length( $length ) {
+	function ardent_custom_excerpt_length( $length ) {
 		return 30;
 	}
-	add_filter( 'excerpt_length', 'onepress_custom_excerpt_length', 999 );
+	add_filter( 'excerpt_length', 'ardent_custom_excerpt_length', 999 );
 endif;
 
 
-if ( ! function_exists( 'onepress_new_excerpt_more' ) ) :
+if ( ! function_exists( 'ardent_new_excerpt_more' ) ) :
 	/**
 	 * Remove […] string using Filters
 	 */
-	function onepress_new_excerpt_more( $more ) {
+	function ardent_new_excerpt_more( $more ) {
 		return ' ...';
 	}
-	add_filter( 'excerpt_more', 'onepress_new_excerpt_more' );
+	add_filter( 'excerpt_more', 'ardent_new_excerpt_more' );
 endif;
 
 
@@ -84,8 +84,8 @@ endif;
  *
  * @return false|string
  */
-if ( ! function_exists( 'onepress_get_media_url' ) ) {
-	function onepress_get_media_url( $media = array(), $size = 'full' ) {
+if ( ! function_exists( 'ardent_get_media_url' ) ) {
+	function ardent_get_media_url( $media = array(), $size = 'full' ) {
 		$media = wp_parse_args(
 			$media,
 			array(
@@ -141,24 +141,24 @@ if ( ! function_exists( 'onepress_get_media_url' ) ) {
  * 20 convert_smilies
  */
 global $wp_embed;
-add_filter( 'onepress_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'onepress_the_content', array( $wp_embed, 'autoembed' ), 8 );
-add_filter( 'onepress_the_content', 'wptexturize' );
-add_filter( 'onepress_the_content', 'wpautop' );
-add_filter( 'onepress_the_content', 'shortcode_unautop' );
-add_filter( 'onepress_the_content', 'prepend_attachment' );
+add_filter( 'ardent_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'ardent_the_content', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'ardent_the_content', 'wptexturize' );
+add_filter( 'ardent_the_content', 'wpautop' );
+add_filter( 'ardent_the_content', 'shortcode_unautop' );
+add_filter( 'ardent_the_content', 'prepend_attachment' );
 if ( function_exists( 'wp_filter_content_tags' ) ) {
-	add_filter( 'onepress_the_content', 'wp_filter_content_tags' );
+	add_filter( 'ardent_the_content', 'wp_filter_content_tags' );
 } else {
-	add_filter( 'onepress_the_content', 'wp_make_content_images_responsive' );
+	add_filter( 'ardent_the_content', 'wp_make_content_images_responsive' );
 }
-add_filter( 'onepress_the_content', 'capital_P_dangit' );
-add_filter( 'onepress_the_content', 'do_shortcode' );
-add_filter( 'onepress_the_content', 'convert_smilies' );
+add_filter( 'ardent_the_content', 'capital_P_dangit' );
+add_filter( 'ardent_the_content', 'do_shortcode' );
+add_filter( 'ardent_the_content', 'convert_smilies' );
 
 
-if ( ! function_exists( 'onepress_is_wc_active' ) ) {
-	function onepress_is_wc_active() {
+if ( ! function_exists( 'ardent_is_wc_active' ) ) {
+	function ardent_is_wc_active() {
 		if ( class_exists( 'WooCommerce' ) || function_exists( 'is_woocommerce' ) ) {
 			return true;
 		}
@@ -166,8 +166,8 @@ if ( ! function_exists( 'onepress_is_wc_active' ) ) {
 	}
 }
 
-if ( ! function_exists( 'onepress_is_wc_archive' ) ) {
-	function onepress_is_wc_archive() {
+if ( ! function_exists( 'ardent_is_wc_archive' ) ) {
+	function ardent_is_wc_archive() {
 		if ( function_exists( 'is_product_category' ) || function_exists( 'is_product_tag' ) ) {
 			if ( is_product_category() || is_product_tag() ) {
 				return true;
@@ -178,7 +178,7 @@ if ( ! function_exists( 'onepress_is_wc_archive' ) ) {
 }
 
 
-if ( ! function_exists( 'onepress_get_layout' ) ) {
+if ( ! function_exists( 'ardent_get_layout' ) ) {
 	/**
 	 *
 	 *
@@ -186,9 +186,9 @@ if ( ! function_exists( 'onepress_get_layout' ) ) {
 	 *
 	 * @return string|void
 	 */
-	function onepress_get_layout( $default = 'right-sidebar' ) {
-		$layout = get_theme_mod( 'onepress_layout', $default );
-		if ( onepress_is_wc_active() ) {
+	function ardent_get_layout( $default = 'right-sidebar' ) {
+		$layout = get_theme_mod( 'ardent_layout', $default );
+		if ( ardent_is_wc_active() ) {
 			if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() || is_wc_endpoint_url() ) {
 				$is_active_sidebar = is_active_sidebar( 'sidebar-shop' );
 				if ( ! $is_active_sidebar ) {
@@ -209,7 +209,7 @@ if ( ! function_exists( 'onepress_get_layout' ) ) {
 			}
 		}
 
-		return apply_filters( 'onepress_get_layout', $layout, $default );
+		return apply_filters( 'ardent_get_layout', $layout, $default );
 	}
 }
 
@@ -220,9 +220,9 @@ if ( ! function_exists( 'onepress_get_layout' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 
-	add_filter( 'loop_shop_per_page', 'onepress_number_products_per_page', 20 );
+	add_filter( 'loop_shop_per_page', 'ardent_number_products_per_page', 20 );
 
-	function onepress_number_products_per_page( $number ) {
+	function ardent_number_products_per_page( $number ) {
 		// $cols contains the current number of products per page based on the value stored on Options -> Reading
 		// Return the number of products you wanna show per page.
 		$number = 20;
@@ -237,36 +237,36 @@ if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
 	define( 'WPFORMS_SHAREASALE_ID', '1816909' );
 }
 
-if ( ! function_exists( 'onepress_get_video_lightbox_image' ) ) {
+if ( ! function_exists( 'ardent_get_video_lightbox_image' ) ) {
 	/**
 	 * @since 2.0.5
 	 * @return string
 	 */
-	function onepress_get_video_lightbox_image() {
-		$image = get_theme_mod( 'onepress_videolightbox_image' );
+	function ardent_get_video_lightbox_image() {
+		$image = get_theme_mod( 'ardent_videolightbox_image' );
 		return $image;
 	}
 }
 
 
-if ( ! function_exists( 'onepress_before_section' ) ) {
+if ( ! function_exists( 'ardent_before_section' ) ) {
 	/**
 	 * @since 2.0.5
 	 *
 	 * @param $section_id
 	 * @param array      $args
 	 */
-	function onepress_before_section( $section_id, $args = array() ) {
+	function ardent_before_section( $section_id, $args = array() ) {
 		if ( ! isset( $args['_bg_type'] ) ) {
 			$args['_bg_type'] = '';
 		}
 
-		if ( ! class_exists( 'OnePress_Plus' ) ) {
+		if ( ! class_exists( 'ARDENT_Plus' ) ) {
 			if ( $section_id == 'videolightbox' ) {
-				$image     = onepress_get_video_lightbox_image();
+				$image     = ardent_get_video_lightbox_image();
 				$image_url = wp_get_attachment_image_url( $image, 'full' );
 				$image_alt = get_post_meta( $image, '_wp_attachment_image_alt', true );
-				if ( $image || onepress_is_selective_refresh() ) {
+				if ( $image || ardent_is_selective_refresh() ) {
 					echo '<div class="section-parallax jarallax">';
 					echo ' <div class="parallax-bg jarallax-img"><img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $image_alt ) . '"></div>';
 				}
@@ -287,7 +287,7 @@ if ( ! function_exists( 'onepress_before_section' ) ) {
 				);
 				extract( $args );
 				if ( $video_url || $video_webm_url || $video_ogv_url ) {
-					$fallback = get_theme_mod( 'onepress_hero_mobile_img' ) ? 'true' : 'false';
+					$fallback = get_theme_mod( 'ardent_hero_mobile_img' ) ? 'true' : 'false';
 					?>
 				<div class="video-section"
 					 data-fallback="<?php echo esc_attr( $fallback ); ?>"
@@ -324,22 +324,22 @@ if ( ! function_exists( 'onepress_before_section' ) ) {
 	}
 }
 
-if ( ! function_exists( 'onepress_after_section' ) ) {
+if ( ! function_exists( 'ardent_after_section' ) ) {
 	/**
 	 * @since 2.0.5
 	 *
 	 * @param null  $section_id
 	 * @param array $args
 	 */
-	function onepress_after_section( $section_id = null, $args = array() ) {
+	function ardent_after_section( $section_id = null, $args = array() ) {
 		if ( ! isset( $args['_bg_type'] ) ) {
 			$args['_bg_type'] = '';
 		}
 
-		if ( ! class_exists( 'OnePress_Plus' ) ) {
+		if ( ! class_exists( 'ARDENT_Plus' ) ) {
 			if ( $section_id == 'videolightbox' ) {
-				$image = onepress_get_video_lightbox_image();
-				if ( $image || onepress_is_selective_refresh() ) {
+				$image = ardent_get_video_lightbox_image();
+				if ( $image || ardent_is_selective_refresh() ) {
 					echo '</div>';
 				}
 				return;
@@ -383,8 +383,8 @@ if ( ! function_exists( 'onepress_after_section' ) ) {
 	}
 }
 
-add_action( 'onepress_before_section_part', 'onepress_before_section', 10, 2 );
-add_action( 'onepress_after_section_part', 'onepress_after_section', 10, 2 );
+add_action( 'ardent_before_section_part', 'ardent_before_section', 10, 2 );
+add_action( 'ardent_after_section_part', 'ardent_after_section', 10, 2 );
 
 
 /**
@@ -392,8 +392,8 @@ add_action( 'onepress_after_section_part', 'onepress_after_section', 10, 2 );
  *
  * @return string Archive title.
  */
-function onepress_get_the_archive_title( $title ) {
-	$disable = get_theme_mod( 'onepress_disable_archive_prefix', false );
+function ardent_get_the_archive_title( $title ) {
+	$disable = get_theme_mod( 'ardent_disable_archive_prefix', false );
 	if ( $disable ) {
 		if ( is_category() ) {
 			$title = single_cat_title( '', false );
@@ -402,11 +402,11 @@ function onepress_get_the_archive_title( $title ) {
 		} elseif ( is_author() ) {
 			$title = '<span class="vcard">' . get_the_author() . '</span>';
 		} elseif ( is_year() ) {
-			$title = get_the_date( _x( 'Y', 'yearly archives date format', 'onepress' ) );
+			$title = get_the_date( _x( 'Y', 'yearly archives date format', 'ardent' ) );
 		} elseif ( is_month() ) {
-			$title = get_the_date( _x( 'F Y', 'monthly archives date format', 'onepress' ) );
+			$title = get_the_date( _x( 'F Y', 'monthly archives date format', 'ardent' ) );
 		} elseif ( is_day() ) {
-			$title = get_the_date( _x( 'F j, Y', 'daily archives date format', 'onepress' ) );
+			$title = get_the_date( _x( 'F j, Y', 'daily archives date format', 'ardent' ) );
 		} elseif ( is_post_type_archive() ) {
 			$title = post_type_archive_title( '', false );
 		} elseif ( is_tax() ) {
@@ -417,10 +417,10 @@ function onepress_get_the_archive_title( $title ) {
 	return $title;
 }
 
-add_filter( 'get_the_archive_title', 'onepress_get_the_archive_title', 15 );
+add_filter( 'get_the_archive_title', 'ardent_get_the_archive_title', 15 );
 
 
-if ( onepress_is_wc_active() ) {
+if ( ardent_is_wc_active() ) {
 	/**
 	 * Template pages
 	*/

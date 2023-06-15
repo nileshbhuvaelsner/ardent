@@ -3,33 +3,33 @@
  * Site Identity.
  */
 
-$is_old_logo = get_theme_mod( 'onepress_site_image_logo' );
+$is_old_logo = get_theme_mod( 'ardent_site_image_logo' );
 
-$wp_customize->add_setting( 'onepress_hide_sitetitle',
+$wp_customize->add_setting( 'ardent_hide_sitetitle',
 	array(
-		'sanitize_callback' => 'onepress_sanitize_checkbox',
+		'sanitize_callback' => 'ardent_sanitize_checkbox',
 		'default'           => $is_old_logo ? 1 : 0,
 	)
 );
 $wp_customize->add_control(
-	'onepress_hide_sitetitle',
+	'ardent_hide_sitetitle',
 	array(
-		'label'   => esc_html__( 'Hide site title', 'onepress' ),
+		'label'   => esc_html__( 'Hide site title', 'ardent' ),
 		'section' => 'title_tagline',
 		'type'    => 'checkbox',
 	)
 );
 
-$wp_customize->add_setting( 'onepress_hide_tagline',
+$wp_customize->add_setting( 'ardent_hide_tagline',
 	array(
-		'sanitize_callback' => 'onepress_sanitize_checkbox',
+		'sanitize_callback' => 'ardent_sanitize_checkbox',
 		'default'           => $is_old_logo ? 1 : 0,
 	)
 );
 $wp_customize->add_control(
-	'onepress_hide_tagline',
+	'ardent_hide_tagline',
 	array(
-		'label'   => esc_html__( 'Hide site tagline', 'onepress' ),
+		'label'   => esc_html__( 'Hide site tagline', 'ardent' ),
 		'section' => 'title_tagline',
 		'type'    => 'checkbox',
 
@@ -37,7 +37,7 @@ $wp_customize->add_control(
 );
 
 // Retina Logo
-$wp_customize->add_setting( 'onepress_retina_logo',
+$wp_customize->add_setting( 'ardent_retina_logo',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => '',
@@ -47,9 +47,9 @@ $wp_customize->add_setting( 'onepress_retina_logo',
 $wp_customize->add_control(
 	new WP_Customize_Image_Control(
 		$wp_customize,
-		'onepress_retina_logo',
+		'ardent_retina_logo',
 		array(
-			'label'   => esc_html__( 'Retina Logo', 'onepress' ),
+			'label'   => esc_html__( 'Retina Logo', 'ardent' ),
 			'section' => 'title_tagline',
 		)
 	)
@@ -57,7 +57,7 @@ $wp_customize->add_control(
 
 
 // Logo Width
-$wp_customize->add_setting( 'onepress_logo_height',
+$wp_customize->add_setting( 'ardent_logo_height',
 	array(
 		'sanitize_callback' => 'sanitize_text_field',
 		'default'           => '',
@@ -65,9 +65,9 @@ $wp_customize->add_setting( 'onepress_logo_height',
 	)
 );
 $wp_customize->add_control(
-	'onepress_logo_height',
+	'ardent_logo_height',
 	array(
-		'label'   => esc_html__( 'Logo Height In Pixel', 'onepress' ),
+		'label'   => esc_html__( 'Logo Height In Pixel', 'ardent' ),
 		'section' => 'title_tagline',
 	)
 

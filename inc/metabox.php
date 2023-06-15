@@ -3,19 +3,19 @@
 /**
  * Calls the class on the post edit screen.
  */
-function onepress_metabox_init() {
-	new OnePress_MetaBox();
+function ardent_metabox_init() {
+	new ARDENT_MetaBox();
 }
 
 if ( is_admin() ) {
-	add_action( 'load-post.php', 'onepress_metabox_init' );
-	add_action( 'load-post-new.php', 'onepress_metabox_init' );
+	add_action( 'load-post.php', 'ardent_metabox_init' );
+	add_action( 'load-post-new.php', 'ardent_metabox_init' );
 }
 
 /**
  * The Class.
  */
-class OnePress_MetaBox {
+class ARDENT_MetaBox {
 
 	/**
 	 * Hook into the appropriate actions when the class is constructed.
@@ -34,8 +34,8 @@ class OnePress_MetaBox {
 
 		if ( in_array( $post_type, $post_types ) ) {
 			add_meta_box(
-				'onepress_page_settings',
-				__( 'Page Settings', 'onepress' ),
+				'ardent_page_settings',
+				__( 'Page Settings', 'ardent' ),
 				array( $this, 'render_meta_box_content' ),
 				$post_type,
 				'side',
@@ -57,14 +57,14 @@ class OnePress_MetaBox {
 		 */
 
 		// Check if our nonce is set.
-		if ( ! isset( $_POST['onepress_page_settings_nonce'] ) ) {
+		if ( ! isset( $_POST['ardent_page_settings_nonce'] ) ) {
 			return $post_id;
 		}
 
-		$nonce = sanitize_text_field( $_POST['onepress_page_settings_nonce'] );
+		$nonce = sanitize_text_field( $_POST['ardent_page_settings_nonce'] );
 
 		// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $nonce, 'onepress_page_settings' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'ardent_page_settings' ) ) {
 			return $post_id;
 		}
 
@@ -87,7 +87,7 @@ class OnePress_MetaBox {
 			}
 		}
 
-		$settings = isset( $_POST['onepress_page_settings'] ) ? wp_unslash( $_POST['onepress_page_settings'] ) : array();
+		$settings = isset( $_POST['ardent_page_settings'] ) ? wp_unslash( $_POST['ardent_page_settings'] ) : array();
 		$settings = wp_parse_args(
 			$settings,
 			array(
@@ -117,7 +117,7 @@ class OnePress_MetaBox {
 	public function render_meta_box_content( $post ) {
 
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'onepress_page_settings', 'onepress_page_settings_nonce' );
+		wp_nonce_field( 'ardent_page_settings', 'ardent_page_settings_nonce' );
 
 		$values = array(
 			'hide_page_title' => '',
@@ -135,44 +135,44 @@ class OnePress_MetaBox {
 		?>
 		<p>
 			<label>
-				<input type="checkbox" name="onepress_page_settings[hide_header]" <?php checked( $values['hide_header'], 1 ); ?> value="1"> <?php _e( 'Hide header.', 'onepress' ); ?>
+				<input type="checkbox" name="ardent_page_settings[hide_header]" <?php checked( $values['hide_header'], 1 ); ?> value="1"> <?php _e( 'Hide header.', 'ardent' ); ?>
 			</label>
 		</p>
 		<p>
 			<label>
-				<input type="checkbox" name="onepress_page_settings[hide_page_title]" <?php checked( $values['hide_page_title'], 1 ); ?> value="1"> <?php _e( 'Hide page title area.', 'onepress' ); ?>
-			</label>
-		</p>
-
-		<p>
-			<label>
-				<input type="checkbox" name="onepress_page_settings[cover]" <?php checked( $values['cover'], 1 ); ?> value="1"> <?php _e( 'Display featured image as header cover.', 'onepress' ); ?>
+				<input type="checkbox" name="ardent_page_settings[hide_page_title]" <?php checked( $values['hide_page_title'], 1 ); ?> value="1"> <?php _e( 'Hide page title area.', 'ardent' ); ?>
 			</label>
 		</p>
 
 		<p>
 			<label>
-				<input type="checkbox" name="onepress_page_settings[show_excerpt]" <?php checked( $values['show_excerpt'], 1 ); ?> value="1"> <?php _e( 'Display page excerpt as header cover description.', 'onepress' ); ?>
+				<input type="checkbox" name="ardent_page_settings[cover]" <?php checked( $values['cover'], 1 ); ?> value="1"> <?php _e( 'Display featured image as header cover.', 'ardent' ); ?>
 			</label>
 		</p>
 
 		<p>
 			<label>
-				<input type="checkbox" name="onepress_page_settings[hide_breadcrumb]" <?php checked( $values['hide_breadcrumb'], 1 ); ?> value="1"> <?php _e( 'Hide breadcrumb.', 'onepress' ); ?>
+				<input type="checkbox" name="ardent_page_settings[show_excerpt]" <?php checked( $values['show_excerpt'], 1 ); ?> value="1"> <?php _e( 'Display page excerpt as header cover description.', 'ardent' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<input type="checkbox" name="ardent_page_settings[hide_breadcrumb]" <?php checked( $values['hide_breadcrumb'], 1 ); ?> value="1"> <?php _e( 'Hide breadcrumb.', 'ardent' ); ?>
 			</label>
 		</p>
 		<p>
 			<label>
-				<input type="checkbox" name="onepress_page_settings[hide_footer]" <?php checked( $values['hide_footer'], 1 ); ?> value="1"> <?php _e( 'Hide footer.', 'onepress' ); ?>
+				<input type="checkbox" name="ardent_page_settings[hide_footer]" <?php checked( $values['hide_footer'], 1 ); ?> value="1"> <?php _e( 'Hide footer.', 'ardent' ); ?>
 			</label>
 		</p>
 		<?php
-		if ( onepress_is_wc_active() ) {
+		if ( ardent_is_wc_active() ) {
 			if ( wc_get_page_id( 'shop' ) == $post->ID ) {
 				?>
 				<p>
 					<label>
-						<input type="checkbox" name="onepress_page_settings[wc_apply_product]" <?php checked( $values['wc_apply_product'], 1 ); ?> value="1"> <?php _e( 'Apply header cover settings for single product.', 'onepress' ); ?>
+						<input type="checkbox" name="ardent_page_settings[wc_apply_product]" <?php checked( $values['wc_apply_product'], 1 ); ?> value="1"> <?php _e( 'Apply header cover settings for single product.', 'ardent' ); ?>
 					</label>
 				</p>
 				<?php

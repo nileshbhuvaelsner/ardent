@@ -1,14 +1,14 @@
 <?php
 
 /**
- * OnePress functions and definitions.
+ * ARDENT functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package OnePress
+ * @package ARDENT
  */
 
-if (!function_exists('onepress_setup')) :
+if (!function_exists('ardent_setup')) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -16,15 +16,15 @@ if (!function_exists('onepress_setup')) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function onepress_setup()
+	function ardent_setup()
 	{
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on OnePress, use a find and replace
-		 * to change 'onepress' to the name of your theme in all the template files.
+		 * If you're building a theme based on ARDENT, use a find and replace
+		 * to change 'ardent' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain('onepress', get_template_directory() . '/languages');
+		load_theme_textdomain('ardent', get_template_directory() . '/languages');
 
 		/*
 		 * Add default posts and comments RSS feed links to head.
@@ -50,16 +50,16 @@ if (!function_exists('onepress_setup')) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support('post-thumbnails');
-		add_image_size('onepress-blog-small', 300, 150, true);
-		add_image_size('onepress-small', 480, 300, true);
-		add_image_size('onepress-medium', 640, 400, true);
+		add_image_size('ardent-blog-small', 300, 150, true);
+		add_image_size('ardent-small', 480, 300, true);
+		add_image_size('ardent-medium', 640, 400, true);
 
 		/*
 		 * This theme uses wp_nav_menu() in one location.
 		 */
 		register_nav_menus(
 			array(
-				'primary' => esc_html__('Primary Menu', 'onepress'),
+				'primary' => esc_html__('Primary Menu', 'ardent'),
 			)
 		);
 
@@ -103,11 +103,11 @@ if (!function_exists('onepress_setup')) :
 
 		$recommend_plugins =  array(
 			'wpforms-lite'             => array(
-				'name'            => esc_html__('Contact Form by WPForms', 'onepress'),
+				'name'            => esc_html__('Contact Form by WPForms', 'ardent'),
 				'active_filename' => 'wpforms-lite/wpforms.php',
 			),
 			'famethemes-demo-importer' => array(
-				'name'            => esc_html__('Famethemes Demo Importer', 'onepress'),
+				'name'            => esc_html__('Famethemes Demo Importer', 'ardent'),
 				'active_filename' => 'famethemes-demo-importer/famethemes-demo-importer.php',
 			),
 		);
@@ -118,14 +118,14 @@ if (!function_exists('onepress_setup')) :
 
 			if (!defined('PMCS_URL')) {
 				$recommend_plugins['currency-switcher-for-woocommerce'] = array(
-					'name'            => esc_html__('Currency Switcher for WooCommerce', 'onepress'),
+					'name'            => esc_html__('Currency Switcher for WooCommerce', 'ardent'),
 					'active_filename' => 'currency-switcher-for-woocommerce/pmcs.php',
 				);
 			}
 
 			if (!defined('PBE_URL')) {
 				$recommend_plugins['bulk-edit-for-woocommerce'] = array(
-					'name'            => esc_html__('Bulk Edit for WooCommerce', 'onepress'),
+					'name'            => esc_html__('Bulk Edit for WooCommerce', 'ardent'),
 					'active_filename' => 'bulk-edit-for-woocommerce/bulk-edit.php',
 				);
 			}
@@ -158,9 +158,9 @@ if (!function_exists('onepress_setup')) :
 		/*
 		 * This theme styles the visual editor to resemble the theme style.
 		 */
-		add_editor_style(array('editor-style.css', onepress_fonts_url()));
+		add_editor_style(array('editor-style.css', ardent_fonts_url()));
 
-		if (get_theme_mod('onepress_gallery_disable')) {
+		if (get_theme_mod('ardent_gallery_disable')) {
 			/**
 			 * Dequeue Google Fonts loaded by Elementor.
 			 * @since  2.3.1
@@ -169,7 +169,7 @@ if (!function_exists('onepress_setup')) :
 		}
 	}
 endif;
-add_action('after_setup_theme', 'onepress_setup');
+add_action('after_setup_theme', 'ardent_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -178,7 +178,7 @@ add_action('after_setup_theme', 'onepress_setup');
  *
  * @global int $content_width
  */
-function onepress_content_width()
+function ardent_content_width()
 {
 	/**
 	 * Support dynamic content width
@@ -189,20 +189,20 @@ function onepress_content_width()
 	if ($width <= 0) {
 		$width = 800;
 	}
-	$GLOBALS['content_width'] = apply_filters('onepress_content_width', $width);
+	$GLOBALS['content_width'] = apply_filters('ardent_content_width', $width);
 }
-add_action('after_setup_theme', 'onepress_content_width', 0);
+add_action('after_setup_theme', 'ardent_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function onepress_widgets_init()
+function ardent_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'onepress'),
+			'name'          => esc_html__('Sidebar', 'ardent'),
 			'id'            => 'sidebar-1',
 			'description'   => '',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -215,7 +215,7 @@ function onepress_widgets_init()
 	if (class_exists('WooCommerce')) {
 		register_sidebar(
 			array(
-				'name'          => esc_html__('WooCommerce Sidebar', 'onepress'),
+				'name'          => esc_html__('WooCommerce Sidebar', 'ardent'),
 				'id'            => 'sidebar-shop',
 				'description'   => '',
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -228,7 +228,7 @@ function onepress_widgets_init()
 	for ($i = 1; $i <= 4; $i++) {
 		register_sidebar(
 			array(
-				'name'          => sprintf(__('Footer %s', 'onepress'), $i),
+				'name'          => sprintf(__('Footer %s', 'ardent'), $i),
 				'id'            => 'footer-' . $i,
 				'description'   => '',
 				'before_widget' => '<aside id="%1$s" class="footer-widget widget %2$s">',
@@ -239,54 +239,54 @@ function onepress_widgets_init()
 		);
 	}
 }
-add_action('widgets_init', 'onepress_widgets_init');
+add_action('widgets_init', 'ardent_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function onepress_scripts()
+function ardent_scripts()
 {
 
-	$theme   = wp_get_theme('onepress');
+	$theme   = wp_get_theme('ardent');
 	$version = $theme->get('Version');
 	$min_ext  = defined('WP_DEBUG') && WP_DEBUG ? '' : '.min';
 
-	if (!get_theme_mod('onepress_disable_g_font')) {
-		$google_font_url = onepress_fonts_url();
+	if (!get_theme_mod('ardent_disable_g_font')) {
+		$google_font_url = ardent_fonts_url();
 		if ($google_font_url) {
-			wp_enqueue_style('onepress-fonts', onepress_fonts_url(), array(), $version);
+			wp_enqueue_style('ardent-fonts', ardent_fonts_url(), array(), $version);
 		}
 	}
 
-	wp_enqueue_style('onepress-animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), $version);
-	wp_enqueue_style('onepress-fa', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
-	wp_enqueue_style('onepress-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', false, $version);
-	wp_enqueue_style('onepress-style', get_template_directory_uri() . '/style.css');
+	wp_enqueue_style('ardent-animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), $version);
+	wp_enqueue_style('ardent-fa', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
+	wp_enqueue_style('ardent-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', false, $version);
+	wp_enqueue_style('ardent-style', get_template_directory_uri() . '/style.css');
 
-	$custom_css = onepress_custom_inline_style();
-	wp_add_inline_style('onepress-style', $custom_css);
+	$custom_css = ardent_custom_inline_style();
+	wp_add_inline_style('ardent-style', $custom_css);
 
 	$deps = array('jquery');
 
 	// Animation from settings.
-	$onepress_js_settings = array(
-		'onepress_disable_animation'     => get_theme_mod('onepress_animation_disable'),
-		'onepress_disable_sticky_header' => get_theme_mod('onepress_sticky_header_disable'),
-		'onepress_vertical_align_menu'   => get_theme_mod('onepress_vertical_align_menu'),
-		'hero_animation'                 => get_theme_mod('onepress_hero_option_animation', 'flipInX'),
-		'hero_speed'                     => intval(get_theme_mod('onepress_hero_option_speed', 5000)),
-		'hero_fade'                      => intval(get_theme_mod('onepress_hero_slider_fade', 750)),
-		'submenu_width'                  => intval(get_theme_mod('onepress_submenu_width', 0)),
-		'hero_duration'                  => intval(get_theme_mod('onepress_hero_slider_duration', 5000)),
-		'hero_disable_preload'           => get_theme_mod('onepress_hero_disable_preload', false) ? true : false,
-		'disabled_google_font'           => get_theme_mod('onepress_disable_g_font', false) ? true : false,
+	$ardent_js_settings = array(
+		'ardent_disable_animation'     => get_theme_mod('ardent_animation_disable'),
+		'ardent_disable_sticky_header' => get_theme_mod('ardent_sticky_header_disable'),
+		'ardent_vertical_align_menu'   => get_theme_mod('ardent_vertical_align_menu'),
+		'hero_animation'                 => get_theme_mod('ardent_hero_option_animation', 'flipInX'),
+		'hero_speed'                     => intval(get_theme_mod('ardent_hero_option_speed', 5000)),
+		'hero_fade'                      => intval(get_theme_mod('ardent_hero_slider_fade', 750)),
+		'submenu_width'                  => intval(get_theme_mod('ardent_submenu_width', 0)),
+		'hero_duration'                  => intval(get_theme_mod('ardent_hero_slider_duration', 5000)),
+		'hero_disable_preload'           => get_theme_mod('ardent_hero_disable_preload', false) ? true : false,
+		'disabled_google_font'           => get_theme_mod('ardent_disable_g_font', false) ? true : false,
 		'is_home'                        => '',
 		'gallery_enable'                 => '',
 		'is_rtl'                         => is_rtl(),
 	);
 
 	// Load gallery scripts.
-	$galley_disable = get_theme_mod('onepress_gallery_disable') == 1 ? true : false;
+	$galley_disable = get_theme_mod('ardent_gallery_disable') == 1 ? true : false;
 	$is_shop        = false;
 	if (function_exists('is_woocommerce')) {
 		if (is_woocommerce()) {
@@ -297,59 +297,59 @@ function onepress_scripts()
 	// Don't load scripts for woocommerce because it don't need.
 	if (!$is_shop) {
 		if (!$galley_disable || is_customize_preview()) {
-			$onepress_js_settings['gallery_enable'] = 1;
-			$display                                = get_theme_mod('onepress_gallery_display', 'grid');
+			$ardent_js_settings['gallery_enable'] = 1;
+			$display                                = get_theme_mod('ardent_gallery_display', 'grid');
 			if (!is_customize_preview()) {
 				switch ($display) {
 					case 'masonry':
-						$deps[] = 'onepress-gallery-masonry';
-						wp_register_script('onepress-gallery-masonry', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array(), $version, true);
+						$deps[] = 'ardent-gallery-masonry';
+						wp_register_script('ardent-gallery-masonry', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array(), $version, true);
 						break;
 					case 'justified':
-						$deps[] = 'onepress-gallery-justified';
-						wp_register_script('onepress-gallery-justified', get_template_directory_uri() . '/assets/js/jquery.justifiedGallery.min.js', array(), $version, true);
+						$deps[] = 'ardent-gallery-justified';
+						wp_register_script('ardent-gallery-justified', get_template_directory_uri() . '/assets/js/jquery.justifiedGallery.min.js', array(), $version, true);
 						break;
 					case 'slider':
 					case 'carousel':
-						$deps[] = 'onepress-gallery-carousel';
-						wp_register_script('onepress-gallery-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(), $version, true);
+						$deps[] = 'ardent-gallery-carousel';
+						wp_register_script('ardent-gallery-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(), $version, true);
 						break;
 					default:
 						break;
 				}
 			} else {
-				$deps[] = 'onepress-gallery-masonry';
-				$deps[] = 'onepress-gallery-justified';
-				$deps[] = 'onepress-gallery-carousel';
+				$deps[] = 'ardent-gallery-masonry';
+				$deps[] = 'ardent-gallery-justified';
+				$deps[] = 'ardent-gallery-carousel';
 
-				wp_register_script('onepress-gallery-masonry', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array(), $version, true);
-				wp_register_script('onepress-gallery-justified', get_template_directory_uri() . '/assets/js/jquery.justifiedGallery.min.js', array(), $version, true);
-				wp_register_script('onepress-gallery-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(), $version, true);
+				wp_register_script('ardent-gallery-masonry', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array(), $version, true);
+				wp_register_script('ardent-gallery-justified', get_template_directory_uri() . '/assets/js/jquery.justifiedGallery.min.js', array(), $version, true);
+				wp_register_script('ardent-gallery-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array(), $version, true);
 			}
 		}
-		wp_enqueue_style('onepress-gallery-lightgallery', get_template_directory_uri() . '/assets/css/lightgallery.css');
+		wp_enqueue_style('ardent-gallery-lightgallery', get_template_directory_uri() . '/assets/css/lightgallery.css');
 	}
 
-	wp_enqueue_script('onepress-theme', get_template_directory_uri() . '/assets/js/theme-all' . $min_ext . '.js', $deps, $version, true);
+	wp_enqueue_script('ardent-theme', get_template_directory_uri() . '/assets/js/theme-all' . $min_ext . '.js', $deps, $version, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 
 	if (is_front_page() && is_page_template('template-frontpage.php')) {
-		if (get_theme_mod('onepress_header_scroll_logo')) {
-			$onepress_js_settings['is_home'] = 1;
+		if (get_theme_mod('ardent_header_scroll_logo')) {
+			$ardent_js_settings['is_home'] = 1;
 		}
 	}
 	
-	$onepress_js_settings['parallax_speed'] = 0.5;
-	$onepress_js_settings =  apply_filters( 'onepress_js_settings', $onepress_js_settings );
-	wp_localize_script('onepress-theme', 'onepress_js_settings', $onepress_js_settings);
+	$ardent_js_settings['parallax_speed'] = 0.5;
+	$ardent_js_settings =  apply_filters( 'ardent_js_settings', $ardent_js_settings );
+	wp_localize_script('ardent-theme', 'ardent_js_settings', $ardent_js_settings);
 }
-add_action('wp_enqueue_scripts', 'onepress_scripts');
+add_action('wp_enqueue_scripts', 'ardent_scripts');
 
 
-if (!function_exists('onepress_block_all_js_google_fonts')) {
+if (!function_exists('ardent_block_all_js_google_fonts')) {
 	/**
 	 * Disable all google added by js.
 	 * 
@@ -357,10 +357,10 @@ if (!function_exists('onepress_block_all_js_google_fonts')) {
 	 *
 	 * @return void
 	 */
-	function onepress_block_all_js_google_fonts()
+	function ardent_block_all_js_google_fonts()
 	{
 
-		if (!get_theme_mod('onepress_disable_g_font')) {
+		if (!get_theme_mod('ardent_disable_g_font')) {
 			return;
 		}
 ?>
@@ -382,16 +382,16 @@ if (!function_exists('onepress_block_all_js_google_fonts')) {
 <?php
 	}
 }
-add_action('wp_head', 'onepress_block_all_js_google_fonts', 2);
+add_action('wp_head', 'ardent_block_all_js_google_fonts', 2);
 
 
 
 
-if (!function_exists('onepress_fonts_url')) :
+if (!function_exists('ardent_fonts_url')) :
 	/**
 	 * Register default Google fonts
 	 */
-	function onepress_fonts_url()
+	function ardent_fonts_url()
 	{
 		$fonts_url = '';
 
@@ -400,14 +400,14 @@ if (!function_exists('onepress_fonts_url')) :
 		* supported by Open Sans, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		$open_sans = _x('on', 'Open Sans font: on or off', 'onepress');
+		$open_sans = _x('on', 'Open Sans font: on or off', 'ardent');
 
 		/*
 		* Translators: If there are characters in your language that are not
 		* supported by Raleway, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		$raleway = _x('on', 'Raleway font: on or off', 'onepress');
+		$raleway = _x('on', 'Raleway font: on or off', 'ardent');
 
 		if ('off' !== $raleway || 'off' !== $open_sans) {
 			$font_families = array();
@@ -436,30 +436,30 @@ endif;
 
 
 /**
- * Glabel OnePress loop properties
+ * Glabel ARDENT loop properties
  *
  * @since 2.1.0
  */
-global $onepress_loop_props;
-$onepress_loop_props = array();
+global $ardent_loop_props;
+$ardent_loop_props = array();
 
 /**
- * Set onepress loop property.
+ * Set ardent loop property.
  *
  * @since 2.1.0
  *
  * @param string $prop
  * @param string $value
  */
-function onepress_loop_set_prop($prop, $value)
+function ardent_loop_set_prop($prop, $value)
 {
-	global $onepress_loop_props;
-	$onepress_loop_props[$prop] = $value;
+	global $ardent_loop_props;
+	$ardent_loop_props[$prop] = $value;
 }
 
 
 /**
- * Get onepress loop property
+ * Get ardent loop property
  *
  * @since 2.1.0
  *
@@ -468,28 +468,28 @@ function onepress_loop_set_prop($prop, $value)
  *
  * @return bool|mixed
  */
-function onepress_loop_get_prop($prop, $default = false)
+function ardent_loop_get_prop($prop, $default = false)
 {
-	global $onepress_loop_props;
-	if (isset($onepress_loop_props[$prop])) {
-		return apply_filters('onepress_loop_get_prop', $onepress_loop_props[$prop], $prop);
+	global $ardent_loop_props;
+	if (isset($ardent_loop_props[$prop])) {
+		return apply_filters('ardent_loop_get_prop', $ardent_loop_props[$prop], $prop);
 	}
 
-	return apply_filters('onepress_loop_get_prop', $default, $prop);
+	return apply_filters('ardent_loop_get_prop', $default, $prop);
 }
 
 /**
- * Remove onepress loop property
+ * Remove ardent loop property
  *
  * @since 2.1.0
  *
  * @param $prop
  */
-function onepress_loop_remove_prop($prop)
+function ardent_loop_remove_prop($prop)
 {
-	global $onepress_loop_props;
-	if (isset($onepress_loop_props[$prop])) {
-		unset($onepress_loop_props[$prop]);
+	global $ardent_loop_props;
+	if (isset($ardent_loop_props[$prop])) {
+		unset($ardent_loop_props[$prop]);
 	}
 }
 
@@ -503,7 +503,7 @@ function onepress_loop_remove_prop($prop)
  * @param null $excerpt_length
  * @return string
  */
-function onepress_trim_excerpt($text, $excerpt_length = null)
+function ardent_trim_excerpt($text, $excerpt_length = null)
 {
 	$text = strip_shortcodes($text);
 	/** This filter is documented in wp-includes/post-template.php */
@@ -539,11 +539,11 @@ function onepress_trim_excerpt($text, $excerpt_length = null)
  * @param string $type
  * @param bool   $length
  */
-function onepress_the_excerpt($type = false, $length = false)
+function ardent_the_excerpt($type = false, $length = false)
 {
 
-	$type   = onepress_loop_get_prop('excerpt_type', 'excerpt');
-	$length = onepress_loop_get_prop('excerpt_length', false);
+	$type   = ardent_loop_get_prop('excerpt_type', 'excerpt');
+	$length = ardent_loop_get_prop('excerpt_length', false);
 
 	switch ($type) {
 		case 'excerpt':
@@ -565,7 +565,7 @@ function onepress_the_excerpt($type = false, $length = false)
 					$text = $post->post_content;
 				}
 			}
-			$excerpt = onepress_trim_excerpt($text, $length);
+			$excerpt = ardent_trim_excerpt($text, $length);
 			if ($excerpt) {
 				// WPCS: XSS OK.
 				echo apply_filters('the_excerpt', $excerpt);

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class Onepress_Config
+ * Class Ardent_Config
  * @since 2.1.1
  */
-class Onepress_Config {
+class Ardent_Config {
 
-	static private $key = 'onepress_sections_settings';
+	static private $key = 'ardent_sections_settings';
 
 	static function is_section_active( $section_key ){
 		$data = get_option( self::$key );
@@ -26,7 +26,7 @@ class Onepress_Config {
 
 	static function save_settings( $submitted_data ){
 
-		$sections = Onepress_Config::get_sections();
+		$sections = Ardent_Config::get_sections();
 
 		if ( is_array( $submitted_data ) ) {
 			$data = array();
@@ -47,45 +47,45 @@ class Onepress_Config {
 		$plugin_sections = array(
 
 			'slider' => array(
-				'label' => __( 'Section: Slider', 'onepress' ),
-				'title' => __( 'Slider', 'onepress' ),
+				'label' => __( 'Section: Slider', 'ardent' ),
+				'title' => __( 'Slider', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 
 			'clients' => array(
-				'label' => __( 'Section: Clients', 'onepress' ),
-				'title' => __( 'Our Clients', 'onepress' ),
+				'label' => __( 'Section: Clients', 'ardent' ),
+				'title' => __( 'Our Clients', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'cta' => array(
-				'label' => __( 'Section: Call to Action', 'onepress' ),
-				'title' => __( '', 'onepress' ),
+				'label' => __( 'Section: Call to Action', 'ardent' ),
+				'title' => __( '', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'map' => array(
-				'label' => __( 'Section: Map', 'onepress' ),
-				'title' => __( 'Map', 'onepress' ),
+				'label' => __( 'Section: Map', 'ardent' ),
+				'title' => __( 'Map', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'pricing' => array(
-				'label' => __( 'Section: Pricing', 'onepress' ),
-				'title' => __( 'Pricing Table', 'onepress' ),
+				'label' => __( 'Section: Pricing', 'ardent' ),
+				'title' => __( 'Pricing Table', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'projects' => array(
-				'label' => __( 'Section: Projects', 'onepress' ),
-				'title' => __( 'Highlight Projects', 'onepress' ),
+				'label' => __( 'Section: Projects', 'ardent' ),
+				'title' => __( 'Highlight Projects', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'testimonials' => array(
-				'label' => __( 'Section: Testimonials', 'onepress' ),
-				'title' => __( 'Testimonials', 'onepress' ),
+				'label' => __( 'Section: Testimonials', 'ardent' ),
+				'title' => __( 'Testimonials', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
@@ -101,68 +101,68 @@ class Onepress_Config {
 	 */
 	static function get_sections(){
 
-		$sorted_sections = apply_filters( 'onepress_frontpage_sections_order', array(
+		$sorted_sections = apply_filters( 'ardent_frontpage_sections_order', array(
 			'features', 'about', 'services', 'videolightbox', 'gallery', 'counter', 'team',  'news', 'contact'
 		) );
 
 		$sections_config = array(
 			'hero' => array(
-				'label' => __( 'Section: Hero', 'onepress' ),
-				'title' => __( 'Home', 'onepress' ),
+				'label' => __( 'Section: Hero', 'ardent' ),
+				'title' => __( 'Home', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'about' => array(
-				'label' => __( 'Section: About', 'onepress' ),
-				'title' => __( 'About Us', 'onepress' ),
+				'label' => __( 'Section: About', 'ardent' ),
+				'title' => __( 'About Us', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'contact' => array(
-				'label' =>  __( 'Section: Contact', 'onepress' ),
-				'title' => __( 'Get in touch', 'onepress' ),
+				'label' =>  __( 'Section: Contact', 'ardent' ),
+				'title' => __( 'Get in touch', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 
 			),
 			'counter' => array(
-				'label' => __( 'Section: Counter', 'onepress' ),
-				'title' => __( 'Our Numbers', 'onepress' ),
+				'label' => __( 'Section: Counter', 'ardent' ),
+				'title' => __( 'Our Numbers', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'features' => array(
-				'label' => __( 'Section: Features', 'onepress' ),
-				'title' => __( 'Features', 'onepress' ),
+				'label' => __( 'Section: Features', 'ardent' ),
+				'title' => __( 'Features', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'gallery' => array(
-				'label' => __( 'Section: Gallery', 'onepress' ),
-				'title' => __( 'Gallery', 'onepress' ),
+				'label' => __( 'Section: Gallery', 'ardent' ),
+				'title' => __( 'Gallery', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'news' => array(
-				'label' => __( 'Section: News', 'onepress' ),
-				'title' => __( 'Latest News', 'onepress' ),
+				'label' => __( 'Section: News', 'ardent' ),
+				'title' => __( 'Latest News', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'services' => array(
-				'label' => __( 'Section: Services', 'onepress' ),
-				'title' => __( 'Our Services', 'onepress' ),
+				'label' => __( 'Section: Services', 'ardent' ),
+				'title' => __( 'Our Services', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'team' => array(
-				'label' => __( 'Section: Team', 'onepress' ),
-				'title' => __( 'Our Team', 'onepress' ),
+				'label' => __( 'Section: Team', 'ardent' ),
+				'title' => __( 'Our Team', 'ardent' ),
 				'default' => false,
 				'inverse' => false,
 			),
 			'videolightbox' => array(
-				'label' => __( 'Section: Video Lightbox', 'onepress' ),
+				'label' => __( 'Section: Video Lightbox', 'ardent' ),
 				'title' => '',
 				'default' => false,
 				'inverse' => false,
@@ -180,7 +180,7 @@ class Onepress_Config {
 		}
 
 		// Filter to add more custom sections here
-		return apply_filters( 'onepress_get_sections', $new );
+		return apply_filters( 'ardent_get_sections', $new );
 
 	}
 }

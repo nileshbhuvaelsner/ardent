@@ -4,7 +4,7 @@
  * Class OnPress_Dropdown_Category_Control
  * @since 2.0.0
  */
-class OnePress_Category_Control extends WP_Customize_Control {
+class ARDENT_Category_Control extends WP_Customize_Control {
 
 	public $type = 'dropdown-category';
 
@@ -25,7 +25,7 @@ class OnePress_Category_Control extends WP_Customize_Control {
 			'taxonomy'          => 'category',
 			'show_option_none'  => '',
 			'selected'          => $this->value(),
-			'show_option_all'   => __( 'All', 'onepress' ),
+			'show_option_all'   => __( 'All', 'ardent' ),
 			'orderby'           => 'id',
 			'order'             => 'ASC',
 			'show_count'        => 1,

@@ -4,7 +4,7 @@
  * Class OnPress_Dropdown_Category_Control
  * @since 2.0.0
  */
-class OnePress_Pages_Control extends WP_Customize_Control {
+class ARDENT_Pages_Control extends WP_Customize_Control {
 
 	public $type = 'dropdown-category';
 	public $show_option_none = 'dropdown-category';
@@ -40,7 +40,7 @@ class OnePress_Pages_Control extends WP_Customize_Control {
 	}
 }
 
-function onepress_enqueue_editor(){
+function ardent_enqueue_editor(){
 	if( ! isset( $GLOBALS['__wp_mce_editor__'] ) || ! $GLOBALS['__wp_mce_editor__'] ) {
 		$GLOBALS['__wp_mce_editor__'] = true;
 		?>

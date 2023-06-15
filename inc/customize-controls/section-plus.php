@@ -5,7 +5,7 @@
  * @since  1.0.0
  * @access public
  */
-class OnePress_Section_Plus extends WP_Customize_Section {
+class ARDENT_Section_Plus extends WP_Customize_Section {
 	/**
 	 * The type of customize section being rendered.
 	 *
@@ -13,7 +13,7 @@ class OnePress_Section_Plus extends WP_Customize_Section {
 	 * @access public
 	 * @var    string
 	 */
-	public $type = 'onepress-plus';
+	public $type = 'ardent-plus';
 	/**
 	 * Custom button text to output.
 	 *

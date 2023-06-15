@@ -8,7 +8,7 @@
  * @param $template_names
  * @return string
  */
-function onepress_customizer_load_template( $template_names ) {
+function ardent_customizer_load_template( $template_names ) {
 	$located = '';
 
 	$is_child = get_stylesheet_directory() != get_template_directory();
@@ -42,10 +42,10 @@ function onepress_customizer_load_template( $template_names ) {
  * @param array       $section
  * @return string
  */
-function onepress_get_customizer_section_content( $section_tpl, $section = array() ) {
+function ardent_get_customizer_section_content( $section_tpl, $section = array() ) {
 	ob_start();
-	$GLOBALS['onepress_is_selective_refresh'] = true;
-	$file = onepress_customizer_load_template( $section_tpl );
+	$GLOBALS['ardent_is_selective_refresh'] = true;
+	$file = ardent_customizer_load_template( $section_tpl );
 	if ( $file ) {
 		include $file;
 	}
@@ -61,7 +61,7 @@ function onepress_get_customizer_section_content( $section_tpl, $section = array
  *
  * @param $wp_customize
  */
-function onepress_customizer_partials( $wp_customize ) {
+function ardent_customizer_partials( $wp_customize ) {
 
 	// Abort if selective refresh is not available.
 	if ( ! isset( $wp_customize->selective_refresh ) ) {
@@ -74,11 +74,11 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'features',
 			'selector' => '.section-features',
 			'settings' => array(
-				'onepress_features_boxes',
-				'onepress_features_title',
-				'onepress_features_subtitle',
-				'onepress_features_desc',
-				'onepress_features_layout',
+				'ardent_features_boxes',
+				'ardent_features_title',
+				'ardent_features_subtitle',
+				'ardent_features_desc',
+				'ardent_features_layout',
 			),
 		),
 
@@ -87,13 +87,13 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'services',
 			'selector' => '.section-services',
 			'settings' => array(
-				'onepress_services',
-				'onepress_services_title',
-				'onepress_services_subtitle',
-				'onepress_services_desc',
-				'onepress_service_layout',
-				'onepress_service_icon_size',
-				'onepress_service_content_source',
+				'ardent_services',
+				'ardent_services_title',
+				'ardent_services_subtitle',
+				'ardent_services_desc',
+				'ardent_service_layout',
+				'ardent_service_icon_size',
+				'ardent_service_content_source',
 			),
 		),
 
@@ -102,19 +102,19 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'gallery',
 			'selector' => '.section-gallery',
 			'settings' => array(
-				'onepress_gallery_source',
+				'ardent_gallery_source',
 
-				'onepress_gallery_title',
-				'onepress_gallery_subtitle',
-				'onepress_gallery_desc',
-				'onepress_gallery_source_page',
-				'onepress_gallery_layout',
-				'onepress_gallery_display',
-				'onepress_g_number',
-				'onepress_g_row_height',
-				'onepress_g_col',
-				'onepress_g_readmore_link',
-				'onepress_g_readmore_text',
+				'ardent_gallery_title',
+				'ardent_gallery_subtitle',
+				'ardent_gallery_desc',
+				'ardent_gallery_source_page',
+				'ardent_gallery_layout',
+				'ardent_gallery_display',
+				'ardent_g_number',
+				'ardent_g_row_height',
+				'ardent_g_col',
+				'ardent_g_readmore_link',
+				'ardent_g_readmore_text',
 			),
 		),
 
@@ -123,20 +123,20 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'news',
 			'selector' => '.section-news',
 			'settings' => array(
-				'onepress_news_title',
-				'onepress_news_subtitle',
-				'onepress_news_desc',
-				'onepress_news_number',
-				'onepress_news_more_link',
-				'onepress_news_more_text',
+				'ardent_news_title',
+				'ardent_news_subtitle',
+				'ardent_news_desc',
+				'ardent_news_number',
+				'ardent_news_more_link',
+				'ardent_news_more_text',
 
-				'onepress_news_hide_meta', // @since  2.1.0
-				'onepress_news_excerpt_length', // @since  2.1.0
-				'onepress_news_more_page', // @since  2.1.0
+				'ardent_news_hide_meta', // @since  2.1.0
+				'ardent_news_excerpt_length', // @since  2.1.0
+				'ardent_news_more_page', // @since  2.1.0
 
-				'onepress_news_cat',
-				'onepress_news_orderby',
-				'onepress_news_order',
+				'ardent_news_cat',
+				'ardent_news_orderby',
+				'ardent_news_order',
 			),
 		),
 
@@ -145,17 +145,17 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'contact',
 			'selector' => '.section-contact',
 			'settings' => array(
-				'onepress_contact_title',
-				'onepress_contact_subtitle',
-				'onepress_contact_desc',
-				'onepress_contact_cf7',
-				'onepress_contact_cf7_disable',
-				'onepress_contact_text',
-				'onepress_contact_address_title',
-				'onepress_contact_address',
-				'onepress_contact_phone',
-				'onepress_contact_email',
-				'onepress_contact_fax',
+				'ardent_contact_title',
+				'ardent_contact_subtitle',
+				'ardent_contact_desc',
+				'ardent_contact_cf7',
+				'ardent_contact_cf7_disable',
+				'ardent_contact_text',
+				'ardent_contact_address_title',
+				'ardent_contact_address',
+				'ardent_contact_phone',
+				'ardent_contact_email',
+				'ardent_contact_fax',
 			),
 		),
 
@@ -164,10 +164,10 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'counter',
 			'selector' => '.section-counter',
 			'settings' => array(
-				'onepress_counter_boxes',
-				'onepress_counter_title',
-				'onepress_counter_subtitle',
-				'onepress_counter_desc',
+				'ardent_counter_boxes',
+				'ardent_counter_title',
+				'ardent_counter_subtitle',
+				'ardent_counter_desc',
 			),
 		),
 		// section videolightbox
@@ -175,8 +175,8 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'videolightbox',
 			'selector' => '.section-videolightbox',
 			'settings' => array(
-				'onepress_videolightbox_title',
-				'onepress_videolightbox_url',
+				'ardent_videolightbox_title',
+				'ardent_videolightbox_url',
 			),
 		),
 
@@ -185,12 +185,12 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'about',
 			'selector' => '.section-about',
 			'settings' => array(
-				'onepress_about_boxes',
-				'onepress_about_title',
-				'onepress_about_subtitle',
-				'onepress_about_desc',
-				'onepress_about_content_source',
-				'onepress_about_layout',
+				'ardent_about_boxes',
+				'ardent_about_title',
+				'ardent_about_subtitle',
+				'ardent_about_desc',
+				'ardent_about_content_source',
+				'ardent_about_layout',
 			),
 		),
 
@@ -199,16 +199,16 @@ function onepress_customizer_partials( $wp_customize ) {
 			'id' => 'team',
 			'selector' => '.section-team',
 			'settings' => array(
-				'onepress_team_members',
-				'onepress_team_title',
-				'onepress_team_subtitle',
-				'onepress_team_desc',
-				'onepress_team_layout',
+				'ardent_team_members',
+				'ardent_team_title',
+				'ardent_team_subtitle',
+				'ardent_team_desc',
+				'ardent_team_layout',
 			),
 		),
 	);
 
-	$selective_refresh_keys = apply_filters( 'onepress_customizer_partials_selective_refresh_keys', $selective_refresh_keys );
+	$selective_refresh_keys = apply_filters( 'ardent_customizer_partials_selective_refresh_keys', $selective_refresh_keys );
 
 	foreach ( $selective_refresh_keys as $section ) {
 		foreach ( $section['settings'] as $key ) {
@@ -222,50 +222,50 @@ function onepress_customizer_partials( $wp_customize ) {
 			array(
 				'selector' => $section['selector'],
 				'settings' => $section['settings'],
-				'render_callback' => 'onepress_selective_refresh_render_section_content',
+				'render_callback' => 'ardent_selective_refresh_render_section_content',
 			)
 		);
 	}
 
 	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-	$wp_customize->get_setting( 'onepress_hide_sitetitle' )->transport = 'postMessage';
-	$wp_customize->get_setting( 'onepress_hide_tagline' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'ardent_hide_sitetitle' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'ardent_hide_tagline' )->transport = 'postMessage';
 	$wp_customize->selective_refresh->add_partial(
 		'header_brand',
 		array(
 			'selector' => '.site-header .site-branding',
-			'settings' => array( 'blogname', 'blogdescription', 'onepress_hide_sitetitle', 'onepress_hide_tagline' ),
-			'render_callback' => 'onepress_site_logo',
+			'settings' => array( 'blogname', 'blogdescription', 'ardent_hide_sitetitle', 'ardent_hide_tagline' ),
+			'render_callback' => 'ardent_site_logo',
 		)
 	);
 
 	// Footer social heading
 	$wp_customize->selective_refresh->add_partial(
-		'onepress_social_footer_title',
+		'ardent_social_footer_title',
 		array(
 			'selector' => '.footer-social .follow-heading',
-			'settings' => array( 'onepress_social_footer_title' ),
-			'render_callback' => 'onepress_selective_refresh_social_footer_title',
+			'settings' => array( 'ardent_social_footer_title' ),
+			'render_callback' => 'ardent_selective_refresh_social_footer_title',
 		)
 	);
 	// Footer social icons
 	$wp_customize->selective_refresh->add_partial(
-		'onepress_social_profiles',
+		'ardent_social_profiles',
 		array(
 			'selector' => '.footer-social .footer-social-icons',
-			'settings' => array( 'onepress_social_profiles' ),
-			'render_callback' => 'onepress_get_social_profiles',
+			'settings' => array( 'ardent_social_profiles' ),
+			'render_callback' => 'ardent_get_social_profiles',
 		)
 	);
 
 	// Footer New letter heading
 	$wp_customize->selective_refresh->add_partial(
-		'onepress_newsletter_title',
+		'ardent_newsletter_title',
 		array(
 			'selector' => '.footer-subscribe .follow-heading',
-			'settings' => array( 'onepress_newsletter_title' ),
-			'render_callback' => 'onepress_selective_refresh_newsletter_title',
+			'settings' => array( 'ardent_newsletter_title' ),
+			'render_callback' => 'ardent_selective_refresh_newsletter_title',
 		)
 	);
 
@@ -275,11 +275,11 @@ function onepress_customizer_partials( $wp_customize ) {
 	 * @since 2.0.0
 	 */
 	$wp_customize->selective_refresh->add_partial(
-		'onepress-footer-widgets',
+		'ardent-footer-widgets',
 		array(
 			'selector' => '#footer-widgets',
 			'settings' => array( 'footer_layout', 'footer_custom_1_columns', 'footer_custom_2_columns', 'footer_custom_3_columns', 'footer_custom_4_columns' ),
-			'render_callback' => 'onepress_footer_widgets',
+			'render_callback' => 'ardent_footer_widgets',
 			'container_inclusive' => true,
 		)
 	);
@@ -290,11 +290,11 @@ function onepress_customizer_partials( $wp_customize ) {
 	 * @since 2.0.0
 	 */
 	$wp_customize->selective_refresh->add_partial(
-		'onepress-header-section',
+		'ardent-header-section',
 		array(
 			'selector' => '#header-section',
-			'settings' => array( 'onepress_header_position', 'onepress_sticky_header_disable', 'onepress_header_transparent', 'onepress_header_width' ),
-			'render_callback' => 'onepress_header',
+			'settings' => array( 'ardent_header_position', 'ardent_sticky_header_disable', 'ardent_header_transparent', 'ardent_header_width' ),
+			'render_callback' => 'ardent_header',
 			'container_inclusive' => true,
 		)
 	);
@@ -305,11 +305,11 @@ function onepress_customizer_partials( $wp_customize ) {
 	 * @since 2.0.0
 	 */
 	$wp_customize->selective_refresh->add_partial(
-		'onepress-footer-connect',
+		'ardent-footer-connect',
 		array(
 			'selector' => '.footer-connect',
-			'settings' => array( 'onepress_newsletter_disable', 'onepress_social_disable' ),
-			'render_callback' => 'onepress_footer_connect',
+			'settings' => array( 'ardent_newsletter_disable', 'ardent_social_disable' ),
+			'render_callback' => 'ardent_footer_connect',
 			'container_inclusive' => true,
 		)
 	);
@@ -320,42 +320,42 @@ function onepress_customizer_partials( $wp_customize ) {
 	 * @since 2.0.0
 	 */
 	$css_settings = array(
-		'onepress_logo_height',
-		'onepress_transparent_logo_height',
-		'onepress_tagline_text_color',
-		'onepress_logo_text_color',
+		'ardent_logo_height',
+		'ardent_transparent_logo_height',
+		'ardent_tagline_text_color',
+		'ardent_logo_text_color',
 
-		'onepress_transparent_site_title_c',
-		'onepress_transparent_tag_title_c',
-		'onepress_logo_height',
+		'ardent_transparent_site_title_c',
+		'ardent_transparent_tag_title_c',
+		'ardent_logo_height',
 
-		'onepress_hero_overlay_color',
-		// 'onepress_hero_overlay_opacity',
-		'onepress_primary_color',
-		'onepress_secondary_color',
-		'onepress_menu_item_padding',
+		'ardent_hero_overlay_color',
+		// 'ardent_hero_overlay_opacity',
+		'ardent_primary_color',
+		'ardent_secondary_color',
+		'ardent_menu_item_padding',
 
-		'onepress_page_cover_align',
-		'onepress_page_normal_align',
-		'onepress_page_cover_color',
-		'onepress_page_cover_overlay',
-		'onepress_page_cover_pd_top',
-		'onepress_page_cover_pd_bottom',
+		'ardent_page_cover_align',
+		'ardent_page_normal_align',
+		'ardent_page_cover_color',
+		'ardent_page_cover_overlay',
+		'ardent_page_cover_pd_top',
+		'ardent_page_cover_pd_bottom',
 
-		'onepress_header_bg_color',
-		'onepress_menu_color',
-		'onepress_menu_hover_color',
-		'onepress_menu_hover_bg_color',
-		'onepress_menu_hover_bg_color',
-		'onepress_menu_toggle_button_color',
+		'ardent_header_bg_color',
+		'ardent_menu_color',
+		'ardent_menu_hover_color',
+		'ardent_menu_hover_bg_color',
+		'ardent_menu_hover_bg_color',
+		'ardent_menu_toggle_button_color',
 
-		'onepress_footer_info_bg',
-		'onepress_footer_bg',
-		'onepress_footer_top_color',
+		'ardent_footer_info_bg',
+		'ardent_footer_bg',
+		'ardent_footer_top_color',
 
-		'onepress_footer_c_color',
-		'onepress_footer_c_link_color',
-		'onepress_footer_c_link_hover_color',
+		'ardent_footer_c_color',
+		'ardent_footer_c_link_color',
+		'ardent_footer_c_link_hover_color',
 
 		'footer_widgets_color',
 		'footer_widgets_bg_color',
@@ -363,20 +363,20 @@ function onepress_customizer_partials( $wp_customize ) {
 		'footer_widgets_link_color',
 		'footer_widgets_link_hover_color',
 
-		'onepress_hcl1_r_color',
-		'onepress_hcl1_r_bg_color',
+		'ardent_hcl1_r_color',
+		'ardent_hcl1_r_bg_color',
 
-		'onepress_sections_nav___color',
-		'onepress_sections_nav___color2',
-		'onepress_sections_nav___label_bg',
-		'onepress_sections_nav___label_color',
+		'ardent_sections_nav___color',
+		'ardent_sections_nav___color2',
+		'ardent_sections_nav___label_bg',
+		'ardent_sections_nav___label_color',
 
 	);
 
 	/**
 	 * @since 2.1.1
 	 */
-	$css_settings = apply_filters( 'onepress_selective_refresh_css_settings', $css_settings );
+	$css_settings = apply_filters( 'ardent_selective_refresh_css_settings', $css_settings );
 
 	foreach ( $css_settings as $index => $key ) {
 		if ( $wp_customize->get_setting( $key ) ) {
@@ -388,27 +388,27 @@ function onepress_customizer_partials( $wp_customize ) {
 	}
 
 	$wp_customize->selective_refresh->add_partial(
-		'onepress-style-live-css',
+		'ardent-style-live-css',
 		array(
-			'selector' => '#onepress-style-inline-css',
+			'selector' => '#ardent-style-inline-css',
 			'settings' => $css_settings,
 			'container_inclusive' => false,
-			'render_callback' => 'onepress_custom_inline_style',
+			'render_callback' => 'ardent_custom_inline_style',
 		)
 	);
 
 	// Retina logo
 	$wp_customize->selective_refresh->add_partial(
-		'onepress_site_logo',
+		'ardent_site_logo',
 		array(
 			'selector' => '.site-branding',
-			'settings' => array( 'onepress_retina_logo', 'onepress_transparent_logo', 'onepress_transparent_retina_logo' ),
-			'render_callback' => 'onepress_site_logo',
+			'settings' => array( 'ardent_retina_logo', 'ardent_transparent_logo', 'ardent_transparent_retina_logo' ),
+			'render_callback' => 'ardent_site_logo',
 		)
 	);
 
 }
-add_action( 'customize_register', 'onepress_customizer_partials', 199 );
+add_action( 'customize_register', 'ardent_customizer_partials', 199 );
 
 
 
@@ -418,19 +418,19 @@ add_action( 'customize_register', 'onepress_customizer_partials', 199 );
  * @param $partial
  * @param array   $container_context
  */
-function onepress_selective_refresh_render_section_content( $partial, $container_context = array() ) {
+function ardent_selective_refresh_render_section_content( $partial, $container_context = array() ) {
 	$tpl = 'section-parts/' . $partial->id . '.php';
-	$GLOBALS['onepress_is_selective_refresh'] = true;
-	$file = onepress_customizer_load_template( $tpl );
+	$GLOBALS['ardent_is_selective_refresh'] = true;
+	$file = ardent_customizer_load_template( $tpl );
 	if ( $file ) {
 		include $file;
 	}
 }
 
-function onepress_selective_refresh_social_footer_title() {
-	return get_theme_mod( 'onepress_social_footer_title' );
+function ardent_selective_refresh_social_footer_title() {
+	return get_theme_mod( 'ardent_social_footer_title' );
 }
 
-function onepress_selective_refresh_newsletter_title() {
-	return get_theme_mod( 'onepress_newsletter_title' );
+function ardent_selective_refresh_newsletter_title() {
+	return get_theme_mod( 'ardent_newsletter_title' );
 }

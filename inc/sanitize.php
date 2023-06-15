@@ -1,11 +1,11 @@
 <?php
 
 /**
- *  OnePress Sanitize Functions.
+ *  ARDENT Sanitize Functions.
  */
 
-if (!function_exists('onepress_sanitize_checkbox')) {
-	function onepress_sanitize_checkbox($input)
+if (!function_exists('ardent_sanitize_checkbox')) {
+	function ardent_sanitize_checkbox($input)
 	{
 		if ($input == 1) {
 			return 1;
@@ -21,7 +21,7 @@ if (!function_exists('onepress_sanitize_checkbox')) {
  * @param $string
  * @return string
  */
-function onepress_sanitize_css($string)
+function ardent_sanitize_css($string)
 {
 	$string = preg_replace('@<(script|style)[^>]*?>.*?</\\1>@si', '', $string);
 	$string = strip_tags($string);
@@ -29,7 +29,7 @@ function onepress_sanitize_css($string)
 }
 
 
-function onepress_sanitize_color_alpha($color)
+function ardent_sanitize_color_alpha($color)
 {
 	$color = str_replace('#', '', $color);
 	if ('' === $color) {
@@ -72,7 +72,7 @@ function onepress_sanitize_color_alpha($color)
  * @param $setting object $wp_customize
  * @return bool|mixed|string|void
  */
-function onepress_sanitize_repeatable_data_field($input, $setting)
+function ardent_sanitize_repeatable_data_field($input, $setting)
 {
 	$control = $setting->manager->get_control($setting->id);
 
@@ -106,10 +106,10 @@ function onepress_sanitize_repeatable_data_field($input, $setting)
 						$data[$i][$id] = sanitize_hex_color_no_hash($value);
 						break;
 					case 'coloralpha':
-						$data[$i][$id] = onepress_sanitize_color_alpha($value);
+						$data[$i][$id] = ardent_sanitize_color_alpha($value);
 						break;
 					case 'checkbox':
-						$data[$i][$id] = onepress_sanitize_checkbox($value);
+						$data[$i][$id] = ardent_sanitize_checkbox($value);
 						break;
 					case 'select':
 						$data[$i][$id] = '';
@@ -173,7 +173,7 @@ function onepress_sanitize_repeatable_data_field($input, $setting)
 }
 
 
-function onepress_sanitize_file_url($file_url)
+function ardent_sanitize_file_url($file_url)
 {
 	$output = '';
 	$filetype = wp_check_filetype($file_url);
@@ -190,9 +190,9 @@ function onepress_sanitize_file_url($file_url)
  * @param $control
  * @return bool
  */
-function onepress_hero_fullscreen_callback($control)
+function ardent_hero_fullscreen_callback($control)
 {
-	$value = $control->manager->get_setting('onepress_hero_fullscreen')->value();
+	$value = $control->manager->get_setting('ardent_hero_fullscreen')->value();
 	if ('' == $value  || !$value) {
 		return true;
 	} else {
@@ -208,7 +208,7 @@ function onepress_hero_fullscreen_callback($control)
  *
  * @return string
  */
-function onepress_sanitize_select($input, $setting = null)
+function ardent_sanitize_select($input, $setting = null)
 {
 
 	// input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
@@ -226,12 +226,12 @@ function onepress_sanitize_select($input, $setting = null)
 }
 
 
-function onepress_sanitize_number($input)
+function ardent_sanitize_number($input)
 {
 	return balanceTags($input);
 }
 
-function onepress_sanitize_hex_color($color)
+function ardent_sanitize_hex_color($color)
 {
 	if ($color === '') {
 		return '';
@@ -242,7 +242,7 @@ function onepress_sanitize_hex_color($color)
 	return null;
 }
 
-function onepress_sanitize_checkbox($input)
+function ardent_sanitize_checkbox($input)
 {
 	if ($input == 1) {
 		return 1;
@@ -251,26 +251,26 @@ function onepress_sanitize_checkbox($input)
 	}
 }
 
-function onepress_sanitize_text($string)
+function ardent_sanitize_text($string)
 {
 	return wp_kses_post(balanceTags($string));
 }
 
-function onepress_sanitize_html_input($string)
+function ardent_sanitize_html_input($string)
 {
 	return wp_kses_allowed_html($string);
 }
 
-function onepress_showon_frontpage()
+function ardent_showon_frontpage()
 {
 	return is_page_template('template-frontpage.php');
 }
 
-function onepress_gallery_source_validate($validity, $value)
+function ardent_gallery_source_validate($validity, $value)
 {
-	if (!class_exists('OnePress_Plus')) {
+	if (!class_exists('ARDENT_Plus')) {
 		if ($value != 'page') {
-			$validity->add('notice', sprintf(esc_html__('Upgrade to %1s to unlock this feature.', 'onepress'), '<a target="_blank" href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#gallery">OnePress Plus</a>'));
+			$validity->add('notice', sprintf(esc_html__('Upgrade to %1s to unlock this feature.', 'ardent'), '<a target="_blank" href="https://www.famethemes.com/plugins/ardent-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=ardent_customizer#gallery">ARDENT Plus</a>'));
 		}
 	}
 	return $validity;

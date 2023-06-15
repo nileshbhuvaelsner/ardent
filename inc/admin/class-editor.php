@@ -4,8 +4,8 @@
  *
  * @since 2.2.0
  */
-class OnePress_Editor {
-	private $action      = 'onepress_load_editor_style';
+class ARDENT_Editor {
+	private $action      = 'ardent_load_editor_style';
 	private $editor_file = 'assets/css/admin/editor.css';
 	public function __construct() {
 		// Add editor settings.
@@ -29,11 +29,11 @@ class OnePress_Editor {
 	 * @return void
 	 */
 	function assets() {
-		if ( function_exists( 'onepress_typography_render_style' ) ) {
-			$typo = onepress_typography_render_style( false, true );
+		if ( function_exists( 'ardent_typography_render_style' ) ) {
+			$typo = ardent_typography_render_style( false, true );
 			if ( $typo['url'] ) {
-				wp_register_style( 'onepress-editor-fonts', $typo['url'] ); // Font style url.
-				wp_enqueue_style( 'onepress-editor-fonts' ); // Font style url.
+				wp_register_style( 'ardent-editor-fonts', $typo['url'] ); // Font style url.
+				wp_enqueue_style( 'ardent-editor-fonts' ); // Font style url.
 			}
 			wp_add_inline_style( 'wp-edit-post', $typo['code'] );
 		}
@@ -118,6 +118,6 @@ class OnePress_Editor {
 }
 
 if ( is_admin() ) {
-	new OnePress_Editor();
+	new ARDENT_Editor();
 }
 

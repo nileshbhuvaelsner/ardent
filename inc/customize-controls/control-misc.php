@@ -1,9 +1,9 @@
 <?php
 /*-----------------------------------------------------------------------------------*/
-/*  OnePress Customizer Controls
+/*  ARDENT Customizer Controls
 /*-----------------------------------------------------------------------------------*/
 
-class OnePress_Misc_Control extends WP_Customize_Control {
+class ARDENT_Misc_Control extends WP_Customize_Control {
 
 
 	public $settings = 'blogname';
