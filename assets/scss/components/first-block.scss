@@ -1,0 +1,11 @@
+// variable and mixin
+@import 'assets/scss/abstracts/_core';
+.first-block {
+    display: none;
+}
+.first-block {
+    display: none;
+    & > div{
+        display: none;
+    }
+}
