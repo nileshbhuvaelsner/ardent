@@ -1,42 +1,107 @@
 %btn {
-	display: inline-block;
-	vertical-align: top;
-	padding: rem(19px) rem(46px) rem(19px) rem(32px);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	min-height: rem(60px);
+	padding: rem(10px) rem(46px) rem(10px) rem(32px);
+
 	color: $white;
 	font-size: $font-size-base;
+	font-weight: 600;
 	line-height: 1.2;
-	text-align: center;
 	text-transform: unset;
 	text-decoration: none;
+
+	cursor: pointer;
+	
 	border: none;
 	border-radius: 0;
+	
 	background-color: $primary-100;
+
+	position: relative;
 	transition: all 0.3s ease 0s;
+
+	&::before{
+		content: '';
+		position: absolute;
+		top: calc(50%);
+		right: rem(46px);
+		width: rem(13px);
+		height: rem(1px);
+		background-color: $white;
+		opacity: 0;
+		transform: translateY(-50%);
+		transition: all 0.3s ease 0s;
+	}
+
+	&::after{
+		content: '';
+		position: absolute;
+		top: calc(50% - 1px);
+		right: rem(28px);
+		width: rem(9px);
+		height: rem(9px);
+		border: rem(2px) solid $white;
+		border-top: unset;
+		border-left: unset;
+		transform: rotate(-45deg) translateY(-50%);
+		transition: all 0.3s ease 0s;
+	}	
 
 	&:hover,
 	&:focus,
-	a:hover & {
+	a:hover &{
 		color: $white;
 		text-decoration: none;
-		cursor: pointer;
+		padding-right: rem(50px);
+		padding-left: rem(28px);
+		outline: none;
+		&::before{
+			right: rem(28px);
+			opacity: 1;
+		}
+		&::after{
+			right: rem(24px);
+		}
 	}
 }
 .btn {
 	@extend %btn;
-	&-link {
-		margin-bottom: rem(2px);
+	&-link{
 		color: $primary-100;
-		font-size: $font-size-base;
-		text-decoration: none;
-		border-bottom: 1px solid transparent;
-		transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-color 0.3s ease 0s;
+		background-color: unset;
+
+		&::before{
+			background-color: $primary-100
+		}
+		&::after{
+			border-color: $primary-100;
+		}
 
 		&:hover,
 		&:focus,
 		a:hover & {
-			color: $secondary-100;
+			color: $primary-100;
 			text-decoration: none;
-			border-color: currentColor;
+		}
+	}
+	&-white {
+		color: $primary-100;
+		background-color: unset;
+
+		&::before{
+			background-color: $primary-100
+		}
+		&::after{
+			border-color: $primary-100;
+		}
+
+		&:hover,
+		&:focus,
+		a:hover & {
+			color: $primary-100;
 		}
 	}
 }
@@ -46,4 +111,77 @@ input[type="reset"],
 input[type="submit"] {
 	@extend %btn;
 	-webkit-appearance: button;
+
+	padding-right: rem(32px);
+	&::before,
+	&::after{
+		display: none;
+	}
+
+	&:hover,
+	&:focus,
+	a:hover &{
+		padding-left: rem(32px);
+		padding-right: rem(32px);
+	}
+}
+
+.submit-wrap{
+	display: inline-flex;
+	position: relative;
+	background-color: $primary-100;
+
+	& input[type="button"],
+	& input[type="reset"],
+	& input[type="submit"]{
+		background-color: unset;
+		z-index: 1;
+		padding-right: rem(46px);
+
+		&:hover,
+		&:focus,
+		a:hover &{
+			padding-right: rem(50px);
+			padding-left: rem(28px);
+		}
+	}
+	
+	&::before{
+		content: '';
+		position: absolute;
+		top: calc(50%);
+		right: rem(46px);
+		width: rem(13px);
+		height: rem(1px);
+		background-color: $white;
+		opacity: 0;
+		transform: translateY(-50%);
+		transition: all 0.3s ease 0s;
+	}
+	
+	&::after{
+		content: '';
+		position: absolute;
+		top: calc(50% - 1px);
+		right: rem(28px);
+		width: rem(9px);
+		height: rem(9px);
+		border: rem(2px) solid $white;
+		border-top: unset;
+		border-left: unset;
+		transform: rotate(-45deg) translateY(-50%);
+		transition: all 0.3s ease 0s;
+	}
+
+	&:hover,
+	&:focus,
+	a:hover &{
+		&::before{
+			right: rem(28px);
+			opacity: 1;
+		}
+		&::after{
+			right: rem(24px);
+		}
+	}
 }

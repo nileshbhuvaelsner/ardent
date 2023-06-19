@@ -61,16 +61,16 @@ $size in $headingSize {
 			//font-size: 86px;
 			line-height: 1;
 			@include respond-below(xxl) {
-				font-size: 64px;
+				font-size: rem(64px);
 			}
 			@include respond-below(xl) {
-				font-size: 48px;
+				font-size: rem(48px);
 			}
 			@include respond-below(lg) {
-				font-size: 40px;
+				font-size: rem(40px);
 			}
 			@include respond-below(md) {
-				font-size: 32px;
+				font-size: rem(32px);
 			}
 		}
 		
@@ -78,7 +78,7 @@ $size in $headingSize {
 			//font-size: 32px;
 			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: 24px;
+				font-size: rem(24px);
 			}
 		}
 		
@@ -86,7 +86,7 @@ $size in $headingSize {
 			//font-size: 28px;
 			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: 22px;
+				font-size: rem(22px);
 			}
 		}
 		
@@ -94,7 +94,7 @@ $size in $headingSize {
 			//font-size: 24px;
 			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: 20px;
+				font-size: rem(20px);
 			}
 		}
 
@@ -102,7 +102,7 @@ $size in $headingSize {
 			//font-size: 20px;
 			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: 18px;
+				font-size: rem(18px);
 			}
 		}
 		
@@ -110,7 +110,7 @@ $size in $headingSize {
 			//font-size: 18px;
 			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: 16px;
+				font-size: rem(16px);
 			}
 		}
 	}

@@ -26,7 +26,7 @@ $body-color:    $text-color !default;
 
 // Heading font Size
 $headingSize: (
-  'h1': rem(86px),
+  'h1': rem(68px),
   'h2': rem(32px),
   'h3': rem(28px),
   'h4': rem(24px),
@@ -48,7 +48,7 @@ $label-font-size:       rem(16px);
 
 $input-bg:                 $white;
 $input-font-family:        $font-family-base;
-$input-font-size:          $font-size-base;
+$input-font-size:          rem(16px);
 $input-font-weight:        400;
 $input-color:              $text-color;
 $input-color-placeholder:  rgba($text-color,0.6);
