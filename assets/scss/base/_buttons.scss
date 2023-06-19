@@ -1,24 +1,23 @@
 %btn {
 	display: inline-block;
 	vertical-align: top;
-	padding: rem(10px) rem(15px);
+	padding: rem(19px) rem(46px) rem(19px) rem(32px);
 	color: $white;
 	font-size: $font-size-base;
-	line-height: 1.5;
+	line-height: 1.2;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: unset;
 	text-decoration: none;
 	border: none;
 	border-radius: 0;
 	background-color: $primary-100;
-	transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-color 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
 
 	&:hover,
 	&:focus,
 	a:hover & {
 		color: $white;
 		text-decoration: none;
-		background-color: $secondary-100;
 		cursor: pointer;
 	}
 }

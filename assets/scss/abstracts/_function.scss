@@ -1,5 +1,5 @@
 $base: 16px;
-$decimal-value: true;
+$decimal-value: false;
 
 @function decimal-round($number, $digits: 0, $mode: round) {
     $n: 1;

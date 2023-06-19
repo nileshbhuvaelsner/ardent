@@ -258,10 +258,10 @@ function ardent_scripts()
 		}
 	}
 
-	wp_enqueue_style('ardent-animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), $version);
-	wp_enqueue_style('ardent-fa', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
-	wp_enqueue_style('ardent-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', false, $version);
-	wp_enqueue_style('ardent-style', get_template_directory_uri() . '/style.css');
+	//wp_enqueue_style('ardent-animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), $version);
+	//wp_enqueue_style('ardent-fa', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
+	//wp_enqueue_style('ardent-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', false, $version);
+	wp_enqueue_style('ardent-style', get_template_directory_uri() . '/assets/css/style.css');
 
 	$custom_css = ardent_custom_inline_style();
 	wp_add_inline_style('ardent-style', $custom_css);

@@ -6,6 +6,7 @@ html {
 	@include rem-baseline(16px);
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	overflow-x: hidden;
 }
 
 body {
@@ -17,8 +18,13 @@ body {
 	color: $body-color;
 	font-size: $font-size-base;
 	font-family: $font-family-base;
-	line-height: 1.5;
+	line-height: 1.66;
 	background-color: $body-bg;
+	
+	background-image: url( #{$img}/body-bg.png);
+	background-repeat: repeat;
+	background-size: unset;
+	background-position: center;
 
 	// @include custom-scroll;
 	@media screen and (-ms-high-contrast: active),
@@ -52,45 +58,66 @@ $size in $headingSize {
 		}
 
 		@if $key=="h1" {
+			//font-size: 86px;
+			line-height: 1;
+			@include respond-below(xxl) {
+				font-size: 64px;
+			}
+			@include respond-below(xl) {
+				font-size: 48px;
+			}
+			@include respond-below(lg) {
+				font-size: 40px;
+			}
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 32px;
 			}
 		}
-
+		
 		@else if $key=="h2" {
+			//font-size: 32px;
+			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 24px;
 			}
 		}
-
+		
 		@else if $key=="h3" {
+			//font-size: 28px;
+			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 22px;
 			}
 		}
-
+		
 		@else if $key=="h4" {
+			//font-size: 24px;
+			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 20px;
 			}
 		}
 
 		@else if $key=="h5" {
+			//font-size: 20px;
+			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 18px;
 			}
 		}
-
+		
 		@else if $key=="h6" {
+			//font-size: 18px;
+			line-height: 1.43;
 			@include respond-below(md) {
-				font-size: calc($size / 1.5);
+				font-size: 16px;
 			}
 		}
 	}
 }
 
 p {
-	margin-bottom: rem(15px);
+	margin-bottom: rem(16px);
 
 	&:last-child {
 		margin-bottom: 0;
@@ -98,8 +125,8 @@ p {
 }
 
 ul {
-	padding-left: rem(10px);
-	margin-bottom: rem(15px);
+	padding-left: rem(24px);
+	margin-bottom: rem(16px);
 
 	ul {
 		margin-bottom: 0;
@@ -116,8 +143,8 @@ ul {
 }
 
 ol {
-	padding-left: rem(20px);
-	margin-bottom: rem(15px);
+	padding-left: rem(24px);
+	margin-bottom: rem(16px);
 
 	ol {
 		margin-bottom: 0;
@@ -187,7 +214,7 @@ a {
 
 	&:hover,
 	&:focus {
-		color: $black;
+		color: $text-color;
 		text-decoration: underline;
 		outline: none;
 	}
