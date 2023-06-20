@@ -17,7 +17,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '#03c4eb',
+		'default'              => '#ff5d2c',
 	)
 );
 $wp_customize->add_control(
@@ -43,7 +43,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '#333333',
+		'default'              => '#111013',
 	)
 );
 $wp_customize->add_control(
@@ -52,6 +52,32 @@ $wp_customize->add_control(
 		'ardent_secondary_color',
 		array(
 			'label'       => esc_html__( 'Secondary Color', 'ardent' ),
+			'section'     => 'ardent_colors_settings',
+			'description' => '',
+			'priority'    => 2,
+		)
+	)
+);
+
+/**
+ * Text Color
+ *
+ * @since 2.2.1
+ */
+$wp_customize->add_setting(
+	'ardent_text_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#111013',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_text_color',
+		array(
+			'label'       => esc_html__( 'Text Color', 'ardent' ),
 			'section'     => 'ardent_colors_settings',
 			'description' => '',
 			'priority'    => 2,

@@ -56,6 +56,7 @@ if ( ! $hide_footer ) {
 do_action( 'ardent_site_end' );
 ?>
 </div>
+</div>
 
 <?php do_action( 'ardent_after_site_end' ); ?>
 

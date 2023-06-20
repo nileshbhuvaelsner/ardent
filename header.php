@@ -22,11 +22,11 @@ if ( function_exists( 'wp_body_open' ) ) {
 }
 
 do_action( 'ardent_before_site_start' ); ?>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ardent' ); ?></a>
-	<?php
-	/**
-	 * @since 2.0.0
-	 */
-	ardent_header();
-	?>
+<div class="wrapper">
+	<div class="main-container"><?php /*<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ardent' ); ?></a>*/?>
+		<?php
+		/**
+		 * @since 2.0.0
+		 */
+		ardent_header();
+		?>

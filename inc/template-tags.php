@@ -636,6 +636,9 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			 */
 			$primary = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_primary_color' ) );
 			if ( $primary != '' ) { ?>
+				:root{
+					--primary-100:    #<?php echo $primary; ?>;
+				}
 				a, .screen-reader-text:hover, .screen-reader-text:active, .screen-reader-text:focus, .header-social a, .ardent-menu a:hover,
 				.ardent-menu ul li a:hover, .ardent-menu li.ardent-current-item > a, .ardent-menu ul li.current-menu-item > a, .ardent-menu > li a.menu-actived,
 				.ardent-menu.ardent-menu-mobile li.ardent-current-item > a, .site-footer a, .site-footer .footer-social a:hover, .site-footer .btt a:hover,

@@ -57,6 +57,11 @@ select {
 		color: $input-color-placeholder;
 		opacity: 1;
 	}
+
+	@include respond-below(md) {
+		padding: rem(4px) rem(14px);
+		height: 46px;
+	}
 }
 
 textarea {
@@ -64,6 +69,10 @@ textarea {
 	height: $textarea-height-base;
 	resize: none;
 	overflow: auto;
+	
+	@include respond-below(md) {
+		height: 120px;
+	}
 }
 
 select {

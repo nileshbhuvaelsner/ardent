@@ -9,16 +9,26 @@ $icon-family: "iconfontfamily" !important;
 // body contect text size
 $font-size-base:  rem(18px) !default; //16px (Don't change)
 
-// Colors
-$primary-100:   #FF5D2C !default;
-$secondary-100: #111013 !default;
+:root{
+  --primary-100:    #FF5D2C;
+  --secondary-100:  #111013;
+  --text-color:     #111013;
 
-$text-color:    #111013 !default;
+  --white:          #ffffff;
+  --black:          #000000;
+  --gray:           #707070;
+}
+
+// Colors
+$primary-100:     var(--primary-100) !default;
+$secondary-100:   var(--secondary-100) !default;
+
+$text-color:      var(--text-color) !default;
 
 // Start with assigning color names to specific hex values.
-$white:  #ffffff !default;
-$black:  #000000 !default;
-$gray:   #707070 !default;
+$white:  var(--white) !default;
+$black:  var(--black) !default;
+$gray:   var(--gray) !default;
 
 // Body color
 $body-bg:       $white !default;

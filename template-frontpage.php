@@ -8,11 +8,10 @@
 get_header(); ?>
 
 	<div id="content" class="site-content">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main" role="main"><?php /*
+			*/?>
 			<div class="container">
-            <?php
-
-			the_content();?>
+				<?php the_content(); ?>
 			</div>
 			<?php
 
@@ -30,9 +29,9 @@ get_header(); ?>
                      *
 					 * @since 2.1.1
 					 */
-				    if ( Ardent_Config::is_section_active( $section ) ) {
-					    ardent_load_section( $section );
-                    }
+					if ( Ardent_Config::is_section_active( $section ) ) {
+						ardent_load_section( $section );
+					}
 
 				}
 
