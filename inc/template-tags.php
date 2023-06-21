@@ -209,35 +209,42 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 		}
 		$classes[] = $transparent;
 
-		$pos = sanitize_text_field( get_theme_mod( 'ardent_header_position', 'top' ) );
-		if ( $pos == 'below_hero' ) {
-			$classes[] = 'h-below-hero';
-		} else {
-			$classes[] = 'h-on-top';
+		$header_container_class = "container";
+		if($header_width == 'full-width'){
+			$header_container_class = "container-fluid";			
 		}
 
+		// $pos = sanitize_text_field( get_theme_mod( 'ardent_header_position', 'top' ) );
+		// if ( $pos == 'below_hero' ) {
+		// 	$classes[] = 'h-below-hero';
+		// } else {
+		// 	$classes[] = 'h-on-top';
+		// }
+
 		?>
-		<header id="masthead" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>" role="banner">
-			<div class="container">
-				<div class="site-branding">
-				<?php
-				ardent_site_logo();
-				?>
-				</div>
-				<div class="header-right-wrapper">
-					<a href="#0" id="nav-toggle"><?php _e( 'Menu', 'ardent' ); ?><span></span></a>
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<ul class="ardent-menu">
-							<?php wp_nav_menu(
-								array(
-									'theme_location' => 'primary',
-									'container' => '',
-									'items_wrap' => '%3$s',
-								)
-							); ?>
-						</ul>
-					</nav>
-					
+		<header id="sitehead" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>" role="banner">
+			<div class="<?php echo esc_attr( $header_container_class ); ?>">
+				<div class="header-inner">
+					<div class="header-left">
+						<div class="site-branding">
+							<?php ardent_site_logo(); ?>
+						</div>
+					</div>
+					<div class="header-right-wrapper">
+						<a href="#0" id="nav-toggle"><?php _e( 'Menu', 'ardent' ); ?><span></span></a>
+						<nav id="site-navigation" class="main-navigation" role="navigation">
+							<ul class="ardent-menu">
+								<?php wp_nav_menu(
+									array(
+										'theme_location' => 'primary',
+										'container' => '',
+										'items_wrap' => '%3$s',
+									)
+								); ?>
+							</ul>
+						</nav>
+						
+					</div>
 				</div>
 			</div>
 		</header>
@@ -255,24 +262,25 @@ if ( ! function_exists( 'ardent_header' ) ) {
 		if ( ardent_is_transparent_header() ) {
 			$transparent = 'is-transparent';
 		}
-		$pos = sanitize_text_field( get_theme_mod( 'ardent_header_position', 'top' ) );
-		if ( $pos == 'below_hero' ) {
-			$transparent = 'no-transparent';
-			$classes[] = 'h-below-hero';
-		} else {
-			$classes[] = 'h-on-top';
-		}
-
+		//$pos = sanitize_text_field( get_theme_mod( 'ardent_header_position', 'top' ) );
+		// if ( $pos == 'below_hero' ) {
+		// 	$transparent = 'no-transparent';
+		// 	$classes[] = 'h-below-hero';
+		// } else {
+		// 	$classes[] = 'h-on-top';
+		// }
+		
+		//$classes[] = 'h-on-top';
 		$classes[] = $transparent;
 
 		echo '<div id="header-section" class="' . esc_attr( join( ' ', $classes ) ) . '">';
 
 			do_action( 'ardent_header_section_start' );
-		if ( $pos == 'below_hero' ) {
-			if ( is_page_template( 'template-frontpage.php' ) ) {
-				do_action( 'ardent_header_end' );
-			}
-		}
+		// if ( $pos == 'below_hero' ) {
+		// 	if ( is_page_template( 'template-frontpage.php' ) ) {
+		// 		do_action( 'ardent_header_end' );
+		// 	}
+		// }
 
 			$hide_header = false;
 			$page_id = false;
@@ -298,11 +306,11 @@ if ( ! function_exists( 'ardent_header' ) ) {
 			do_action( 'ardent_site_start' );
 		}
 
-		if ( $pos != 'below_hero' ) {
-			if ( is_page_template( 'template-frontpage.php' ) ) {
-				do_action( 'ardent_header_end' );
-			}
-		}
+		// if ( $pos != 'below_hero' ) {
+		// 	if ( is_page_template( 'template-frontpage.php' ) ) {
+		// 		do_action( 'ardent_header_end' );
+		// 	}
+		// }
 
 			do_action( 'ardent_header_section_end' );
 		echo '</div>';
@@ -687,8 +695,20 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			 */
 			$secondary_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_secondary_color' ) );
 			if ( '' != $secondary_color ) {
+				echo ":root{--secondary-100: #$secondary_color;}";
 				echo ".feature-item:hover .icon-background-default{ color: #{$secondary_color}; }";
 			}
+
+			/**
+			 * Theme Text Color
+			 *
+			 * @since 2.2.1
+			 */
+			$text_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_text_color' ) );
+			if ( '' != $text_color ) {
+				echo ":root{--text-color: #$text_color;}";
+			}
+
 			$menu_padding = get_theme_mod( 'ardent_menu_item_padding' );
 			if ( $menu_padding ) {
 				$menu_padding = absint( $menu_padding );
@@ -732,11 +752,16 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			$header_bg_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_bg_color' ) );
 			if ( $header_bg_color ) {
 				?>
+				:root{
+					--header-bg-color: #<?php echo $header_bg_color; ?>;
+				}
+				<?php /*
 				.site-header, .is-transparent .site-header.header-fixed {
 					background: #<?php echo $header_bg_color; ?>;
 					border-bottom: 0px none;
 				}
 				<?php
+				*/
 			} // END $header_bg_color
 
 			/**

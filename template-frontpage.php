@@ -9,10 +9,10 @@ get_header(); ?>
 
 	<div id="content" class="site-content">
 		<main id="main" class="site-main" role="main"><?php /*
-			*/?>
+			
 			<div class="container">
 				<?php the_content(); ?>
-			</div>
+			</div>*/?>
 			<?php
 
             do_action( 'ardent_frontpage_before_section_parts' );

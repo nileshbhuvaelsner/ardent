@@ -293,7 +293,7 @@ function ardent_customizer_partials( $wp_customize ) {
 		'ardent-header-section',
 		array(
 			'selector' => '#header-section',
-			'settings' => array( 'ardent_header_position', 'ardent_sticky_header_disable', 'ardent_header_transparent', 'ardent_header_width' ),
+			'settings' => array( 'ardent_sticky_header_disable', 'ardent_header_transparent', 'ardent_header_width' ),
 			'render_callback' => 'ardent_header',
 			'container_inclusive' => true,
 		)
@@ -333,6 +333,7 @@ function ardent_customizer_partials( $wp_customize ) {
 		// 'ardent_hero_overlay_opacity',
 		'ardent_primary_color',
 		'ardent_secondary_color',
+		'ardent_text_color',
 		'ardent_menu_item_padding',
 
 		'ardent_page_cover_align',
