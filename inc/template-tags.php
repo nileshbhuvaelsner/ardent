@@ -231,6 +231,7 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 						</div>
 					</div>
 					<div class="header-right-wrapper">
+						<?php /*
 						<a href="#0" id="nav-toggle"><?php _e( 'Menu', 'ardent' ); ?><span></span></a>
 						<nav id="site-navigation" class="main-navigation" role="navigation">
 							<ul class="ardent-menu">
@@ -242,7 +243,7 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 									)
 								); ?>
 							</ul>
-						</nav>
+						</nav>*/?>
 						
 					</div>
 				</div>
