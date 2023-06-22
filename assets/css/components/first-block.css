@@ -5,6 +5,11 @@
   --white: #ffffff;
   --black: #000000;
   --gray: #707070;
+  --header-bg-color: #111013;
+  --logo-text-color: #FF5D2C;
+  --site-tagline-color: #ffffff;
+  --menu-color: #ffffff;
+  --menu-hover-color: #FF5D2C;
 }
 
 /* Note: If need Disable Decimal-value functionilty open function.scss file */

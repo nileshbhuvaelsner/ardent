@@ -2,9 +2,134 @@
 .site-header {
 	width: 100%;
 	display: flex;
+	&.no-t{
+		background-color: var(--header-bg-color);
+	}
 
 	.header-inner{
 		width: 100%;
 		display: flex;
+		min-height: 124px;
+	}
+	
+	.header-left{
+		display: flex;
+	}
+	.site-branding{
+		display: flex;
+	}
+	.site-brand-inner{
+		display: flex;
+		align-items: center;
+		gap: rem(8px);
+		padding-top: $gutters;
+		padding-bottom: $gutters;
+		&.has-title, &.has-desc{
+			align-items: unset;
+			justify-content: center;
+			flex-direction: column;
+		}
+	}
+	.site-logo-div{
+		display: flex;
+		a{
+			display: flex;
+			
+			img{
+				width: auto;
+				max-width: rem(160px);
+				height: auto;
+				max-height: rem(124px);
+			}
+		}
+	}
+	.site-title{
+		margin-bottom: 0;
+		line-height: 1;
+		a{
+			color: var(--logo-text-color);
+			text-decoration: none;
+			font-size: rem(32px);
+			font-weight: 700;
+			white-space: nowrap;
+		}
+	}
+	.site-description{
+		color: var(--site-tagline-color);
+		font-size: rem(16px);
+	}
+
+	.header-right{
+		display: flex;
+		margin-left: $gutters;
+		flex-grow: 1;
+	}
+	.header-right-wrapper{
+		display: flex;
+		justify-content: center;
+		flex-grow: 1;
+	}
+	.header-nav{
+		display: flex;
+		ul, li{
+			display: flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			display: flex;
+			text-decoration: none;
+			font-weight: 700;
+			color: var(--menu-color);
+			padding: rem(10px);
+		}
+	}
+
+	ul.desktop-menu{
+		li{
+			position: relative;
+			&:hover > ul{
+				left: 0px;
+			}
+			
+			&:hover > a{
+				color: var(--menu-hover-color);	
+			}
+		}
+		
+		& > li{
+			justify-content: center;
+			padding-left: rem(8px);
+			padding-right: rem(8px);
+			& > a{
+				align-items: center;
+			}
+		}
+
+		ul{
+			flex-direction: column;
+			position: absolute;
+			min-width: rem(230px);
+			top: 100%;
+			left: -9999px;
+			background-color: var(--header-bg-color);
+
+			li{
+				padding: rem(4px) 0;
+				a{
+					width: 100%;
+					padding: rem(6px) rem(18px);
+				}
+
+				&:hover > ul{
+					left: 100%;
+				}
+			}
+
+			ul{
+				top: 0;
+			}
+		}
 	}
 }

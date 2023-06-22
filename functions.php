@@ -50,16 +50,17 @@ if (!function_exists('ardent_setup')) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support('post-thumbnails');
-		add_image_size('ardent-blog-small', 300, 150, true);
-		add_image_size('ardent-small', 480, 300, true);
-		add_image_size('ardent-medium', 640, 400, true);
+		// add_image_size('ardent-blog-small', 300, 150, true);
+		// add_image_size('ardent-small', 480, 300, true);
+		// add_image_size('ardent-medium', 640, 400, true);
 
 		/*
 		 * This theme uses wp_nav_menu() in one location.
 		 */
 		register_nav_menus(
 			array(
-				'primary' => esc_html__('Primary Menu', 'ardent'),
+				'desktop_menu' 	=> esc_html__('Desktop Menu', 'ardent'),
+				'mobile_menu' 	=> esc_html__('Mobile Menu', 'ardent'),
 			)
 		);
 

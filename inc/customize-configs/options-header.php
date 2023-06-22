@@ -144,7 +144,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#111013',
 	)
 );
 $wp_customize->add_control(
@@ -166,7 +166,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#FF5D2C',
 	)
 );
 $wp_customize->add_control(
@@ -186,7 +186,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#ffffff',
 	)
 );
 $wp_customize->add_control(
@@ -207,7 +207,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#ffffff',
 	)
 );
 $wp_customize->add_control(
@@ -228,7 +228,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#FF5D2C',
 	)
 );
 $wp_customize->add_control(
@@ -250,7 +250,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#FF5D2C',
 	)
 );
 $wp_customize->add_control(
@@ -271,7 +271,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 		'sanitize_js_callback' => 'maybe_hash_hex_color',
-		'default'              => '',
+		'default'              => '#FF5D2C',
 	)
 );
 $wp_customize->add_control(
@@ -286,101 +286,101 @@ $wp_customize->add_control(
 	)
 );
 
-// Transparent Logo
-$wp_customize->add_setting(
-	'ardent_transparent_logo',
-	array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-		'transport'         => 'postMessage',
-	)
-);
-$wp_customize->add_control(
-	new WP_Customize_Image_Control(
-		$wp_customize,
-		'ardent_transparent_logo',
-		array(
-			'label'       => esc_html__( 'Transparent Logo', 'ardent' ),
-			'section'     => 'ardent_header_settings',
-			'description' => esc_html__( 'Only apply when transparent header option is checked.', 'ardent' ),
-		)
-	)
-);
+// // Transparent Logo
+// $wp_customize->add_setting(
+// 	'ardent_transparent_logo',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_text_field',
+// 		'default'           => '',
+// 		'transport'         => 'postMessage',
+// 	)
+// );
+// $wp_customize->add_control(
+// 	new WP_Customize_Image_Control(
+// 		$wp_customize,
+// 		'ardent_transparent_logo',
+// 		array(
+// 			'label'       => esc_html__( 'Transparent Logo', 'ardent' ),
+// 			'section'     => 'ardent_header_settings',
+// 			'description' => esc_html__( 'Only apply when transparent header option is checked.', 'ardent' ),
+// 		)
+// 	)
+// );
 
-// Transparent Retina Logo
-$wp_customize->add_setting(
-	'ardent_transparent_retina_logo',
-	array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-		'transport'         => 'postMessage',
-	)
-);
-$wp_customize->add_control(
-	new WP_Customize_Image_Control(
-		$wp_customize,
-		'ardent_transparent_retina_logo',
-		array(
-			'label'       => esc_html__( 'Transparent Retina Logo', 'ardent' ),
-			'description' => esc_html__( 'Only apply when transparent header option is checked.', 'ardent' ),
-			'section'     => 'ardent_header_settings',
-		)
-	)
-);
+// // Transparent Retina Logo
+// $wp_customize->add_setting(
+// 	'ardent_transparent_retina_logo',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_text_field',
+// 		'default'           => '',
+// 		'transport'         => 'postMessage',
+// 	)
+// );
+// $wp_customize->add_control(
+// 	new WP_Customize_Image_Control(
+// 		$wp_customize,
+// 		'ardent_transparent_retina_logo',
+// 		array(
+// 			'label'       => esc_html__( 'Transparent Retina Logo', 'ardent' ),
+// 			'description' => esc_html__( 'Only apply when transparent header option is checked.', 'ardent' ),
+// 			'section'     => 'ardent_header_settings',
+// 		)
+// 	)
+// );
 
-/**
- * @since 2.0.8
- */
-$wp_customize->add_setting(
-	'ardent_transparent_logo_height',
-	array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-	)
-);
-$wp_customize->add_control(
-	'ardent_transparent_logo_height',
-	array(
-		'label'       => esc_html__( 'Transparent Logo Height in Pixel', 'ardent' ),
-		'section'     => 'ardent_header_settings',
-		'description' => '',
-	)
-);
+// /**
+//  * @since 2.0.8
+//  */
+// $wp_customize->add_setting(
+// 	'ardent_transparent_logo_height',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_text_field',
+// 		'default'           => '',
+// 	)
+// );
+// $wp_customize->add_control(
+// 	'ardent_transparent_logo_height',
+// 	array(
+// 		'label'       => esc_html__( 'Transparent Logo Height in Pixel', 'ardent' ),
+// 		'section'     => 'ardent_header_settings',
+// 		'description' => '',
+// 	)
+// );
 
-$wp_customize->add_setting(
-	'ardent_transparent_site_title_c',
-	array(
-		'sanitize_callback' => 'sanitize_hex_color',
-		'default'           => '',
-	)
-);
-$wp_customize->add_control(
-	new WP_Customize_Color_Control(
-		$wp_customize,
-		'ardent_transparent_site_title_c',
-		array(
-			'label'       => esc_html__( 'Transparent Site Title Color', 'ardent' ),
-			'section'     => 'ardent_header_settings',
-			'description' => '',
-		)
-	)
-);
+// $wp_customize->add_setting(
+// 	'ardent_transparent_site_title_c',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_hex_color',
+// 		'default'           => '',
+// 	)
+// );
+// $wp_customize->add_control(
+// 	new WP_Customize_Color_Control(
+// 		$wp_customize,
+// 		'ardent_transparent_site_title_c',
+// 		array(
+// 			'label'       => esc_html__( 'Transparent Site Title Color', 'ardent' ),
+// 			'section'     => 'ardent_header_settings',
+// 			'description' => '',
+// 		)
+// 	)
+// );
 
-$wp_customize->add_setting(
-	'ardent_transparent_tag_title_c',
-	array(
-		'sanitize_callback' => 'sanitize_hex_color',
-		'default'           => '',
-	)
-);
-$wp_customize->add_control(
-	new WP_Customize_Color_Control(
-		$wp_customize,
-		'ardent_transparent_tag_title_c',
-		array(
-			'label'       => esc_html__( 'Transparent Site Tagline Color', 'ardent' ),
-			'section'     => 'ardent_header_settings',
-			'description' => '',
-		)
-	)
-);
+// $wp_customize->add_setting(
+// 	'ardent_transparent_tag_title_c',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_hex_color',
+// 		'default'           => '',
+// 	)
+// );
+// $wp_customize->add_control(
+// 	new WP_Customize_Color_Control(
+// 		$wp_customize,
+// 		'ardent_transparent_tag_title_c',
+// 		array(
+// 			'label'       => esc_html__( 'Transparent Site Tagline Color', 'ardent' ),
+// 			'section'     => 'ardent_header_settings',
+// 			'description' => '',
+// 		)
+// 	)
+// );

@@ -36,39 +36,39 @@ $wp_customize->add_control(
 	)
 );
 
-// Retina Logo
-$wp_customize->add_setting( 'ardent_retina_logo',
-	array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new WP_Customize_Image_Control(
-		$wp_customize,
-		'ardent_retina_logo',
-		array(
-			'label'   => esc_html__( 'Retina Logo', 'ardent' ),
-			'section' => 'title_tagline',
-		)
-	)
-);
+// // Retina Logo
+// $wp_customize->add_setting( 'ardent_retina_logo',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_text_field',
+// 		'default'           => '',
+// 		'transport'         => 'postMessage'
+// 	)
+// );
+// $wp_customize->add_control(
+// 	new WP_Customize_Image_Control(
+// 		$wp_customize,
+// 		'ardent_retina_logo',
+// 		array(
+// 			'label'   => esc_html__( 'Retina Logo', 'ardent' ),
+// 			'section' => 'title_tagline',
+// 		)
+// 	)
+// );
 
 
-// Logo Width
-$wp_customize->add_setting( 'ardent_logo_height',
-	array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	'ardent_logo_height',
-	array(
-		'label'   => esc_html__( 'Logo Height In Pixel', 'ardent' ),
-		'section' => 'title_tagline',
-	)
+// // Logo Width
+// $wp_customize->add_setting( 'ardent_logo_height',
+// 	array(
+// 		'sanitize_callback' => 'sanitize_text_field',
+// 		'default'           => '',
+// 		'transport'         => 'postMessage'
+// 	)
+// );
+// $wp_customize->add_control(
+// 	'ardent_logo_height',
+// 	array(
+// 		'label'   => esc_html__( 'Logo Height In Pixel', 'ardent' ),
+// 		'section' => 'title_tagline',
+// 	)
 
-);
+// );

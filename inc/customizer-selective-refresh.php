@@ -320,14 +320,14 @@ function ardent_customizer_partials( $wp_customize ) {
 	 * @since 2.0.0
 	 */
 	$css_settings = array(
-		'ardent_logo_height',
-		'ardent_transparent_logo_height',
+		//'ardent_logo_height',
+		//'ardent_transparent_logo_height',
 		'ardent_tagline_text_color',
 		'ardent_logo_text_color',
 
-		'ardent_transparent_site_title_c',
-		'ardent_transparent_tag_title_c',
-		'ardent_logo_height',
+		//'ardent_transparent_site_title_c',
+		//'ardent_transparent_tag_title_c',
+		//'ardent_logo_height',
 
 		'ardent_hero_overlay_color',
 		// 'ardent_hero_overlay_opacity',
@@ -398,15 +398,15 @@ function ardent_customizer_partials( $wp_customize ) {
 		)
 	);
 
-	// Retina logo
-	$wp_customize->selective_refresh->add_partial(
-		'ardent_site_logo',
-		array(
-			'selector' => '.site-branding',
-			'settings' => array( 'ardent_retina_logo', 'ardent_transparent_logo', 'ardent_transparent_retina_logo' ),
-			'render_callback' => 'ardent_site_logo',
-		)
-	);
+	// // Retina logo
+	// $wp_customize->selective_refresh->add_partial(
+	// 	'ardent_site_logo',
+	// 	array(
+	// 		'selector' => '.site-branding',
+	// 		'settings' => array( 'ardent_retina_logo', 'ardent_transparent_logo', 'ardent_transparent_retina_logo' ),
+	// 		'render_callback' => 'ardent_site_logo',
+	// 	)
+	// );
 
 }
 add_action( 'customize_register', 'ardent_customizer_partials', 199 );

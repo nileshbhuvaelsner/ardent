@@ -9,9 +9,11 @@
 
 	<meta name="theme-color" content="#ffffff">
 
+	<?php /*
 	<link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" />
 	<link rel="alternate icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" >
 	<link rel="mask-icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" color="#FF5D2C">
+	*/ ?>
 </head>
 
 <body <?php body_class(); ?>>

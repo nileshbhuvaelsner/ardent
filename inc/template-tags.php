@@ -113,7 +113,7 @@ if ( ! function_exists( 'ardent_site_logo' ) ) {
 			if ( has_custom_logo() ) {
 				$classes['logo'] = 'has-logo-img';
 				$html .= '<div class="site-logo-div">';
-				$html .= get_custom_logo();
+					$html .= get_custom_logo();
 				$html .= '</div>';
 			}
 		}
@@ -124,7 +124,7 @@ if ( ! function_exists( 'ardent_site_logo' ) ) {
 		if ( ! $hide_sitetile ) {
 			$classes['title'] = 'has-title';
 			if ( is_front_page() && ! is_home() ) {
-				$html .= '<h1 class="site-title"><a class="site-text-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a></h1>';
+				$html .= '<p class="site-title"><a class="site-text-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a></p>';
 			} else {
 				$html .= '<p class="site-title"><a class="site-text-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a></p>';
 			}
@@ -183,7 +183,14 @@ if ( ! function_exists( 'ardent_is_transparent_header' ) ) {
 		return $check;
 	}
 }
-
+/*
+ #    #  ######    ##    #####   ######  #####  
+ #    #  #        #  #   #    #  #       #    # 
+ ######  #####   #    #  #    #  #####   #    # 
+ #    #  #       ######  #    #  #       #####  
+ #    #  #       #    #  #    #  #       #   #  
+ #    #  ######  #    #  #####   ######  #    # 
+*/
 add_action( 'ardent_site_start', 'ardent_site_header' );
 if ( ! function_exists( 'ardent_site_header' ) ) {
 	/**
@@ -230,21 +237,18 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 							<?php ardent_site_logo(); ?>
 						</div>
 					</div>
-					<div class="header-right-wrapper">
-						<?php /*
-						<a href="#0" id="nav-toggle"><?php _e( 'Menu', 'ardent' ); ?><span></span></a>
-						<nav id="site-navigation" class="main-navigation" role="navigation">
-							<ul class="ardent-menu">
-								<?php wp_nav_menu(
+					<div class="header-right">
+						<div class="header-right-wrapper">
+							<div class="header-nav"><?php 
+								wp_nav_menu(
 									array(
-										'theme_location' => 'primary',
-										'container' => '',
-										'items_wrap' => '%3$s',
+										'theme_location'=> 'desktop_menu',
+										'container'		=> '',
+										'menu_class'    => 'desktop-menu',
 									)
-								); ?>
-							</ul>
-						</nav>*/?>
-						
+								);?>
+							</div>
+						</div>						
 					</div>
 				</div>
 			</div>
@@ -713,7 +717,7 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			$menu_padding = get_theme_mod( 'ardent_menu_item_padding' );
 			if ( $menu_padding ) {
 				$menu_padding = absint( $menu_padding );
-				echo ".ardent-menu a{ padding-left: {$menu_padding}px; padding-right: {$menu_padding}px;  }";
+				echo ".site-header ul.desktop-menu > li{ padding-left: {$menu_padding}px; padding-right: {$menu_padding}px;  }";
 			}
 
 			$cover_align = sanitize_text_field( get_theme_mod( 'ardent_page_cover_align' ) );
@@ -771,6 +775,9 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			$menu_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_menu_color' ) );
 			if ( $menu_color ) {
 				?>
+				:root{
+					--menu-color: #<?php echo $menu_color; ?>;
+				}
 				.ardent-menu > li > a {
 					color: #<?php echo $menu_color; ?>;
 				}
@@ -783,6 +790,9 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			$menu_hover_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_menu_hover_color' ) );
 			if ( $menu_hover_color ) {
 				?>
+				:root{
+					--menu-hover-color: #<?php echo $menu_hover_color; ?>;
+				}
 				.ardent-menu > li > a:hover,
 				.ardent-menu > li.ardent-current-item > a{
 					color: #<?php echo $menu_hover_color; ?>;
@@ -836,6 +846,9 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			$ardent_logo_text_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_logo_text_color' ) );
 			if ( $ardent_logo_text_color ) {
 				?>
+				:root{
+					--logo-text-color: #<?php echo $ardent_logo_text_color; ?>;
+				}
 				#page .site-branding .site-title, #page .site-branding .site-text-logo {
 					color: #<?php echo $ardent_logo_text_color; ?>;
 				}
@@ -843,6 +856,11 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			}
 			$ardent_site_tagline_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_tagline_text_color' ) );
 			if ( $ardent_site_tagline_color ) {
+				?>
+				:root{
+					--site-tagline-color: #<?php echo $ardent_site_tagline_color; ?>;
+				}
+				<?php
 				echo "#page .site-branding .site-description { color: #{$ardent_site_tagline_color};  } ";
 			}
 
