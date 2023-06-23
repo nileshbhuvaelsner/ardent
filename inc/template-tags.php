@@ -183,6 +183,20 @@ if ( ! function_exists( 'ardent_is_transparent_header' ) ) {
 		return $check;
 	}
 }
+if ( ! function_exists( 'ardent_site_header_search' ) ) {
+	function ardent_site_header_search() {
+		$html = '';
+		$header_search = get_theme_mod( 'ardent_header_search', 0 );
+		if($header_search){?>
+				<div class="site-header-search">
+					<button><span class="icon icon-search"></span></button>
+				</div>
+			<?php
+		}
+
+		//echo $html;
+	}
+}
 /*
  #    #  ######    ##    #####   ######  #####  
  #    #  #        #  #   #    #  #       #    # 
@@ -248,6 +262,7 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 									)
 								);?>
 							</div>
+							<?php ardent_site_header_search(); ?>
 						</div>						
 					</div>
 				</div>
@@ -826,6 +841,30 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 				}
 				<?php
 			} // END $menu_hover_bg
+
+			/**
+			 * Header Search Color
+			 */
+			$header_search_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_search_color' ) );
+			if ( $header_search_color ) {
+				?>
+				.site-header .site-header-search button span.icon {
+					color: #<?php echo $header_search_color; ?>;
+				}
+				<?php
+			} // END $header_search_color
+			
+			/**
+			 * Header Search Color
+			 */
+			$header_search_hover_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_search_hover_color' ) );
+			if ( $header_search_hover_color ) {
+				?>
+				.site-header .site-header-search button:hover span.icon {
+					color: #<?php echo $header_search_hover_color; ?>;
+				}
+				<?php
+			} // END $header_search_hover_color
 
 			/**
 			 * Reponsive Mobie button color

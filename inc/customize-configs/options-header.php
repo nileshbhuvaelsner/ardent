@@ -384,3 +384,87 @@ $wp_customize->add_control(
 // 		)
 // 	)
 // );
+
+
+// Header Search
+$wp_customize->add_setting(
+	'ardent_header_search',
+	array(
+		'sanitize_callback' => 'ardent_sanitize_checkbox',
+		'default'           => '',
+		'active_callback'   => 'ardent_showon_frontpage',
+		'transport'         => 'postMessage',
+	)
+);
+$wp_customize->add_control(
+	'ardent_header_search',
+	array(
+		'type'        => 'checkbox',
+		'label'       => esc_html__( 'Header Search', 'ardent' ),
+		'section'     => 'ardent_header_settings',
+		'description' => esc_html__( 'Show search button in header right', 'ardent' ),
+	)
+);
+
+// Header Search Color
+$wp_customize->add_setting(
+	'ardent_header_search_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#ffffff',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_search_color',
+		array(
+			'label'       => esc_html__( 'Header Search Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+		)
+	)
+);
+
+// Header Search Hover Color
+$wp_customize->add_setting(
+	'ardent_header_search_hover_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#FF5D2C',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_search_hover_color',
+		array(
+			'label'       => esc_html__( 'Header Search Hover/Active Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+
+		)
+	)
+);
+
+// Header Site Info
+$wp_customize->add_setting(
+	'ardent_header_site_info',
+	array(
+		'sanitize_callback' => 'ardent_sanitize_checkbox',
+		'default'           => '',
+		'active_callback'   => 'ardent_showon_frontpage',
+		'transport'         => 'postMessage',
+	)
+);
+$wp_customize->add_control(
+	'ardent_header_site_info',
+	array(
+		'type'        => 'checkbox',
+		'label'       => esc_html__( 'Header Site Info', 'ardent' ),
+		'section'     => 'ardent_header_settings',
+		'description' => esc_html__( 'Check this box to show site info button in header', 'ardent' ),
+	)
+);

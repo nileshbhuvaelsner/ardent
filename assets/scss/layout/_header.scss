@@ -71,6 +71,8 @@
 	}
 	.header-nav{
 		display: flex;
+		flex-grow: 1;
+		justify-content: center;
 		ul, li{
 			display: flex;
 			list-style: none;
@@ -129,6 +131,34 @@
 
 			ul{
 				top: 0;
+			}
+		}
+	}
+
+	.site-header-search{
+		display: flex;
+		align-items: center;
+		margin-left: $gutters;
+		button{
+			background: none;
+			border: none;
+			margin: 0;
+			padding: 0;
+			width: rem(55px);
+			height: rem(55px);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+
+			&:hover span.icon{
+				color: $primary-100;
+			}
+			span.icon{
+				display: flex;
+				color: $white;
+				font-size: 22px;
+				transition: all 0.3s ease 0s;
 			}
 		}
 	}
