@@ -910,8 +910,7 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			if ( $header_site_info_btn_hover_color ) {
 				?>
 				.site-header .header-site-info button:hover,
-				.site-header .header-site-info button:active,
-				.site-header .header-site-info button:focus {
+				.site-header .header-site-info button.is-open{
 					background-color: #<?php echo $header_site_info_btn_hover_color; ?>;
 				}
 				<?php
@@ -936,8 +935,7 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			if ( $header_site_info_btn_hover_line_color ) {
 				?>
 				.site-header .header-site-info button:hover .btn_hamburger span,
-				.site-header .header-site-info button:active .btn_hamburger span,
-				.site-header .header-site-info button:focus .btn_hamburger span {
+				.site-header .header-site-info button.is-open .btn_hamburger span{
 					background-color: #<?php echo $header_site_info_btn_hover_line_color; ?>;
 				}
 				<?php

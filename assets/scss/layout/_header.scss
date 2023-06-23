@@ -91,12 +91,26 @@
 	ul.desktop-menu{
 		li{
 			position: relative;
-			&:hover > ul{
-				left: 0px;
-			}
-			
-			&:hover > a{
-				color: var(--menu-hover-color);	
+			&:hover{
+				& > ul{
+					left: 0px;
+				}
+				& > a{
+					color: var(--menu-hover-color);
+					/*&::before{
+						transform: rotate(45deg) translateX(rem(-7px)) translateY(rem(5.3px));
+						opacity: 1;
+					}
+					&::after{
+						transform: translateY(-50%) translateX(rem(-6px));
+						opacity: 1;
+					}*/
+
+					&::before{
+						transform: translateX(rem(-8px)) translateY(rem(-5px));
+						opacity: 1;
+					}
+				}
 			}
 		}
 		
@@ -106,6 +120,59 @@
 			padding-right: rem(8px);
 			& > a{
 				align-items: center;
+				position: relative;
+				/*
+				&::before{
+					content: '';
+					position: absolute;
+					width: rem(14px);
+					height: 0px;
+					border-top: rem(1px) solid var(--menu-hover-color);
+					left: 0;
+					top: 50%;
+					opacity: 0;
+					transform: rotate(45deg) translateX(rem(-17px)) translateY(rem(9px));
+					transition: all 0.3s ease 0s;
+				}
+				&::after{
+					content: '';
+					position: absolute;
+					width: rem(10px);
+					height: rem(10px);
+					border: rem(1px) solid var(--menu-hover-color);
+					border-left: unset;
+					border-top: unset;
+					left: 0;
+					top: 50%;
+					opacity: 0;
+					transform: translateY(-100%) translateX(rem(-16px));
+					transition: all 0.3s ease 0s;
+				}*/
+				&::before{
+					font-family: "ardent" !important;
+					font-style: normal !important;
+					font-weight: normal !important;
+					font-variant: normal !important;
+					text-transform: none !important;
+					speak: none;
+					line-height: 1;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+
+					content: "\63";
+					font-size: rem(14px);
+					position: absolute;
+
+					width: rem(10px);
+					height: rem(10px);
+
+					left: 0;
+					top: 50%;
+					opacity: 0;
+					
+					transform: translateX(rem(-18px)) translateY(rem(-15px));
+					transition: all 0.3s ease 0s;
+				}
 			}
 		}
 
@@ -124,8 +191,10 @@
 					padding: rem(6px) rem(18px);
 				}
 
-				&:hover > ul{
-					left: 100%;
+				&:hover{
+					& > ul{
+						left: 100%;
+					}
 				}
 			}
 
@@ -182,7 +251,7 @@
 			align-items: center;
 			cursor: pointer;
 
-			&:hover, &:active, &:focus{
+			&:hover, &.is-open{
 				background-color: $white;
 				.btn_hamburger{
 					span{
