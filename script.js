@@ -1,0 +1,1 @@
+var $=jQuery.noConflict(),window_widht=$(window).width();$(document).ready(function(){var n;0<$(".header-site-info").length&&(n=$(".header-site-info"),$(n).children("button").click(function(){$(this).toggleClass("is-open")}))}),$(window).on("load",function(){}),$(window).on("scroll",function(){}),$(window).on("resize",function(){});

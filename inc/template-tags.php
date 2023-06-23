@@ -183,9 +183,12 @@ if ( ! function_exists( 'ardent_is_transparent_header' ) ) {
 		return $check;
 	}
 }
+
+/*
+ * Header Search button
+*/
 if ( ! function_exists( 'ardent_site_header_search' ) ) {
 	function ardent_site_header_search() {
-		$html = '';
 		$header_search = get_theme_mod( 'ardent_header_search', 0 );
 		if($header_search){?>
 				<div class="site-header-search">
@@ -193,10 +196,30 @@ if ( ! function_exists( 'ardent_site_header_search' ) ) {
 				</div>
 			<?php
 		}
-
-		//echo $html;
 	}
 }
+
+/*
+ * Header Site Info button
+*/
+if ( ! function_exists( 'ardent_header_site_info' ) ) {
+	function ardent_header_site_info() {
+		$header_site_info = get_theme_mod( 'ardent_header_site_info', 0 );
+		if($header_site_info){?>
+				<div class="header-site-info">
+					<button>
+						<span class="btn_hamburger">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
+				</div>
+			<?php
+		}
+	}
+}
+
 /*
  #    #  ######    ##    #####   ######  #####  
  #    #  #        #  #   #    #  #       #    # 
@@ -247,8 +270,8 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 			<div class="<?php echo esc_attr( $header_container_class ); ?>">
 				<div class="header-inner">
 					<div class="header-left">
-						<div class="site-branding">
-							<?php ardent_site_logo(); ?>
+						<div class="site-branding"><?php 
+							ardent_site_logo(); ?>
 						</div>
 					</div>
 					<div class="header-right">
@@ -261,8 +284,10 @@ if ( ! function_exists( 'ardent_site_header' ) ) {
 										'menu_class'    => 'desktop-menu',
 									)
 								);?>
-							</div>
-							<?php ardent_site_header_search(); ?>
+							</div><?php 
+							ardent_site_header_search(); 
+							ardent_header_site_info(); 
+							?>
 						</div>						
 					</div>
 				</div>
@@ -855,7 +880,7 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			} // END $header_search_color
 			
 			/**
-			 * Header Search Color
+			 * Header Search Hover Color
 			 */
 			$header_search_hover_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_search_hover_color' ) );
 			if ( $header_search_hover_color ) {
@@ -865,6 +890,58 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 				}
 				<?php
 			} // END $header_search_hover_color
+			
+			/**
+			 * Header Site Info Button Color
+			 */
+			$header_site_info_btn_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_site_info_btn_color' ) );
+			if ( $header_site_info_btn_color ) {
+				?>
+				.site-header .header-site-info button{
+					background-color: #<?php echo $header_site_info_btn_color; ?>;
+				}
+				<?php
+			} // END $header_site_info_btn_color
+			
+			/**
+			 * Header Site Info Button Hover Color
+			 */
+			$header_site_info_btn_hover_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_site_info_btn_hover_color' ) );
+			if ( $header_site_info_btn_hover_color ) {
+				?>
+				.site-header .header-site-info button:hover,
+				.site-header .header-site-info button:active,
+				.site-header .header-site-info button:focus {
+					background-color: #<?php echo $header_site_info_btn_hover_color; ?>;
+				}
+				<?php
+			} // END $header_site_info_btn_hover_color
+			
+			/**
+			 * Header Site Info Button Line Color
+			 */
+			$header_site_info_btn_line_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_site_info_btn_line_color' ) );
+			if ( $header_site_info_btn_line_color ) {
+				?>
+				.site-header .header-site-info button .btn_hamburger span{
+					background-color: #<?php echo $header_site_info_btn_line_color; ?>;
+				}
+				<?php
+			} // END $header_site_info_btn_line_color
+			
+			/**
+			 * Header Site Info Button Hover Line Color
+			 */
+			$header_site_info_btn_hover_line_color = sanitize_hex_color_no_hash( get_theme_mod( 'ardent_header_site_info_btn_hover_line_color' ) );
+			if ( $header_site_info_btn_hover_line_color ) {
+				?>
+				.site-header .header-site-info button:hover .btn_hamburger span,
+				.site-header .header-site-info button:active .btn_hamburger span,
+				.site-header .header-site-info button:focus .btn_hamburger span {
+					background-color: #<?php echo $header_site_info_btn_hover_line_color; ?>;
+				}
+				<?php
+			} // END $header_site_info_btn_hover_line_color
 
 			/**
 			 * Reponsive Mobie button color

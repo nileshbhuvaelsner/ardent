@@ -385,7 +385,6 @@ $wp_customize->add_control(
 // 	)
 // );
 
-
 // Header Search
 $wp_customize->add_setting(
 	'ardent_header_search',
@@ -466,5 +465,89 @@ $wp_customize->add_control(
 		'label'       => esc_html__( 'Header Site Info', 'ardent' ),
 		'section'     => 'ardent_header_settings',
 		'description' => esc_html__( 'Check this box to show site info button in header', 'ardent' ),
+	)
+);
+
+// Header Site Info Button Color
+$wp_customize->add_setting(
+	'ardent_header_site_info_btn_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#FF5D2C',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_site_info_btn_color',
+		array(
+			'label'       => esc_html__( 'Header Site Info Button Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+		)
+	)
+);
+
+// Header Site Info Button Hover Color
+$wp_customize->add_setting(
+	'ardent_header_site_info_btn_hover_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#ffffff',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_site_info_btn_hover_color',
+		array(
+			'label'       => esc_html__( 'Header Site Info Button Hover Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+		)
+	)
+);
+
+// Header Site Info Button Line Color
+$wp_customize->add_setting(
+	'ardent_header_site_info_btn_line_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#ffffff',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_site_info_btn_line_color',
+		array(
+			'label'       => esc_html__( 'Header Site Info Button Line Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+		)
+	)
+);
+
+// Header Site Info Button Hover Line Color
+$wp_customize->add_setting(
+	'ardent_header_site_info_btn_hover_line_color',
+	array(
+		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'              => '#FF5D2C',
+	)
+);
+$wp_customize->add_control(
+	new WP_Customize_Color_Control(
+		$wp_customize,
+		'ardent_header_site_info_btn_hover_line_color',
+		array(
+			'label'       => esc_html__( 'Header Site Info Button Hover Line Color', 'ardent' ),
+			'section'     => 'ardent_header_settings',
+			'description' => '',
+		)
 	)
 );

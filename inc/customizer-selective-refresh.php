@@ -351,6 +351,10 @@ function ardent_customizer_partials( $wp_customize ) {
 		'ardent_menu_toggle_button_color',
 		'ardent_header_search_color',
 		'ardent_header_search_hover_color',
+		'ardent_header_site_info_btn_color',
+		'ardent_header_site_info_btn_hover_color',
+		'ardent_header_site_info_btn_line_color',
+		'ardent_header_site_info_btn_hover_line_color',
 
 		'ardent_footer_info_bg',
 		'ardent_footer_bg',
