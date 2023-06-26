@@ -152,12 +152,17 @@
 
 // icon font : @include icon("\67");
 @mixin icon($content) {
+    font-family: $icon-family !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
     content: $content;
-    font-family: $icon-family;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    text-transform: none;
 }
 
 // custom scroll
@@ -252,4 +257,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+// Site Gradient
+@mixin site-gradient{
+    background: $primary-100;
+    background: radial-gradient(circle, $primary-100 0%, $primary-100 0%, var(--primary-100-01) 45%, var(--primary-100-00) 90%, var(--primary-100-00) 100%); 
 }

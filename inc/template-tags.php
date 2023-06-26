@@ -320,7 +320,7 @@ if ( ! function_exists( 'ardent_header' ) ) {
 
 		echo '<div id="header-section" class="' . esc_attr( join( ' ', $classes ) ) . '">';
 
-			do_action( 'ardent_header_section_start' );
+		do_action( 'ardent_header_section_start' );
 		// if ( $pos == 'below_hero' ) {
 		// 	if ( is_page_template( 'template-frontpage.php' ) ) {
 		// 		do_action( 'ardent_header_end' );
@@ -351,14 +351,26 @@ if ( ! function_exists( 'ardent_header' ) ) {
 			do_action( 'ardent_site_start' );
 		}
 
-		// if ( $pos != 'below_hero' ) {
-		// 	if ( is_page_template( 'template-frontpage.php' ) ) {
-		// 		do_action( 'ardent_header_end' );
-		// 	}
-		// }
+		//if ( $pos != 'below_hero' ) {
+			if ( is_page_template( 'template-frontpage.php' ) ) {
+				do_action( 'ardent_header_end' );
+			}
+		//}
 
 			do_action( 'ardent_header_section_end' );
 		echo '</div>';
+	}
+}
+
+if( ! function_exists( 'ardent_site_content_class' ) ){
+	function ardent_site_content_class() {
+		$transparent = 'header-no-transparent';
+		if ( ardent_is_transparent_header() ) {
+			$transparent = 'header-transparent';
+		}
+		$classes[] = $transparent;
+
+		echo esc_attr( join( ' ', $classes ) );
 	}
 }
 
@@ -662,6 +674,7 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			#main .video-section section.hero-slideshow-wrapper {
 				background: transparent;
 			}
+			<?php /* ?><?php */ ?>
 			.hero-slideshow-wrapper:after {
 				position: absolute;
 				top: 0px;
@@ -691,6 +704,8 @@ if ( ! function_exists( 'ardent_custom_inline_style' ) ) {
 			if ( $primary != '' ) { ?>
 				:root{
 					--primary-100:    #<?php echo $primary; ?>;
+					--primary-100-10: #<?php echo $primary.'01'; ?>;
+					--primary-100-00: #<?php echo $primary.'00'; ?>;
 				}
 				a, .screen-reader-text:hover, .screen-reader-text:active, .screen-reader-text:focus, .header-social a, .ardent-menu a:hover,
 				.ardent-menu ul li a:hover, .ardent-menu li.ardent-current-item > a, .ardent-menu ul li.current-menu-item > a, .ardent-menu > li a.menu-actived,

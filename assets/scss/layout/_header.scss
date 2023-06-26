@@ -1,7 +1,17 @@
 /*--- header ---*/
+.is-transparent{
+	position: relative;
+	.site-header{
+		&.is-t{
+			background-color: unset;
+			position: absolute;
+		}
+	}
+}
 .site-header {
 	width: 100%;
 	display: flex;
+	z-index: 99;
 	&.no-t{
 		background-color: var(--header-bg-color);
 	}
@@ -121,6 +131,7 @@
 			& > a{
 				align-items: center;
 				position: relative;
+				white-space: nowrap;
 				/*
 				&::before{
 					content: '';
@@ -149,17 +160,8 @@
 					transition: all 0.3s ease 0s;
 				}*/
 				&::before{
-					font-family: "ardent" !important;
-					font-style: normal !important;
-					font-weight: normal !important;
-					font-variant: normal !important;
-					text-transform: none !important;
-					speak: none;
-					line-height: 1;
-					-webkit-font-smoothing: antialiased;
-					-moz-osx-font-smoothing: grayscale;
-
-					content: "\63";
+					@include icon("\63");
+					
 					font-size: rem(14px);
 					position: absolute;
 
@@ -303,4 +305,33 @@
 			}
 		}
 	}
+}
+
+.is-transparent{
+	.hero-slideshow-wrapper{
+		&.header-transparent{
+			position: relative;
+			&::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 800px;
+				height: 800px;
+
+				opacity: 0.50;
+
+				filter: blur(50px);
+
+				@include site-gradient;
+				
+				transform: translateY(-50%) translateX(-50%) scaleX(2.29);
+
+				z-index: 1;
+			}
+		}
+	}
+}
+.hero-slideshow-wrapper{
+	background-color: $secondary-100;
 }

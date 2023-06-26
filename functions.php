@@ -332,7 +332,7 @@ function ardent_scripts()
 		wp_enqueue_style('ardent-gallery-lightgallery', get_template_directory_uri() . '/assets/css/lightgallery.css');
 	}
 
-	//wp_enqueue_script('ardent-theme', get_template_directory_uri() . '/assets/js/theme-all' . $min_ext . '.js', $deps, $version, true);
+	wp_enqueue_script('ardent-theme', get_template_directory_uri() . '/assets/js/theme-all' . $min_ext . '.js', $deps, $version, true);
 	wp_enqueue_script('ardent-theme', get_template_directory_uri() . '/script.js', $deps, $version, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {

@@ -59,7 +59,7 @@ function arden_customizer_control_scripts() {
 	wp_enqueue_script( 'ardent-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-controls', 'wp-color-picker' ), time() );
 	wp_enqueue_style( 'ardent-customizer', get_template_directory_uri() . '/assets/css/customizer.css' );
 
-	wp_localize_script( 'ardent-customizer', 'ONEPRESS_CUSTOMIZER_DATA', $customizer_data );
+	wp_localize_script( 'ardent-customizer', 'ARDENT_CUSTOMIZER_DATA', $customizer_data );
 
 }
 

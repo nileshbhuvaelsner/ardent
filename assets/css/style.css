@@ -11,6 +11,8 @@
   --site-tagline-color: #ffffff;
   --menu-color: #ffffff;
   --menu-hover-color: #FF5D2C;
+  --primary-100-01: #FF5D2C01;
+  --primary-100-00: #FF5D2C00;
 }
 
 /* Note: If need Disable Decimal-value functionilty open function.scss file */
@@ -343,6 +345,7 @@ html {
 
 body {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   max-width: 100%;
   min-height: 100%;
@@ -2266,12 +2269,16 @@ select:-webkit-autofill:focus {
   font-weight: 400;
 }
 .mbnav ul .back-click::before {
+  font-family: "ardent" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   content: "a";
-  font-family: "iconfontfamily" !important;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  text-transform: none;
   position: static;
   display: inline-block;
   width: auto;
@@ -2323,9 +2330,18 @@ select:-webkit-autofill:focus {
 }
 
 /*--- header ---*/
+.is-transparent {
+  position: relative;
+}
+.is-transparent .site-header.is-t {
+  background-color: unset;
+  position: absolute;
+}
+
 .site-header {
   width: 100%;
   display: flex;
+  z-index: 99;
 }
 .site-header.no-t {
   background-color: var(--header-bg-color);
@@ -2437,6 +2453,7 @@ select:-webkit-autofill:focus {
 .site-header ul.desktop-menu > li > a {
   align-items: center;
   position: relative;
+  white-space: nowrap;
   /*
   &::before{
   	content: '';
@@ -2589,6 +2606,28 @@ select:-webkit-autofill:focus {
 }
 .site-header .header-site-info button.is-open .btn_hamburger span:nth-child(3) {
   transform: rotate(-45deg) translate3d(0.3125rem, -0.3125rem, 0);
+}
+
+.is-transparent .hero-slideshow-wrapper.header-transparent {
+  position: relative;
+}
+.is-transparent .hero-slideshow-wrapper.header-transparent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  opacity: 0.5;
+  filter: blur(50px);
+  background: var(--primary-100);
+  background: radial-gradient(circle, var(--primary-100) 0%, var(--primary-100) 0%, var(--primary-100-01) 45%, var(--primary-100-00) 90%, var(--primary-100-00) 100%);
+  transform: translateY(-50%) translateX(-50%) scaleX(2.29);
+  z-index: 1;
+}
+
+.hero-slideshow-wrapper {
+  background-color: var(--secondary-100);
 }
 
 /*--- footer ---*/

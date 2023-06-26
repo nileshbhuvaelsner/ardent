@@ -21,8 +21,8 @@ function ardent_customizer_load_template( $template_names ) {
 			$located = get_stylesheet_directory() . '/' . $template_name;
 			break;
 
-		} elseif ( defined( 'ONEPRESS_PLUS_PATH' ) && file_exists( ONEPRESS_PLUS_PATH . $template_name ) ) { // Check part in the plugin
-			$located = ONEPRESS_PLUS_PATH . $template_name;
+		} elseif ( defined( 'ARDENT_PLUS_PATH' ) && file_exists( ARDENT_PLUS_PATH . $template_name ) ) { // Check part in the plugin
+			$located = ARDENT_PLUS_PATH . $template_name;
 			break;
 		} elseif ( file_exists( get_template_directory() . '/' . $template_name ) ) { // current_theme
 			$located = get_template_directory() . '/' . $template_name;
