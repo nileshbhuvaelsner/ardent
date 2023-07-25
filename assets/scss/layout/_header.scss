@@ -19,7 +19,7 @@
 	.header-inner{
 		width: 100%;
 		display: flex;
-		min-height: 124px;
+		min-height: rem(124px);
 	}
 	
 	.header-left{
@@ -103,7 +103,7 @@
 			position: relative;
 			&:hover{
 				& > ul{
-					left: 0px;
+					left: rem(0px);
 				}
 				& > a{
 					color: var(--menu-hover-color);
@@ -316,12 +316,12 @@
 				position: absolute;
 				top: 0;
 				left: 50%;
-				width: 800px;
-				height: 800px;
+				width: rem(800px);
+				height: rem(800px);
 
 				opacity: 0.50;
 
-				filter: blur(50px);
+				filter: blur(rem(50px));
 
 				@include site-gradient;
 				

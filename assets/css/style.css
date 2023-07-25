@@ -2349,7 +2349,7 @@ select:-webkit-autofill:focus {
 .site-header .header-inner {
   width: 100%;
   display: flex;
-  min-height: 124px;
+  min-height: 7.75rem;
 }
 .site-header .header-left {
   display: flex;
@@ -2428,7 +2428,7 @@ select:-webkit-autofill:focus {
   position: relative;
 }
 .site-header ul.desktop-menu li:hover > ul {
-  left: 0px;
+  left: 0rem;
 }
 .site-header ul.desktop-menu li:hover > a {
   color: var(--menu-hover-color);
@@ -2616,10 +2616,10 @@ select:-webkit-autofill:focus {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 800px;
-  height: 800px;
+  width: 50rem;
+  height: 50rem;
   opacity: 0.5;
-  filter: blur(50px);
+  filter: blur(3.125rem);
   background: var(--primary-100);
   background: radial-gradient(circle, var(--primary-100) 0%, var(--primary-100) 0%, var(--primary-100-01) 45%, var(--primary-100-00) 90%, var(--primary-100-00) 100%);
   transform: translateY(-50%) translateX(-50%) scaleX(2.29);
